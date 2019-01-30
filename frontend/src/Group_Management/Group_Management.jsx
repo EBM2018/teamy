@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from './main.module.css';
+import classNames from './group_management.module.css';
 
 import Select_Mode from '../Select_Mode/Select_Mode'
 import Select_Quantity from '../Select_Quantity/Select_Quantity'
@@ -10,7 +10,7 @@ import Student_Management_Area from '../Student_Management_Area/Student_Manageme
 
 
 
-export default class Main extends React.PureComponent {
+export default class Group_Management extends React.PureComponent {
 
 render(){
     return (

@@ -5,7 +5,8 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 
 import './App.css';
 import Layout from '../Layout/Layout'
-import Main from "../Main/Main";
+import Group_Management from "../Group_Management/Group_Management";
+import List_Management from "../Listing/Listing";
 
 
 class App extends Component {
@@ -16,13 +17,13 @@ class App extends Component {
                 <Switch>
                     <Route
                         exact
-                        path="/main"
-                        component={Main}
+                        path="/Group_Management"
+                        component={Group_Management}
                     />
                     <Route
                         exact
-                        path="/connexion"
-                        component={Main}
+                        path="/List_Management"
+                        component={List_Management}
                     />
                 </Switch>
             </BrowserRouter>
