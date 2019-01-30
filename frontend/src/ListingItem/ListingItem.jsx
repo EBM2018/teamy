@@ -12,7 +12,7 @@ export default class ListingItem extends React.PureComponent {
 
     render(){
         return (
-            <li><Link to="">Liste 1</Link></li>
+            <li><Link to="/Liste?id=1">Liste 1</Link></li>
         )
     }
 }
