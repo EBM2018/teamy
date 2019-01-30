@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from './listing.module.css';
+//import PropTypes from 'prop-types';
+//import classNames from './listing.module.css';
 
-import Select_Mode from '../Select_Mode/Select_Mode'
-import {Link} from "react-router-dom";
-import Listing_Item from '../Listing_Item/Listing_Item'
+import SelectMode from '../SelectMode/SelectMode'
+//import {Link} from "react-router-dom";
+import ListingItem from '../ListingItem/ListingItem'
 
 
 
@@ -14,10 +14,10 @@ export default class Listing extends React.PureComponent {
     render(){
         return (
             <div>
-                <Select_Mode/>
+                <SelectMode/>
                 <input type="text" placeholder="Search for names.."/>
                 <ul>
-                    <Listing_Item/>
+                    <ListingItem/>
                 </ul>
                 <input type="text" placeholder="Add an Item"/>
                 <button>Add</button>
