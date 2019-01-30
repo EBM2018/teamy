@@ -7,7 +7,7 @@ import './App.css';
 import Layout from '../Layout/Layout'
 import GroupManagement from "../GroupManagement/GroupManagement";
 import Listing from "../Listing/Listing";
-
+import "antd/dist/antd.css";
 
 class App extends Component {
   render() {
