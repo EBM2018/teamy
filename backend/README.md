@@ -4,7 +4,7 @@ Backend Boilerplate
 Ce dépôt contient le code pour le backend du projet Boilerplate.
 
 La documentation de l'API est écrite dans des commentaires [ApiDoc](http://apidocjs.com/), et compilée automatiquement par Travis à chaque push de la branche `master`. Elle est finalement accessible sur la branche `gh-pages`, ou directement à l'adresse https://EBM-2017-2018.github.io/EBM-boilerplate.
-
+**Attention : tant que la base mongoDB est pas sur le serveur, il faut suivre [ce tutoriel pour l'installation et le démarrage](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)**
 ## Après avoir copié ce boilerplate
 
 - Modifier le fichier [`package.json`](package.json) pour changer le nom du projet, et le nom et la "sampleUrl" utilisée comme base pour ApiDoc
