@@ -1,3 +1,4 @@
+router.get('/404', (req, res) => res.send('../views/404.html'))
 Fil rouge Boilerplate
 =====================
 
