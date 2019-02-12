@@ -3,7 +3,7 @@ import React from 'react';
 //import classNames from './groupManagement.module.css';
 
 
-import SelectQuantity from '../SelectQuantity/SelectQuantity'
+import SelectQuantity from '../../../generic/SelectQuantity/SelectQuantity'
 import GroupsArea from '../GroupsArea/GroupsArea'
 import StudentManagementArea from '../StudentManagementArea/StudentManagementArea'
 

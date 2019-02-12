@@ -2,11 +2,11 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 //import classNames from './listing.module.css';
 
-import SelectMode from '../SelectMode/SelectMode'
+import SelectMode from '../../../generic/SelectMode/SelectMode'
 import { connect  } from 'react-redux'
 //import {Link} from "react-router-dom";
 import ListingItem from '../ListingItem/ListingItem'
-import { getLists, postList} from '../../../redux/list/actions'
+import { getLists, postList} from '../../../../../redux/list/actions'
 
 
 

@@ -1,23 +1,26 @@
-import {FETCH_LIST} from "./types";
-import {POST_LIST} from "./types";
+import { ACTIONS } from "./constants";
 
 
+export const SET_LISTS = (list) => ({
+    type: ACTIONS.SET_LISTS,
+    list
+})
 
+export const POST_LIST = (newList) => ({
+    type : ACTIONS.POST_LIST,
+    newList
+})
 
+export const getLists = () => async (dispatch) => {
 
-export const fetchLists = () => dispatch => {
+    //TODO : brancher la variable list à l'API
 
-    console.log("ca marche")
-         dispatch({
-             type: FETCH_LIST,
-             text: ["liste1", "liste2"],
-         })
+    const list = ["liste1", "liste2"]
+    dispatch(SET_LISTS(list))
 }
+export const postList = (newList) => async (dispatch) => {
 
-export const postLists = () => dispatch => {
-    console.log("ca marche")
-    dispatch({
-        type: POST_LIST,
-        text: "coucou",
-    })
+    //TODO : brancher la variable list à l'API
+
+    dispatch(POST_LIST(newList))
 }

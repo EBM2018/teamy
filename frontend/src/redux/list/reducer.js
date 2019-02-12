@@ -1,22 +1,21 @@
-import {FETCH_LIST} from "../actions/types";
+import { ACTIONS } from "./constants";
+import {combineReducers} from "redux";
 
-const initialState = {
-    listItem : [],
-    item : {}
-}
 
-export default function (state= initialState, action){
-    switch (action.type) {
-        case FETCH_LIST :
-            console.log("coucou")
-            return {...state,
-                listItem: action.text}
-        case 'POST_LIST':
-            return {...state,
-                listItem: action.text}
-        default:
-            return state
+
+export default combineReducers({
+    map : (state= [], action) => {
+        switch (action.type) {
+            case ACTIONS.SET_LISTS :
+                console.log("coucou")
+                return action.list
+            case ACTIONS.POST_LIST :
+
+                return state.concat(action.newList)
+            default:
+                return state
+        }
     }
-}
+})
 
 

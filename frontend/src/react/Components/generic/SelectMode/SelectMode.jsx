@@ -30,7 +30,7 @@ export default class SelectMode extends React.PureComponent {
                         theme="dark">
                         <Menu.Item key="signin">
                              <Link to="/GroupManagement" ><Icon type="rocket"/>
-                            Gestion des groupe</Link>
+                            Gestion des groupes</Link>
                         </Menu.Item>
                         <Menu.Item key="addSpace">
                             <Link to="/Listing">  <Icon type="database"/>Gestion des listes</Link>
