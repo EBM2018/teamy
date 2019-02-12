@@ -4,9 +4,9 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 
 
 import './App.css';
-import Layout from '../Layout/Layout'
-import GroupManagement from "../GroupManagement/GroupManagement";
-import Listing from "../Listing/Listing";
+import Layout from '../generic/Layout/Layout'
+import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
+import Listing from "../pages/ListManagement/Listing/Listing";
 import "antd/dist/antd.css";
 
 class App extends Component {

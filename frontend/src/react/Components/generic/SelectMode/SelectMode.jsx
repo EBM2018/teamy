@@ -3,7 +3,7 @@ import React from 'react';
 //import classNames from './selectMode.module.css';
 import {Link} from "react-router-dom";
 //import { Button } from 'antd';
-import "../../node_modules/antd/dist/antd.css";
+import "antd/dist/antd.css"
 import {Menu, Icon} from 'antd'
 
 //const SubMenu = Menu.SubMenu;
@@ -30,7 +30,7 @@ export default class SelectMode extends React.PureComponent {
                         theme="dark">
                         <Menu.Item key="signin">
                              <Link to="/GroupManagement" ><Icon type="rocket"/>
-                            Gestion des groupe</Link>
+                            Gestion des groupes</Link>
                         </Menu.Item>
                         <Menu.Item key="addSpace">
                             <Link to="/Listing">  <Icon type="database"/>Gestion des listes</Link>
