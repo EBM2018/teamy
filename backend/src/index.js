@@ -1,7 +1,7 @@
 const path = require('path');
-
 const express = require('express');
 const serveStatic = require('serve-static');
+const bodyParser = require('body-parser');
 
 const app = express();
 const server = require('http').Server(app);
@@ -10,6 +10,12 @@ const config = require('./config');
 
 // setup database connexion
 require('./config/mongoose');
+
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
+app.use(bodyParser.json());
+
 app.use('/api', require('./api'));
 
 app.use(serveStatic('./public'));
