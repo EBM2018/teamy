@@ -14,10 +14,7 @@ export default class ListingItem extends React.PureComponent {
 
     render(){
         return (
-            <List bordered >
-                <Link to="/Liste?">{this.props.listName}</Link>
-            </List>
-
+            <li><Link to="/Liste?id=1">{this.props.listName}</Link></li>
         )
     }
 }

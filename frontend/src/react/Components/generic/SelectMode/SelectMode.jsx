@@ -3,7 +3,7 @@ import React from 'react';
 //import classNames from './selectMode.module.css';
 import {Link} from "react-router-dom";
 //import { Button } from 'antd';
-import "../../node_modules/antd/dist/antd.css";
+import "antd/dist/antd.css"
 import {Menu, Icon} from 'antd'
 
 //const SubMenu = Menu.SubMenu;
