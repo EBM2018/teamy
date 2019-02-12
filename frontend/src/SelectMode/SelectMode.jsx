@@ -9,7 +9,7 @@ export default class SelectMode extends React.PureComponent {
 
     render(){
         return (
-            <div>
+            <div >
                 <Button type="primary"><Link to="/GroupManagement">Gestion des Groupes</Link></Button>
                 <Button type="danger"><Link to="/Listing">Gestion des Listes</Link></Button>
             </div>
