@@ -2,9 +2,10 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 //import classNames from './listing.module.css';
 
-import SelectMode from '../SelectMode/SelectMode'
+
 //import {Link} from "react-router-dom";
 import ListingItem from '../ListingItem/ListingItem'
+import {Affix, Row, Col} from "antd";
 //import { List } from '../../actions'
 
 
@@ -13,22 +14,23 @@ export default class Listing extends React.PureComponent {
     state = {
         newList: "",
         lists: [],
+        top: 10
     };
 
     render() {
         return (
             <div>
-                <SelectMode/>
+
+                <Affix offsetTop={this.state.top}>
                 <input type="text" placeholder="Search for names.."/>
+                    <input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text" placeholder="Add an Item"/>
+                    <button onClick={this.addList}>Add</button>
+                </Affix>
                 <ul>
                     {this.state.lists.map(listName => {
                         return (<ListingItem listName={listName}/>)
                     })}
-
-
                 </ul>
-                <input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text" placeholder="Add an Item"/>
-                <button onClick={this.addList}>Add</button>
             </div>
         )
     }
