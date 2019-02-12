@@ -2,6 +2,6 @@ const { Router } = require('express');
 
 const router = new Router();
 
-router.use('/eleves', require('./resources/eleves'));
+router.use('/user', require('./resources/user'));
 
 module.exports = router;
