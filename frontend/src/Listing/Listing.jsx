@@ -5,7 +5,7 @@ import React from 'react';
 
 //import {Link} from "react-router-dom";
 import ListingItem from '../ListingItem/ListingItem'
-import {Affix, Row, Col} from "antd";
+import {Affix} from "antd";
 //import { List } from '../../actions'
 
 
