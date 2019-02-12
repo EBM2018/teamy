@@ -12,9 +12,10 @@ import "antd/dist/antd.css";
 class App extends Component {
   render() {
     return (
-        <Layout>
+
             <BrowserRouter>
                 <Switch>
+                    <Layout>
                     <Route
                         exact
                         path="/GroupManagement"
@@ -25,9 +26,10 @@ class App extends Component {
                         path="/Listing"
                         component={Listing}
                     />
+                    </Layout>
                 </Switch>
             </BrowserRouter>
-        </Layout>
+
     );
   }
 }

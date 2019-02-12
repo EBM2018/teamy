@@ -4,6 +4,8 @@ import React from 'react';
 
 //import SelectMode from '../SelectMode/SelectMode'
 import {Link} from "react-router-dom";
+import { List } from 'antd';
+
 
 
 
@@ -12,7 +14,10 @@ export default class ListingItem extends React.PureComponent {
 
     render(){
         return (
-            <li><Link to="/Liste?id=1">Liste 1</Link></li>
+            <List bordered >
+                <Link to="/Liste?">{this.props.listName}</Link>
+            </List>
+
         )
     }
 }
