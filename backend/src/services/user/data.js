@@ -11,6 +11,14 @@ module.exports = {
     const result = await User.find({});
     return result;
   },
+  getStudent: async () => {
+    const result = await User.find({ isProf: false });
+    return result;
+  },
+  getProf: async () => {
+    const result = await User.find({ isProf: true });
+    return result;
+  },
   findById: async (_id) => {
     const result = await User.find(ObjectId(_id));
     console.log('find by id', result);
