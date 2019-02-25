@@ -11,6 +11,15 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 150,
   },
+  isProf: {
+    type: Boolean,
+    required: true,
+  },
+  listGroup: {
+    type: Array,
+    required: false,
+    max: 150,
+  },
 });
 
 
