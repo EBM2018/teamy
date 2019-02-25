@@ -61,6 +61,21 @@ const controller = {
     }
     return res.status(400).send('Bad Request...');
   },
+  async deleteUserById(req, res, next) {
+    if (req.params.UserId) {
+      try {
+        const result = await UserData.deleteOnId(req.params.UserId);
+        console.log(result);
+        if (result.deletedCount !== 1) {
+          res.status(400).send('An Error Occured');
+        }
+        res.status(200).json(result);
+      } catch (error) {
+        return next(error);
+      }
+    }
+    return res.status(400).send('Bad Request');
+  },
 };
 
 module.exports = controller;
