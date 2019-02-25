@@ -7,7 +7,9 @@ const userController = require('./userController');
 
 router.get('/', userController.all);
 
-router.get('/helloworld', (req, res) => res.send('Hello, World!'));
+router.get('/student', userController.eleve);
+
+router.get('/professor', userController.prof);
 
 router.post('/newUser', userController.newUser);
 
