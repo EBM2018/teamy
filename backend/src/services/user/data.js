@@ -16,4 +16,5 @@ module.exports = {
     console.log('find by id', result);
     return result;
   },
+  update: async (_id, user) => User.findOneAndUpdate({ _id }, user, { new: true }),
 };
