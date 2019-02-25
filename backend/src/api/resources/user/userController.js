@@ -5,13 +5,27 @@ const controller = {
   async all(req, res) {
     try {
       const result = await UserData.getAll();
-      console.log(result);
       return res.status(200).json(result);
     } catch (error) {
       return res.status(500).json(error);
     }
   },
-
+  async eleve(req, res) {
+    try {
+      const result = await UserData.getStudent();
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
+  async prof(req, res) {
+    try {
+      const result = await UserData.getProf();
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
   async newUser(req, res) {
     if (req.body) {
       try {
