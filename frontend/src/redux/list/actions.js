@@ -15,7 +15,7 @@ export const getLists = () => async (dispatch) => {
 
     //TODO : brancher la variable list à l'API
 
-    const list = ["liste1", "liste2"]
+    const list = ["EBM", "MAESTRO", "test", "prout"]
     dispatch(SET_LISTS(list))
 }
 export const postList = (newList) => async (dispatch) => {
