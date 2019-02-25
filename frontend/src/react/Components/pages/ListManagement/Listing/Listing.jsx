@@ -1,13 +1,21 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-//import classNames from './listing.module.css';
+import classNames from './listing.module.css';
 import { connect  } from 'react-redux'
 //import {Link} from "react-router-dom";
-import ListingItem from '../ListingItem/ListingItem'
 import { getLists, postList} from '../../../../../redux/list/actions'
+import {
+    Icon, Button, Input, AutoComplete,
+} from 'antd';
+const Option = AutoComplete.Option;
 
-
-
+function renderOption(item) {
+    return (
+        <Option key={item} text={item}>
+            {item}
+        </Option>
+    );
+}
 
 class Listing extends React.PureComponent {
 
@@ -21,17 +29,28 @@ class Listing extends React.PureComponent {
 
     render() {
         return (
-            <div>
-                <input type="text" placeholder="Search for names.."/>
-                <ul>
-                    {this.props.lists.map(listName => {
-                        return (<ListingItem listName={listName}/>)
-                    })}
-
-
-                </ul>
-                <input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text" placeholder="Add an Item"/>
-                <button onClick={this.addList}>Add</button>
+            <div className={classNames.globalsearchwrapper} >
+                <div >
+                    <AutoComplete
+                        className={classNames.searchbar}
+                        placeholder="input here"
+                        optionLabelProp="text"
+                        dataSource={this.props.lists.map(renderOption)}
+                        filterOption={(inputValue, option) => option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+                    >
+                        <Input className={classNames.input}
+                            suffix={(
+                                <Button type="primary">
+                                    <Icon type="search" />
+                                </Button>
+                            )}
+                        />
+                    </AutoComplete>
+                </div>
+                <div className={classNames.addlist}>
+                    <Input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text" placeholder="Add an Item"/>
+                    <Button onClick={this.addList}>Add</Button>
+                </div>
             </div>
         )
     }

@@ -10,7 +10,7 @@ import {Menu, Icon} from 'antd'
 //const MenuItemGroup = Menu.ItemGroup;
 export default class SelectMode extends React.PureComponent {
     state={
-        current : "signin",
+        current : "apps",
     };
     handleClick = (e) => {
         console.log('click ', e);
@@ -20,19 +20,20 @@ export default class SelectMode extends React.PureComponent {
     };
     render(){
         return (
-
-
                 <div >
                     <Menu
                         onClick={this.handleClick}
                         selectedKeys={[this.state.current]}
                         mode="horizontal"
                         theme="dark">
-                        <Menu.Item key="signin">
+                        <Menu.Item key="apps">
+                            <Link to="/Apps"><Icon type="robot"/>Chose your App</Link>
+                        </Menu.Item>
+                        <Menu.Item key="groupmanagement">
                              <Link to="/GroupManagement" ><Icon type="rocket"/>
                             Gestion des groupes</Link>
                         </Menu.Item>
-                        <Menu.Item key="addSpace">
+                        <Menu.Item key="listing">
                             <Link to="/Listing">  <Icon type="database"/>Gestion des listes</Link>
                         </Menu.Item>
                     </Menu>

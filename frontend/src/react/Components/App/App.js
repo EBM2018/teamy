@@ -7,6 +7,7 @@ import './App.css';
 import Layout from '../generic/Layout/Layout'
 import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
 import Listing from "../pages/ListManagement/Listing/Listing";
+import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
 
 class App extends Component {
@@ -16,6 +17,11 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Layout>
+                    <Route
+                        exact
+                        path="/Apps"
+                        component={Apps}
+                        />
                     <Route
                         exact
                         path="/GroupManagement"
