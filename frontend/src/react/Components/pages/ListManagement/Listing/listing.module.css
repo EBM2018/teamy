@@ -7,19 +7,11 @@ body{
     width: 100%;
 }
 
-.input{
-    padding: 0!important;
-}
-.searchbar{
-    width: 80%;
-    margin: auto;
-    padding: 0px;
-}
-.addlist{
-    width: 80%;
-    margin: auto;
-}
+
 .globalsearchwrapper{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-row-gap: 10px;
+    padding: 2%;
+    margin: 30px;
 }

@@ -17,21 +17,31 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Layout>
-                    <Route
-                        exact
-                        path="/Apps"
-                        component={Apps}
+                        <Route
+                            exact
+                            path="/Apps"
+                            component={Apps}
+                            />
+                        <Route
+                            exact
+                            path="/GroupManagement"
+                            component={GroupManagement}
                         />
-                    <Route
-                        exact
-                        path="/GroupManagement"
-                        component={GroupManagement}
-                    />
-                    <Route
-                        exact
-                        path="/Listing"
-                        component={Listing}
-                    />
+                        <Route
+                            exact
+                            path="/Listing"
+                            component={Listing}
+                        />
+                        <Route
+                            exact
+                            path="/connexion"
+                            component={Listing}
+                        />
+                        <Route
+                            exact
+                            path="/inscription"
+                            component={Listing}
+                        />
                     </Layout>
                 </Switch>
             </BrowserRouter>
