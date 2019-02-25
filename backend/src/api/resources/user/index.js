@@ -12,4 +12,7 @@ router.get('/helloworld', (req, res) => res.send('Hello, World!'));
 router.post('/newUser', userController.newUser);
 
 router.get('/:UserId', userController.getUserById);
+
+router.put('/:UserId', userController.editUserById);
+
 module.exports = router;

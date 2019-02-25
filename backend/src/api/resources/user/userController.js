@@ -33,6 +33,20 @@ const controller = {
       return res.status(500).json(e);
     }
   },
+  async editUserById(req, res, next) {
+    if (req.body) {
+      try {
+        const result = await UserData.update(req.params.UserId, req.body);
+        if (!result) {
+          return res.status(404).send('Not Found');
+        }
+        return res.status(200).json(result);
+      } catch (error) {
+        return next(error);
+      }
+    }
+    return res.status(400).send('Bad Request...');
+  },
 };
 
 module.exports = controller;
