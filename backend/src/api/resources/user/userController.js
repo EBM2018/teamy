@@ -65,9 +65,8 @@ const controller = {
     if (req.params.UserId) {
       try {
         const result = await UserData.deleteOnId(req.params.UserId);
-        console.log(result);
         if (result.deletedCount !== 1) {
-          res.status(400).send('An Error Occured');
+          res.status(500).send('An Error Occured');
         }
         res.status(200).json(result);
       } catch (error) {
@@ -75,6 +74,17 @@ const controller = {
       }
     }
     return res.status(400).send('Bad Request');
+  },
+  async checkIfProf(req, res) {
+    if (!req.params.UserId) {
+      res.status(400).send('no id found');
+    }
+    try {
+      const result = await UserData.isProf(req.params.UserId);
+      return res.status(200).json(result);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
   },
 };
 
