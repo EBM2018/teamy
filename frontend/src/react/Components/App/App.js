@@ -7,8 +7,10 @@ import './App.css';
 import Layout from '../generic/Layout/Layout'
 import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
 import Listing from "../pages/ListManagement/Listing/Listing";
+import Connexion from "../pages/Connexion/Connexion"
 import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
+import Inscritpion from "../pages/Inscription/Inscription";
 
 class App extends Component {
   render() {
@@ -35,12 +37,12 @@ class App extends Component {
                         <Route
                             exact
                             path="/connexion"
-                            component={Listing}
+                            component={Connexion}
                         />
                         <Route
                             exact
                             path="/inscription"
-                            component={Listing}
+                            component={Inscritpion}
                         />
                     </Layout>
                 </Switch>

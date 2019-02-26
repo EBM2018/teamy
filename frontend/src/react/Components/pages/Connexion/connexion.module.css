@@ -1,0 +1,22 @@
+body{
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.corps{
+    display: grid;
+    grid-row-gap: 10px;
+    padding: auto;
+    margin: 10%;
+
+}
+
+.inputIconUser{
+    color: rgba(0,0,0,.25)
+}
+.inputIconLock{
+    color: rgba(0,0,0,.25)
+}
