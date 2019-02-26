@@ -24,6 +24,10 @@ module.exports = {
     console.log('find by id', result);
     return result;
   },
+  isProf: async (_id) => {
+    const result = await User.findOne(ObjectId(_id));
+    return result.isProf;
+  },
   update: async (_id, user) => User.findOneAndUpdate({ _id }, user, { new: true }),
   deleteOnId: async id => User.deleteOne({ _id: id }),
 };
