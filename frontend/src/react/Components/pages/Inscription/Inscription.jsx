@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {
-    Form, Input, Tooltip, Icon, Checkbox, Button
+    Form, Input, Button
 } from 'antd';
 import classNames from "../Connexion/connexion.module.css";
 
@@ -80,9 +80,9 @@ class Inscription extends React.Component {
                 >
                     {getFieldDecorator('email', {
                         rules: [{
-                            type: 'email', message: 'The input is not valid E-mail!',
+                            type: 'email', message: 'Votre E-mail nest pas valide!',
                         }, {
-                            required: true, message: 'Please input your E-mail!',
+                            required: true, message: 'Veillez mettre votre E-mail!',
                         }],
                     })(
                         <Input />
@@ -90,11 +90,11 @@ class Inscription extends React.Component {
                 </Form.Item>
                 <Form.Item
                     {...formItemLayout}
-                    label="Password"
+                    label="Mot de passe"
                 >
                     {getFieldDecorator('password', {
                         rules: [{
-                            required: true, message: 'Please input your password!',
+                            required: true, message: 'Veillez mettre votre mot de passe!',
                         }, {
                             validator: this.validateToNextPassword,
                         }],
@@ -104,11 +104,11 @@ class Inscription extends React.Component {
                 </Form.Item>
                 <Form.Item
                     {...formItemLayout}
-                    label="Confirm Password"
+                    label="Confirmer le mot de passe"
                 >
                     {getFieldDecorator('confirm', {
                         rules: [{
-                            required: true, message: 'Please confirm your password!',
+                            required: true, message: 'Veillez confirmer votre mot de passe!',
                         }, {
                             validator: this.compareToFirstPassword,
                         }],
@@ -120,28 +120,33 @@ class Inscription extends React.Component {
                     {...formItemLayout}
                     label={(
                         <span>
-              Nickname&nbsp;
-                            <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
+              Prenom
             </span>
                     )}
                 >
                     {getFieldDecorator('nickname', {
-                        rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                        rules: [{ required: true, message: 'Veillez mettre votre prenom', whitespace: true }],
+                    })(
+                        <Input />
+                    )}
+                </Form.Item>
+
+                <Form.Item
+                    {...formItemLayout}
+                    label={(
+                        <span>
+              Nom
+            </span>
+                    )}
+                >
+                    {getFieldDecorator('name', {
+                        rules: [{ required: true, message: 'Veillez mettre votre nom', whitespace: true }],
                     })(
                         <Input />
                     )}
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
-                    {getFieldDecorator('agreement', {
-                        valuePropName: 'checked',
-                    })(
-                        <Checkbox>I have read the <a href="www.facebook.com">agreement</a></Checkbox>
-                    )}
-                </Form.Item>
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">Register</Button>
+                    <Button type="primary" htmlType="submit">S'inscrire</Button>
                 </Form.Item>
             </Form>
         );
