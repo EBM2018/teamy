@@ -18,4 +18,7 @@ router.get('/:UserId', userController.getUserById);
 router.put('/:UserId', userController.editUserById);
 
 router.delete('/:UserId', userController.deleteUserById);
+
+router.get('/isProf/:UserId', userController.checkIfProf);
+
 module.exports = router;
