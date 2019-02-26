@@ -7,10 +7,10 @@ import './App.css';
 import Layout from '../generic/Layout/Layout'
 import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
 import Listing from "../pages/ListManagement/Listing/Listing";
-import Connexion from "../pages/Connexion/login"
+import Connexion from "../pages/Connexion/Connexion"
 import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
-import Inscritpion from "../pages/Inscription/inscription";
+import Inscritpion from "../pages/Inscription/Inscription";
 
 class App extends Component {
   render() {

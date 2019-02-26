@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import {
     Form, Input, Tooltip, Icon, Checkbox, Button
 } from 'antd';
-import classNames from "../Connexion/login.module.css";
+import classNames from "../Connexion/connexion.module.css";
 
 
 class Inscription extends React.Component {

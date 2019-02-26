@@ -1,7 +1,7 @@
 import React from "react";
 import {Form, Icon, Input, Button, Checkbox,
 } from 'antd';
-import classNames from "./login.module.css";
+import classNames from "./connexion.module.css";
 
 
 
@@ -10,11 +10,11 @@ export default class Connexion extends React.PureComponent {
         return (
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
                 <Form.Item>
-                    <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>} placeholder="Username"/>
+                    <Input prefix={<Icon type="user" className={classNames.inputIconUser}/>} placeholder="Username"/>
                 </Form.Item>
                 <Form.Item>
 
-                    <Input prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>} type="password"
+                    <Input prefix={<Icon type="lock" className={classNames.inputIconLock}/>} type="password"
                            placeholder="Password"/>
 
                 </Form.Item>
