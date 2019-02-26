@@ -23,14 +23,14 @@ class Connexion extends React.PureComponent {
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
                 <Form.Item>
                     {getFieldDecorator('userName', {
-                        rules: [{ required: true, message: 'Veillez mettre votre e-mail!' }],
+                        rules: [{ required: true, message: 'Veuillez mettre votre e-mail!' }],
                     })(
                     <Input prefix={<Icon type="user" className={classNames.inputIconUser}/>} placeholder="E-mail"/>
                     )}
                     </Form.Item>
                 <Form.Item>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Veillez mettre votre mot de passe' }],
+                        rules: [{ required: true, message: 'Veuillez mettre votre mot de passe' }],
                     })(
                     <Input prefix={<Icon type="lock" className={classNames.inputIconLock}/>} type="password"
                            placeholder="Mot de passe"/>
@@ -41,7 +41,7 @@ class Connexion extends React.PureComponent {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Connexion
                     </Button>
-                     Ou <Link to='/Inscription'>Inscription!</Link>
+                     Où <Link to='/Inscription'>Inscription</Link>
                 </Form.Item>
             </Form>
         );
