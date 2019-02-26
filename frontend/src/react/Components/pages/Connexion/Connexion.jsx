@@ -1,34 +1,52 @@
 import React from "react";
-import {Form, Icon, Input, Button, Checkbox,
+import {Form, Icon, Input, Button
 } from 'antd';
 import classNames from "./connexion.module.css";
+import {Link} from "react-router-dom";
 
 
 
-export default class Connexion extends React.PureComponent {
+class Connexion extends React.PureComponent {
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    }
+
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
                 <Form.Item>
-                    <Input prefix={<Icon type="user" className={classNames.inputIconUser}/>} placeholder="Username"/>
-                </Form.Item>
+                    {getFieldDecorator('userName', {
+                        rules: [{ required: true, message: 'Veillez mettre votre e-mail!' }],
+                    })(
+                    <Input prefix={<Icon type="user" className={classNames.inputIconUser}/>} placeholder="E-mail"/>
+                    )}
+                    </Form.Item>
                 <Form.Item>
-
+                    {getFieldDecorator('password', {
+                        rules: [{ required: true, message: 'Veillez mettre votre mot de passe' }],
+                    })(
                     <Input prefix={<Icon type="lock" className={classNames.inputIconLock}/>} type="password"
-                           placeholder="Password"/>
-
+                           placeholder="Mot de passe"/>
+                    )}
                 </Form.Item>
                 <Form.Item>
 
-                    <Checkbox>Remember me</Checkbox>
-                    <a className="login-form-forgot" href="www.facebook.com">Forgot password</a>
                     <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
+                        Connexion
                     </Button>
-                    Or <a href="www.facebook.com">register now!</a>
+                     Ou <Link to='/Inscription'>Inscription!</Link>
                 </Form.Item>
             </Form>
         );
     }
 
 };
+
+export default Form.create()(Connexion)
