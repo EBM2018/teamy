@@ -29,7 +29,7 @@ class Inscription extends React.Component {
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('Les deux mots de passes sont different!');
         } else {
             callback();
         }
@@ -80,9 +80,9 @@ class Inscription extends React.Component {
                 >
                     {getFieldDecorator('email', {
                         rules: [{
-                            type: 'email', message: 'Votre E-mail nest pas valide!',
+                            type: 'email', message: <p>{"Votre E-mail n'est pas valide!"}</p>,
                         }, {
-                            required: true, message: 'Veillez mettre votre E-mail!',
+                            required: true, message: 'Veuillez mettre votre E-mail!',
                         }],
                     })(
                         <Input />
@@ -94,7 +94,7 @@ class Inscription extends React.Component {
                 >
                     {getFieldDecorator('password', {
                         rules: [{
-                            required: true, message: 'Veillez mettre votre mot de passe!',
+                            required: true, message: 'Veuillez mettre votre mot de passe!',
                         }, {
                             validator: this.validateToNextPassword,
                         }],
@@ -108,7 +108,7 @@ class Inscription extends React.Component {
                 >
                     {getFieldDecorator('confirm', {
                         rules: [{
-                            required: true, message: 'Veillez confirmer votre mot de passe!',
+                            required: true, message: 'Veuillez confirmer votre mot de passe!',
                         }, {
                             validator: this.compareToFirstPassword,
                         }],
@@ -120,12 +120,12 @@ class Inscription extends React.Component {
                     {...formItemLayout}
                     label={(
                         <span>
-              Prenom
+              Prénom
             </span>
                     )}
                 >
                     {getFieldDecorator('nickname', {
-                        rules: [{ required: true, message: 'Veillez mettre votre prenom', whitespace: true }],
+                        rules: [{ required: true, message: 'Veuillez mettre votre prenom', whitespace: true }],
                     })(
                         <Input />
                     )}
@@ -140,7 +140,7 @@ class Inscription extends React.Component {
                     )}
                 >
                     {getFieldDecorator('name', {
-                        rules: [{ required: true, message: 'Veillez mettre votre nom', whitespace: true }],
+                        rules: [{ required: true, message: 'Veuillez mettre votre nom', whitespace: true }],
                     })(
                         <Input />
                     )}
