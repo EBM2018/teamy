@@ -29,7 +29,7 @@ class Inscription extends React.Component {
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-            callback('Les deux mots de passes sont different!');
+            callback('Les deux mots de passe sont differents!');
         } else {
             callback();
         }
