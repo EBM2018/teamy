@@ -32,7 +32,7 @@ const controller = {
         const result = await UserData.create(req.body);
         return res.status(200).json(result);
       } catch (error) {
-        return (error);
+        return res.status(500).json(error);
       }
     }
     return res.status(400).send('Bad Request');
@@ -86,6 +86,8 @@ const controller = {
       return res.status(500).json(err);
     }
   },
+  // TODO : new method : add new group to a student (append to list_group)
+  // TODO : remove from list group
 };
 
 module.exports = controller;
