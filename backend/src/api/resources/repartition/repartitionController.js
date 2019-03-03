@@ -26,5 +26,8 @@ const controller = {
       return res.status(500).json(err);
     }
   },
+  // TODO: Add new Repartition & group
+  // TODO: Modify Repartition & group
+  // TODO: delete Repartition & group
 };
 module.exports = controller;
