@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
@@ -20,8 +19,10 @@ app.use('/api', require('./api'));
 
 app.use(serveStatic('./public'));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.use((err, req, res) => {
+  console.log(err.message);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).send(err.message);
 });
 
 server.listen(config.app.port, (err) => {
