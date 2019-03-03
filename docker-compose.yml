@@ -5,7 +5,7 @@ services:
     # depends_on:
     #   - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/node-auth
+      - MONGODB_URI=mongodb://mongodb/teamy
     networks:
       local:
       ebm-filrouge:
@@ -23,9 +23,10 @@ services:
       - local
     volumes:
       - mongo-volume:/data/db
-volumes:
-  mongo-volume:
-networks:
-  local:
-  ebm-filrouge:
-    external: true
+  volumes:
+    mongo-volume:
+
+  networks:
+    local:
+    ebm-filrouge:
+      external: true
