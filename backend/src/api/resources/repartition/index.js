@@ -6,3 +6,5 @@ const repartitionController = require('./repartitionController');
 router.get('/', repartitionController.getAll);
 
 router.post('/new', repartitionController.createNew);
+
+module.exports = router;
