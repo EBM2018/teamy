@@ -5,7 +5,7 @@ services:
     # depends_on:
     #   - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/teamy
+      - MONGODB_URI=mongodb://mongodb/node-auth
     networks:
       local:
       ebm-filrouge:
@@ -17,10 +17,14 @@ services:
       - "traefik.port=4000"
       - "traefik.network=ebm-filrouge"
       - "com.centurylinklabs.watchtower.enable=true"
-  # mongodb:
-  #   image: mongo
-  #   networks:
-  #     - local
+  mongodb:
+    image: mongo
+    networks:
+      - local
+    volumes:
+      - mongo-volume:/data/db
+volumes:
+  mongo-volume:
 networks:
   local:
   ebm-filrouge:
