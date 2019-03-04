@@ -8,23 +8,24 @@ import classNames from './selectquantity.module.css';
 export default class SelectQuantity extends React.PureComponent {
     colCounts = {};
     studcolCounts = {};
+    state = {
+        colCountKey: 2,
+        studcolCountKey: 2,
+    };
     constructor() {
         super();
-        this.state = {
-            colCountKey: 2,
-            studcolCountKey: 2,
-        };
+
 
         [1, 2, 3, 4, 5, 6, 7, 8].forEach((value, i) => { this.colCounts[i] = value; });
         [1,2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((value, i) => { this.studcolCounts[i] = value; });
-    }
-    onStudColCountChange = (studcolCountKey) => {
-        this.props.onStudColCountChange(studcolCountKey);
-        this.setState({ studcolCountKey });
-    }
-    onColCountChange = (colCountKey) => {
-        this.props.onColCountChange(colCountKey);
-        this.setState({ colCountKey });
+        }
+        onStudColCountChange = (studcolCountKey) => {
+            this.props.onStudColCountChange(studcolCountKey);
+            this.setState({ studcolCountKey: studcolCountKey });
+        }
+        onColCountChange = (colCountKey) => {
+            this.props.onColCountChange(colCountKey);
+            this.setState({ colCountKey: colCountKey });
     }
 
 
