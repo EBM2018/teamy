@@ -5,9 +5,11 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_INITDB_ROOT_USERNAME="teamy"
+      - MONGODB_DATABASE="teamy"
+      - MONGO_INITDB_ROOT_USERNAME="Teamy"
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGODB_URI=mongodb://mongodb/${MONGODB_DATABASE}
+
     networks:
       local:
       ebm-filrouge:
@@ -26,7 +28,7 @@ services:
     volumes:
       - mongo-volume:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: "teamy"
+      MONGO_INITDB_ROOT_USERNAME: "Teamy"
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 volumes:
   mongo-volume:
