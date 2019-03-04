@@ -5,7 +5,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/teamy
+      - MONGODB_URI=mongodb://mongodb:27017/teamy
     networks:
       local:
       ebm-filrouge:
