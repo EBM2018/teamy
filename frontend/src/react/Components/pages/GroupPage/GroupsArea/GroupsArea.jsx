@@ -6,12 +6,13 @@ import Group from '../Group/Group'
 
 
 export default class GroupsArea extends React.PureComponent {
-
     render(){
-        return (
-            <div>
-                <Group/>
-            </div>
-        )
+        let row = [];
+        for(let i = 0; i<=this.props.nbGroup; i++) {
+            row.push(<Group/>)
+        }
+            return (
+                <h1>{row}</h1>
+            )
     }
 }

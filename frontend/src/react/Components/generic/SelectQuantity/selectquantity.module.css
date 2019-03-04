@@ -1,0 +1,23 @@
+.boxslide{
+    display: grid;
+    grid-template-lines: 1fr 1fr;
+    background-color: dimgrey;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.slides{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 5px;
+    grid-column-gap: 10px;
+
+    border: lightgrey solid 1px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.titre{
+    margin-bottom: 50px;
+    color: white;
+}
