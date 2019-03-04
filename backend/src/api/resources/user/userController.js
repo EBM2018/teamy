@@ -7,7 +7,7 @@ const controller = {
       const result = await UserData.getAll();
       return res.status(200).json(result);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).send(error);
     }
   },
   async eleve(req, res) {

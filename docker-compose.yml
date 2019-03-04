@@ -2,8 +2,8 @@ version: "3"
 services:
   web:
     image: ebm2018/teamy:latest
-    # depends_on:
-    #   - mongodb
+    depends_on:
+      - mongodb
     environment:
       - MONGODB_URI=mongodb://mongodb/teamy
     networks:
