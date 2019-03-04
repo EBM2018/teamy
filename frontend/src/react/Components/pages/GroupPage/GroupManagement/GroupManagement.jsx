@@ -16,14 +16,15 @@ export default class GroupManagement extends React.PureComponent {
 
     state={
         nbGroup: 2,
+        nbEleve: 2,
     }
 render(){
     return (
         <div className={classNames.page}>
             <SelectTypeGroup/>
-            <SelectQuantity onColCountChange = {this.onColCountChange}/>
+            <SelectQuantity onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
             <div className={classNames.attributionarea}>
-                <GroupsArea nbGroup={this.state.nbGroup}/>
+                <GroupsArea nbGroup={this.state.nbGroup} nbEleve={this.state.nbEleve}/>
                 <StudentManagementArea/>
             </div>
         </div>
@@ -31,5 +32,8 @@ render(){
 }
     onColCountChange = (colCountKey) =>{
         this.setState({nbGroup :colCountKey })
+    }
+    onStudColCountChange = (studcolCountKey) =>{
+        this.setState({nbEleve :studcolCountKey })
     }
 }
