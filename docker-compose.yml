@@ -6,6 +6,9 @@ services:
       - mongodb
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/teamy
+      - MONGO_INITDB_ROOT_USERNAME="Teamy"
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+
     networks:
       local:
       ebm-filrouge:
