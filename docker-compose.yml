@@ -28,7 +28,7 @@ services:
     volumes:
       - mongo-volume:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: Teamy
+      MONGO_INITDB_ROOT_USERNAME: "Teamy"
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 volumes:
   mongo-volume:
