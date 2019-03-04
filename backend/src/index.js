@@ -19,8 +19,11 @@ app.use('/api', require('./api'));
 
 app.use(serveStatic('./public'));
 
-app.use((err, req, res) => {
-  console.log(err.message);
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  // Log error message in our server's console
+  console.error(err.message);
+  // If err has no specified error code, set error code to 'Internal Server Error (500)'
   const statusCode = err.statusCode || 500;
   res.status(statusCode).send(err.message);
 });
