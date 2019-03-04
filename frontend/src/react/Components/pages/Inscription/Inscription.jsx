@@ -14,11 +14,13 @@ class Inscription extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
+        //A retirer
+        //this.props.form.validateFieldsAndScroll((err, values) =>
+        //if (!err) {
+        //       console.log('Received values of form: ', values);
+        //    }
+        //});
+        //
     };
 
     handleConfirmBlur = (e) => {
