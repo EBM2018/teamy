@@ -2,10 +2,14 @@ version: "3"
 services:
   web:
     image: ebm2018/teamy:latest
-    # depends_on:
-    #   - mongodb
+    depends_on:
+      - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/teamy
+      - MONGODB_DATABASE="teamy"
+      - MONGO_INITDB_ROOT_USERNAME="Teamy"
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGODB_URI=mongodb://mongodb/${MONGODB_DATABASE}
+
     networks:
       local:
       ebm-filrouge:
@@ -17,10 +21,15 @@ services:
       - "traefik.port=4000"
       - "traefik.network=ebm-filrouge"
       - "com.centurylinklabs.watchtower.enable=true"
-  # mongodb:
-  #   image: mongo
-  #   networks:
-  #     - local
+  mongodb:
+    image: mongo
+    networks:
+      - local
+    volumes:
+      - mongo-volume:/data/db
+
+volumes:
+  mongo-volume:
 networks:
   local:
   ebm-filrouge:
