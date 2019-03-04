@@ -38,8 +38,6 @@ export default class SelectQuantity extends React.PureComponent {
                         marks={this.colCounts}
                         step={null}
                     />
-                    <p>{console.log("colCountKey")}</p>
-                    <p>{console.log(colCountKey)}</p>
                 </div>
                 <div className={classNames.boxslide}>
                     <p className={classNames.titre}> Choix du nombre d'élève </p>
