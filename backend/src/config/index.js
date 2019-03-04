@@ -5,4 +5,9 @@ module.exports = {
   mongodb: {
     uri: process.env.MONGODB_URI,
   },
+  options: {
+    useNewUrlParser: true,
+    user: process.env.MONGO_INITDB_ROOT_USERNAME,
+    pass: process.env.MONGO_INITDB_ROOT_PASSWORD,
+  },
 };
