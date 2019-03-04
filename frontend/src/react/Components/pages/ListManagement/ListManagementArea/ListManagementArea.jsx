@@ -12,13 +12,6 @@ import {
 
 const Option = AutoComplete.Option;
 
-function renderOption(item) {
-    return (
-        <Option key={item} text={item}>
-            {item}
-        </Option>
-    );
-}
 
 class ListManagementArea extends React.PureComponent {
 
@@ -38,8 +31,12 @@ class ListManagementArea extends React.PureComponent {
                         className={classNames.searchbar}
                         placeholder="input here"
                         optionLabelProp="text"
-                        dataSource={this.props.lists.map(renderOption)}
-                        filterOption={(inputValue, option) => option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+                        dataSource={this.props.lists.map(this.renderOption)}
+                        filterOption={(inputValue, option) => {
+                            console.log("listedata", this.props.lists)
+                            console.log("option", option.props.children)
+                            return option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                        }}
                     >
                         <Input className={classNames.input}
                                suffix={(
@@ -57,6 +54,18 @@ class ListManagementArea extends React.PureComponent {
                 </div>
             </div>
         )
+    }
+
+  renderOption = (item) => {
+    return (
+      <Option key={Number(item.id_repartition)} text={item.label_repartition} onClick={this.selectList}>
+        {item.label_repartition}
+      </Option>
+    );
+  }
+    selectList= (idList) => {
+        console.log("selected list", idList)
+        this.props.selectList(idList)
     }
 
     updateList = (e) => {
@@ -81,7 +90,7 @@ class ListManagementArea extends React.PureComponent {
 
 
 const mapStateToProps = state  => ({
-        lists : state.lists.map
+        lists : state.lists.map,
     }
 )
 
