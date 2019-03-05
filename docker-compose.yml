@@ -5,9 +5,9 @@ services:
     depends_on:
     - mongodb
     environment:
-    - MONGODB_URI=mongodb://mongodb/teamy
-    - MONGO_INITDB_ROOT_USERNAME="teamy"
-    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGODB_URI=mongodb://mongodb/teamy
+      - MONGO_INITDB_ROOT_USERNAME="teamy"
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       local:
       ebm-filrouge:
