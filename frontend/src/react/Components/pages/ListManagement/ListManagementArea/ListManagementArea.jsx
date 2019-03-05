@@ -29,7 +29,7 @@ class ListManagementArea extends React.PureComponent {
                 <div>
                     <AutoComplete
                         className={classNames.searchbar}
-                        placeholder="input here"
+                        placeholder="recherchez une liste"
                         optionLabelProp="text"
                         dataSource={this.props.lists.map(this.renderOption)}
                         filterOption={(inputValue, option) => {
@@ -49,8 +49,8 @@ class ListManagementArea extends React.PureComponent {
                 </div>
                 <div className={classNames.addlist}>
                     <Input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text"
-                           placeholder="Add an Item"/>
-                    <Button onClick={this.addList}>Add</Button>
+                           placeholder="Créer une liste"/>
+                    <Button onClick={this.addList}>Créer une liste</Button>
                 </div>
             </div>
         )
