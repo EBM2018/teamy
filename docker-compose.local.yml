@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+    depends_on:
+    - mongodb
+    environment:
+    - MONGODB_URI=mongodb://Teamy:Teamy@8ef3b2738f01:27017/teamy
+    - USER_NAME=${MONGO_INITDB_ROOT_USERNAME}
+    - PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    networks:
+      local:
+    ports:
+    - 4000:4000
+    labels:
+    - "traefik.enable=true"
+    - "traefik.frontend.rule=Host:tenugui.ebm.nymous.io"
+    - "traefik.port=4000"
+    - "traefik.network=ebm-filrouge"
+    - "com.centurylinklabs.watchtower.enable=true"
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: teamy
+    command: --auth
+    volumes:
+    - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+    - local
+networks:
+  local:
