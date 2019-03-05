@@ -3,7 +3,8 @@ import 'antd/dist/antd.css';
 import {
     Form, Input, Button
 } from 'antd';
-import classNames from "../Connexion/connexion.module.css";
+import classNames from "../Inscription/inscription.module.css";
+
 
 
 class Inscription extends React.Component {
