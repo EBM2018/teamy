@@ -1,11 +1,12 @@
 .searchbar{
-    width: 80%;
+    width: 40%;
     margin: auto;
     padding: 0px;
+    display: grid;
 }
 
 .addlist{
-    width: 80%;
+    width: 40%;
     margin: auto;
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -13,7 +14,8 @@
 
 .listmanagementcontainer{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-row: 1fr 1fr;
+    grid-row-gap: 10px;
     border-radius: 5px;
     border: lightgrey solid 1px;
     padding: 5%;
