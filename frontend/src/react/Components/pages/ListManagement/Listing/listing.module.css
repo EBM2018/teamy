@@ -10,7 +10,7 @@ body{
 
 .globalsearchwrapper{
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr wrap-content;
     grid-row-gap: 10px;
     padding: 2%;
     margin: 30px;
