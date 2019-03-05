@@ -1,5 +1,5 @@
 import { ACTIONS } from "./constants";
-
+import {data_list} from "../../__mock-data__/data_list"
 
 export const SET_LISTS = (list) => ({
     type: ACTIONS.SET_LISTS,
@@ -11,11 +11,15 @@ export const POST_LIST = (newList) => ({
     newList
 })
 
+
+
+
 export const getLists = () => async (dispatch) => {
 
     //TODO : brancher la variable list à l'API
 
-    const list = ["EBM", "MAESTRO", "test", "prout"]
+    const list = data_list.data
+    console.log("liste", list)
     dispatch(SET_LISTS(list))
 }
 export const postList = (newList) => async (dispatch) => {
@@ -24,3 +28,5 @@ export const postList = (newList) => async (dispatch) => {
 
     dispatch(POST_LIST(newList))
 }
+
+

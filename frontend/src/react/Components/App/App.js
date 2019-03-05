@@ -21,7 +21,7 @@ class App extends Component {
                     <Layout>
                         <Route
                             exact
-                            path="/Apps"
+                            path="/"
                             component={Apps}
                             />
                         <Route

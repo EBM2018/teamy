@@ -24,10 +24,11 @@ export default class SelectMode extends React.PureComponent {
                     <Menu
                         onClick={this.handleClick}
                         selectedKeys={[this.state.current]}
+                        defaultSelectedKeys={['apps']}
                         mode="horizontal"
                         theme="dark">
                         <Menu.Item key="apps">
-                            <Link to="/Apps"><Icon type="robot"/>Chose your App</Link>
+                            <Link to="/"><Icon type="robot"/>Chose your App</Link>
                         </Menu.Item>
                         <Menu.Item key="groupmanagement">
                              <Link to="/GroupManagement" ><Icon type="rocket"/>
