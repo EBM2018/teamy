@@ -1,12 +1,11 @@
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 var User = require('../models/User.model.js');
 var config = require('../../src/config/index.js');
-var bcrypt = require('bcryptjs');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
 // bcryot.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd
 // data est la donnée à encrypter, salt la clé de hashage
-
-var jwt = require('jsonwebtoken');
 
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function (user){

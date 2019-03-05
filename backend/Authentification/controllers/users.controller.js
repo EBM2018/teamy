@@ -21,7 +21,7 @@ exports.createUser = async function (req, res /* , next */){
         return res.status(201).json({data: createdUser, message: "Elève bien ajouté" });
     }   
         catch (e) {
-        return res.status(400).json({status: 400,message: "Echec de l'inscription" });
+        return res.status(400).json({status: 400, message: "Echec de l'inscription" });
     }  
 };
 
