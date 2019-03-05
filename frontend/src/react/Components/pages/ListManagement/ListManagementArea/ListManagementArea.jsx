@@ -26,6 +26,11 @@ class ListManagementArea extends React.PureComponent {
     render() {
         return (
             <div className={classNames.listmanagementcontainer}>
+              <div className={classNames.addlist}>
+                <Input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text"
+                       placeholder="Créer une liste"/>
+                <Button onClick={this.addListByButton}>Créer une liste</Button>
+              </div>
                 <div>
                     <AutoComplete
                         className={classNames.searchbar}
@@ -46,11 +51,6 @@ class ListManagementArea extends React.PureComponent {
                                )}
                         />
                     </AutoComplete>
-                </div>
-                <div className={classNames.addlist}>
-                    <Input onKeyPress={this.addList} onInput={this.updateList} value={this.state.newList} type="text"
-                           placeholder="Créer une liste"/>
-                    <Button onClick={this.addList}>Créer une liste</Button>
                 </div>
             </div>
         )
@@ -74,11 +74,21 @@ class ListManagementArea extends React.PureComponent {
             console.log(this.state.newList)
         })
     }
+
+    addListByButton = () => {
+      if (this.state.newList !== "") {
+        this.props.postList(this.state.newList)
+        this.selectList(this.state.newList)
+        this.setState({
+          newList: "",
+        })
+      }
+    }
     addList = (e) => {
-        console.log(e)
         if (e.key === 'Enter') {
             if (this.state.newList !== "") {
                 this.props.postList(this.state.newList)
+                this.selectList(this.state.newList)
                 this.setState({
                     newList: "",
                 })
