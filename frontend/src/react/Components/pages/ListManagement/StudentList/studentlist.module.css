@@ -1,4 +1,6 @@
 .listcontainer{
     border-radius: 5px;
     border: lightgrey solid 1px;
+    width: 30%;
+    margin: auto;
 }
