@@ -1,13 +1,13 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-//import classNames from './listingItem.module.css';
+//import classNames from './groupingitem.module.css';
 import {Link} from "react-router-dom";
 
 
 
 
 
-export default class ListingItem extends React.PureComponent {
+export default class GroupingItem extends React.PureComponent {
 
     render(){
         return (

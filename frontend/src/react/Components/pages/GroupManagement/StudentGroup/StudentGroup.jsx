@@ -1,10 +1,10 @@
 import React from "react";
-import classNames from './studentlist.module.css'
+import classNames from './studentgroup.module.css'
 import { List } from 'antd';
 
 //import StudentItem from '../../../generic/StudentItem/StudentItem'
 
-export default class StudentList extends React.PureComponent {
+export default class StudentGroup extends React.PureComponent {
 
 
     render() {

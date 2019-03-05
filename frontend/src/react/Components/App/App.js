@@ -5,8 +5,8 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 
 import './App.css';
 import Layout from '../generic/Layout/Layout'
-import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
-import Listing from "../pages/ListManagement/Listing/Listing";
+import RepartitionManagement from "../pages/RepartitionPage/RepartitionManagement/RepartitionManagement";
+import Grouping from "../pages/GroupManagement/Grouping/Grouping";
 import Connexion from "../pages/Connexion/Connexion"
 import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
@@ -26,13 +26,13 @@ class App extends Component {
                             />
                         <Route
                             exact
-                            path="/GroupManagement"
-                            component={GroupManagement}
+                            path="/RepartitionManagement"
+                            component={RepartitionManagement}
                         />
                         <Route
                             exact
-                            path="/Listing"
-                            component={Listing}
+                            path="/Grouping"
+                            component={Grouping}
                         />
                         <Route
                             exact
