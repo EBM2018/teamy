@@ -5,14 +5,14 @@
     display: grid;
 }
 
-.addlist{
+.addgroup{
     width: 40%;
     margin: auto;
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
 
-.listmanagementcontainer{
+.groupmanagementcontainer{
     display: grid;
     grid-template-row: 1fr 1fr;
     grid-row-gap: 10px;

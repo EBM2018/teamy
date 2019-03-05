@@ -1,14 +1,12 @@
 import React from 'react';
-//import classNames from "../GroupsArea/groupsArea.module.css";
-//import PropTypes from 'prop-types';
-//import classNames from './group.module.css';
+//import classNames from './repartition.module.css';
 import {Card, Col} from 'antd'
 import ListStudents from "../ListStudents/ListStudents";
 
 
 
 
-export default class Group extends React.PureComponent {
+export default class Repartition extends React.PureComponent {
 
 
     render() {

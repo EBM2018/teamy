@@ -1,37 +1,37 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import classNames from './groupManagement.module.css';
+import classNames from './repartitionmanagement.module.css';
 
 
 import SelectQuantity from '../../../generic/SelectQuantity/SelectQuantity'
-import GroupsArea from '../GroupsArea/GroupsArea'
+import RepartitionArea from '../RepartitionArea/RepartitionArea'
 import StudentManagementArea from '../StudentManagementArea/StudentManagementArea'
-import SelectTypeGroup from "../../../generic/SelectTypeGroup/SelectTypeGroup";
+import SelectTypeRepartition from "../../../generic/SelectTypeRepartition/SelectTypeRepartition";
 
 
 
 
 
-export default class GroupManagement extends React.PureComponent {
+export default class RepartitionManagement extends React.PureComponent {
 
     state={
-        nbGroup: 2,
+        nbRepartition: 2,
         nbEleve: 2,
     }
 render(){
     return (
         <div className={classNames.page}>
-            <SelectTypeGroup/>
+            <SelectTypeRepartition/>
             <SelectQuantity onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
             <div className={classNames.attributionarea}>
-                <GroupsArea nbGroup={this.state.nbGroup} nbEleve={this.state.nbEleve}/>
+                <RepartitionArea nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve}/>
                 <StudentManagementArea/>
             </div>
         </div>
     )
 }
     onColCountChange = (colCountKey) =>{
-        this.setState({nbGroup :colCountKey })
+        this.setState({nbRepartition :colCountKey })
     }
     onStudColCountChange = (studcolCountKey) =>{
         this.setState({nbEleve :studcolCountKey })

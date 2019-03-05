@@ -1,4 +1,4 @@
-export const data_list = {
+export const data_group = {
     "data":[
     {
   "id_repartition":"1",
