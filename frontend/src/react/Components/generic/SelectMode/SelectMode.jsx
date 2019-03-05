@@ -28,14 +28,14 @@ export default class SelectMode extends React.PureComponent {
                         mode="horizontal"
                         theme="dark">
                         <Menu.Item key="apps">
-                            <Link to="/"><Icon type="robot"/>Chose your App</Link>
+                            <Link to="/"><Icon type="robot"/>Choisissez votre application</Link>
                         </Menu.Item>
-                        <Menu.Item key="groupmanagement">
-                             <Link to="/GroupManagement" ><Icon type="rocket"/>
-                            Gestion des groupes</Link>
+                        <Menu.Item key="repartitionmanagement">
+                             <Link to="/RepartitionManagement" ><Icon type="rocket"/>
+                            Gestion des repartitions</Link>
                         </Menu.Item>
-                        <Menu.Item key="listing">
-                            <Link to="/Listing">  <Icon type="database"/>Gestion des listes</Link>
+                        <Menu.Item key="grouping">
+                            <Link to="/Grouping">  <Icon type="database"/>Gestion des groupes</Link>
                         </Menu.Item>
                         <Menu.Item key="connexion">
                             <Link to="/Connexion">  <Icon type="database"/>Connexion</Link>
