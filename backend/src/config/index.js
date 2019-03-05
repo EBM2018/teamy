@@ -8,7 +8,7 @@ module.exports = {
       auth: { authSource: 'admin' },
       user: process.env.MONGO_INITDB_ROOT_USERNAME,
       useNewUrlParser: true,
-      pass: process.env.MONGO_INITDB_ROOT_PASSWORD,
+      pass: String(process.env.MONGO_INITDB_ROOT_PASSWORD),
     },
   },
 };
