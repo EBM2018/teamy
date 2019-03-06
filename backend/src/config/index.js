@@ -5,10 +5,10 @@ module.exports = {
   mongodb: {
     uri: process.env.MONGODB_URI,
     options: {
-      auth: { authSource: 'admin' },
-      user: process.env.MONGO_INITDB_ROOT_USERNAME,
+      user: 'Teamy',
+      pass: 'Teamy',
       useNewUrlParser: true,
-      pass: String(process.env.MONGO_INITDB_ROOT_PASSWORD),
+      authSource: 'admin',
     },
   },
 };
