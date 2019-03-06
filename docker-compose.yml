@@ -25,9 +25,6 @@ services:
     - local
     volumes:
     - mongo-volume:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "teamy"
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 volumes:
   mongo-volume:
 networks:
