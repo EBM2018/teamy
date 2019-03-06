@@ -6,25 +6,23 @@ services:
     - mongodb
     environment:
       - MONGODB_URI=mongodb://mongodb/teamy
-      - MONGO_INITDB_ROOT_USERNAME="teamy"
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       local:
       ebm-filrouge:
         aliases:
-        - teamy
+          - teamy
     labels :
-    - "traefik.enable=true"
-    - "traefik.frontend.rule=Host:teamy.ebm.nymous.io"
-    - "traefik.port=4000"
-    - "traefik.network=ebm-filrouge"
-    - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:teamy.ebm.nymous.io"
+      - "traefik.port=4000"
+      - "traefik.network=ebm-filrouge"
+      - "com.centurylinklabs.watchtower.enable=true"
   mongodb:
     image: mongo
     networks:
-    - local
+      - local
     volumes:
-    - mongo-volume:/data/db
+      - mongo-volume:/data/db
 volumes:
   mongo-volume:
 networks:
