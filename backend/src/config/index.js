@@ -7,8 +7,8 @@ module.exports = {
     options: {
       user: 'Teamy',
       pass: 'Teamy',
-      useNewUrlParser: true,
       authSource: 'admin',
+      useNewUrlParser: true,
     },
   },
 };
