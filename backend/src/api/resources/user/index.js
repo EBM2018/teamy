@@ -7,9 +7,11 @@ const userController = require('./userController');
 
 router.get('/', userController.all);
 
-router.get('/student', userController.eleve);
+/**
+router.get('/students', userController.eleve);
 
-router.get('/professor', userController.prof);
+/**
+router.get('/teachers', userController.prof);
 
 router.post('/newUser', userController.newUser);
 
@@ -19,6 +21,7 @@ router.put('/:UserId', userController.editUserById);
 
 router.delete('/:UserId', userController.deleteUserById);
 
-router.get('/isProf/:UserId', userController.checkIfProf);
+/**
+router.get('/isTeacher/:UserId', userController.checkIfProf);
 
 module.exports = router;
