@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 150,
   },
+  email: {
+    type: String,
+    required: true,
+    max: 150,
+  },
   isProf: {
     type: Boolean,
     required: true,
@@ -18,6 +23,11 @@ const UserSchema = new mongoose.Schema({
   listGroup: {
     type: Array,
     required: false,
+    max: 150,
+  },
+  pwd: {
+    type: String,
+    required: true,
     max: 150,
   },
 });

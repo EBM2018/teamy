@@ -9,7 +9,7 @@ var config = require('../../src/config/index.js');
 
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function (user){
-    var hashedPwd = bcrypt.hashSync(user.password, 8);
+    var hashedPwd = bcrypt.hashSync(user.pwd, 8);
     
     // On va ajouter directement dans la bdd
     // Il ne faudra pas oublier de rajouter dans 
@@ -55,18 +55,3 @@ exports.loginUser = async function (user) {
         throw Error("Problème lors de l'authentification de l'utilisateur");
     }
 };
-
-// fonction pour obtenir la liste des utilisateurs (pas prioritaire à l'heure actuelle)
-
-// exports.getUsers = async function (query, page, limit){
-//     var options = {
-//         page, 
-//         limit
-//     }
-//     try {
-//         var Users = await User.paginate(query, options)
-//         return Users;
-//     }   catch(e) {
-//         throw Error('Erreur lors du listage des utilisateurs')
-//     }
-// }
