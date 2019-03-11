@@ -19,20 +19,21 @@ body{
 
 }
 
-.inputUser{
+.inputItem{
     display: grid;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: auto;
     width: 70%;
+    margin-top: 10px;
 
 }
-
-.inputPassword{
+.buttonsItem{
     display: grid;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: auto;
     width: 70%;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .inputIconUser{

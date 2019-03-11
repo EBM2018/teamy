@@ -80,7 +80,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="E-mail"
-                    className={classNames.eleve}
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('email', {
                         rules: [{
@@ -95,7 +95,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="Mot de passe"
-                    className={classNames.eleve}
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('password', {
                         rules: [{
@@ -110,7 +110,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="Confirmer le mot de passe"
-                    className={classNames.eleve}
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('confirm', {
                         rules: [{
@@ -123,7 +123,7 @@ class Inscription extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item
-                    className={classNames.eleve}
+                    className={classNames.inputItem}
                     {...formItemLayout}
                     label={(
                         <span>
@@ -139,7 +139,7 @@ class Inscription extends React.Component {
                 </Form.Item>
 
                 <Form.Item
-                    className={classNames.eleve}
+                    className={classNames.inputItem}
                     {...formItemLayout}
                     label={(
                         <span>
