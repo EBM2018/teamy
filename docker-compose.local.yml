@@ -7,9 +7,9 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/teamy/
-      - USER_NAME=${MONGO_INITDB_ROOT_USERNAME}
-      - PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGODB_URI=mongodb://mongodb/teamy
+#      - USER_NAME=${MONGO_INITDB_ROOT_USERNAME}
+#      - PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       local:
     ports:
@@ -23,17 +23,15 @@ services:
   mongodb:
     image: mongo
     restart: always
-    command: --auth
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME='Teamy'
-      - MONGO_INITDB_ROOT_PASSWORD='Teamy'
-      - MONGO_INITDB_ROOT_DATABASE='teamy'
+#    command: --auth
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME='Teamy'
+#      - MONGO_INITDB_ROOT_PASSWORD='Teamy'
+#      - MONGO_INITDB_ROOT_DATABASE='teamy'
     volumes:
       - mongo-volume:/data/db
     networks:
       - local
-    ports:
-      - "27017:27017"
 networks:
   local:
 volumes:
