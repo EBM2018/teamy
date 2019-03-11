@@ -15,6 +15,19 @@ body{
     padding: auto;
     margin: auto;
     margin-top: 20px;
-    width: 40%;
+    width: 66%;
 
+}
+
+.eleve{
+
+    margin: auto;
+    margin-top: 5px;
+    width: 90%;
+}
+
+.validationButton{
+    display: grid;
+    margin: auto;
+    margin-top: 5px;
 }
