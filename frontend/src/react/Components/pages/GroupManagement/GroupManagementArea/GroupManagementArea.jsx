@@ -34,7 +34,7 @@ class GroupManagementArea extends React.PureComponent {
                 <div>
                     <AutoComplete
                         className={classNames.searchbar}
-                        placeholder="recherchez une Groupe"
+                        placeholder="recherchez un Groupe"
                         optionLabelProp="text"
                         dataSource={this.props.groups.map(this.renderOption)}
                         filterOption={(inputValue, option) => {

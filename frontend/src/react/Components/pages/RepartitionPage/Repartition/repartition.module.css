@@ -1,4 +1,13 @@
 .group{
     background-color: grey;
-    border-bottom-color: ;
+    border-bottom-color: black;
+}
+
+.cardstyle{
+    display: grid;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    grid-column-gap: 20px;
+    border-color: deepskyblue;
 }
