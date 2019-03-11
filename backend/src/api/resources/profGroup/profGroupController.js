@@ -19,6 +19,7 @@ const controller = {
     }
 
     const isProf = await userData.isProf(req.body.idProf);
+    // TODO  :can be null : handle that
     if (!isProf) {
       return res.status(400).send('id given does not refer to a professor');
     }

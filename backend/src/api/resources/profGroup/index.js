@@ -57,7 +57,7 @@ router.post('/new', controller.newProfGroup);
  * @api {get} /prof-group/:idProf Get a prof info by ProfId -- NOT LINE ID
  * @apiName GetByProfId
  * @apiGroup ProfGroup
- * @apiDescription Returns a JSON containing the Prof-group entry
+ * @apiDescription Returns a JSON containi ng the Prof-group entry
  * @apiSuccessExample {json} Success-Response:
  * [
  * {
