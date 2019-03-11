@@ -7,7 +7,7 @@ services:
     depends_on:
       - mongodb
     environment:
-      - MONGODB_URI=mongodb://mongodb/teamy/
+      - MONGODB_URI=mongodb://mongodb/teamy
       - USER_NAME=${MONGO_INITDB_ROOT_USERNAME}
       - PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     networks:
