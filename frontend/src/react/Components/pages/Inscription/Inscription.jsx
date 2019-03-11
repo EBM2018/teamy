@@ -4,6 +4,7 @@ import {
     Form, Input, Button
 } from 'antd';
 import classNames from "../Inscription/inscription.module.css";
+import {Link} from "react-router-dom";
 
 
 
@@ -155,6 +156,10 @@ class Inscription extends React.Component {
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout} className={classNames.validationButton}>
                     <Button type="primary" htmlType="submit">S'inscrire</Button>
+                    {"    Ou    "}
+                    <Button type="ghost" htmlType="submit" className="login-form-button">
+                        <Link to='/Connexion'>Connexion</Link>
+                    </Button>
                 </Form.Item>
             </Form>
         );

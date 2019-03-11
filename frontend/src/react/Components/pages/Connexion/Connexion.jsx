@@ -41,7 +41,7 @@ class Connexion extends React.PureComponent {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Connexion
                     </Button>
-                    {"    Où    "}
+                    {"    Ou    "}
                     <Button type="ghost" htmlType="submit" className="login-form-button">
                         <Link to='/Inscription'>Inscription</Link>
                     </Button>
