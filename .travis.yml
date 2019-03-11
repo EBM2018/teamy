@@ -12,6 +12,7 @@ before_script:
   - npm ci
   - cd ../frontend
   - npm ci
+  - npm i codecov
   - cd ..
 
 script:
