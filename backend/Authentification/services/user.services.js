@@ -1,6 +1,6 @@
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var User = require('../models/User.model.js');
+var User = require('../../src/services/user/model.js');
 var config = require('../../src/config/index.js');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
