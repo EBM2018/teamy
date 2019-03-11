@@ -21,14 +21,14 @@ class GroupManagementArea extends React.PureComponent {
 
     state = {
         newGroup: "",
-    }
+    };
 
     render() {
         return (
             <div className={classNames.groupmanagementcontainer}>
               <div className={classNames.addgroup}>
                 <Input onKeyPress={this.addGroup} onInput={this.updateGroup} value={this.state.newGroup} type="text"
-                       placeholder="Créer une Groupe"/>
+                       placeholder="Créer un Groupe"/>
                 <Button onClick={this.addGroupByButton}>Créer une Groupe</Button>
               </div>
                 <div>

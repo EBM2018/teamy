@@ -28,6 +28,9 @@ body{
 
 .validationButton{
     display: grid;
+    border-radius: 10px;
     margin: auto;
-    margin-top: 5px;
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
