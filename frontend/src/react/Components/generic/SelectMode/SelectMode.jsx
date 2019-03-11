@@ -12,7 +12,11 @@ export default class SelectMode extends React.PureComponent {
     state={
         current : "apps",
     };
+  componentDidMount () {
+    console.log("path", window.location.pathname);
+  }
     handleClick = (e) => {
+        console.log("path", this.path);
         console.log('click ', e);
         this.setState({
             current: e.key,
@@ -23,18 +27,18 @@ export default class SelectMode extends React.PureComponent {
                 <div >
                     <Menu
                         onClick={this.handleClick}
-                        selectedKeys={[this.state.current]}
-                        defaultSelectedKeys={['apps']}
+                        selectedKeys={[window.location.pathname]}
+                        defaultSelectedKeys={[window.location.pathname]}
                         mode="horizontal"
                         theme="dark">
-                        <Menu.Item key="apps">
+                        <Menu.Item key="/">
                             <Link to="/"><Icon type="robot"/>Choisissez votre application</Link>
                         </Menu.Item>
-                        <Menu.Item key="repartitionmanagement">
+                        <Menu.Item key="/RepartitionManagement">
                              <Link to="/RepartitionManagement" ><Icon type="rocket"/>
                             Gestion des repartitions</Link>
                         </Menu.Item>
-                        <Menu.Item key="grouping">
+                        <Menu.Item key="/Grouping">
                             <Link to="/Grouping">  <Icon type="database"/>Gestion des groupes</Link>
                         </Menu.Item>
 
