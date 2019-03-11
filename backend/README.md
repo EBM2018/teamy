@@ -19,7 +19,7 @@ L'API distribue les informations sur les élèves, les professeurs, et leur cour
     
     ```(bash)
     # assuming the mongodb port is 27017, as set by default
-    export MONGODB_URI=mongodb://localhost:27017/test
+    $ export MONGODB_URI=mongodb://localhost:27017/teamy
     ```
 4. run the app ! 
     
@@ -29,10 +29,11 @@ L'API distribue les informations sur les élèves, les professeurs, et leur cour
     
  ### With a local docker-compose : 
  
- *shout out to @Lenophie for its tutorial :*
+ *shout out to [@Lenophie](https://github.com/Lenophie) for its tutorial :*
  
 * [Install Docker CE](https://docs.docker.com/install/)
 * [Install docker-compose](https://docs.docker.com/compose/install/)
 * Complete the env variable in the docker-compose.local : currently the are no such variables.
 * Run `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
     * For a modification to be taken into account, docker-compose must be killed and restarted.
+   
