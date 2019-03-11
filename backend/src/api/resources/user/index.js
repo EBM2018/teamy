@@ -136,18 +136,11 @@ router.post('/newUser', userController.newUser);
 router.get('/:UserId', userController.getUserById);
 
 /**
- * @api {put} /user/:UserId Change a User
+ * @api {put} /users/:UserId Change a User
  * @apiName PutUser
  * @apiGroup User
  * @apiDescription Return the JSON containing the updated info of the user
  *
- * @apiParamExample {json} Request-Example:
- *  {
- *    "name": "Nans",
- *    "last_name": "Dumortier",
- *    "isProf": false
- *
- * }
  * @apiSuccessExample {json} Success-Response:
  *  {
  *     "listGroup": [],
@@ -161,7 +154,7 @@ router.get('/:UserId', userController.getUserById);
 router.put('/:UserId', userController.editUserById);
 
 /**
- * @api {delete} /user/:UserId Delete a User
+ * @api {delete} /users/:UserId Delete a User
  * @apiName DeleteUser
  * @apiGroup User
  * @apiDescription Return the JSON containing the confirmation of deletion
