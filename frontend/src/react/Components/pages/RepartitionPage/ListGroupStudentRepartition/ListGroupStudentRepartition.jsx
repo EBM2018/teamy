@@ -1,10 +1,10 @@
 import React from "react";
-import classNames from './studentgroup.module.css'
+import classNames from '../ListGroupStudentRepartition/listgroupstudentrepartition.module.css'
 import { List } from 'antd';
 
 //import StudentItem from '../../../generic/StudentItem/StudentItem'
 
-export default class StudentGroup extends React.PureComponent {
+export default class ListGroupStudentRepartition extends React.PureComponent {
 
 
     render() {
@@ -21,4 +21,3 @@ export default class StudentGroup extends React.PureComponent {
         )
     }
 }
-

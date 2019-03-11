@@ -6,3 +6,14 @@
     width: 90%;
     margin: 5%;
 }
+
+.searchbar{
+    width: 90%;
+}
+
+.listcontainer{
+    border-radius: 5px;
+    border: lightgrey solid 1px;
+    width: 90%;
+    margin: auto;
+}
