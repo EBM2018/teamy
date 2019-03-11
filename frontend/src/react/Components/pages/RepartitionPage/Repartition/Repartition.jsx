@@ -2,6 +2,7 @@ import React from 'react';
 //import classNames from './repartition.module.css';
 import {Card, Col} from 'antd'
 import ListStudents from "../ListStudents/ListStudents";
+import classNames from "../Repartition/repartition.module.css";
 
 
 
@@ -15,11 +16,12 @@ export default class Repartition extends React.PureComponent {
             row.push(<ListStudents eleve={this.props.eleve}/>);
         }
             return (
-                <div>
-                    <Col span={12}>
-                        <Card
+                <div >
+                    <Col span={12}  >
+                        <Card  className={classNames.cardstyle}
                             title="default size card"
-                            bordered={true}>
+                            bordered={true}
+                            >
                             <li>{row}</li>
 
                         </Card>
