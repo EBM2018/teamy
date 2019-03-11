@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 
 import { Route, Redirect } from 'react-router-dom';
-import Layout from "../../generic/Layout/Layout"
 
 import { connect  } from 'react-redux'
 import { checkUserStatus } from '../../../../redux/login/actions'
@@ -41,7 +40,7 @@ class ProtectedRoute extends React.PureComponent {
   updateUserStatus = isLogIn => {
     if (this.state.isLogIn !== isLogIn) {
       this.setState({
-        isLogIn,
+        isLogIn: isLogIn,
       });
     }
   };
@@ -53,13 +52,12 @@ class ProtectedRoute extends React.PureComponent {
         <Route
           {...rest}
           render={props => {
-            if (this.props.isLogIn) {
+            console.log("islogin ", this.props.isLogIn)
+            if (this.props.isLogIn === true) {
               return (
-                <Layout>
                   <Component {...props} />
-                </Layout>
               )
-            } else if (this.props.isLogIn !== null) {
+            } else if (this.props.isLogIn === false) {
               return <Redirect to={'/Connexion'} />;
             } else {
               return null;

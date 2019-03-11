@@ -37,12 +37,7 @@ export default class SelectMode extends React.PureComponent {
                         <Menu.Item key="grouping">
                             <Link to="/Grouping">  <Icon type="database"/>Gestion des groupes</Link>
                         </Menu.Item>
-                        <Menu.Item key="connexion">
-                            <Link to="/Connexion">  <Icon type="database"/>Connexion</Link>
-                        </Menu.Item>
-                        <Menu.Item key="inscription">
-                            <Link to="/inscription">  <Icon type="database"/>Inscription</Link>
-                        </Menu.Item>
+
                     </Menu>
                 </div>
 

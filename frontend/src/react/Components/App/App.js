@@ -11,6 +11,7 @@ import Connexion from "../pages/Connexion/Connexion"
 import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
 import Inscritpion from "../pages/Inscription/Inscription";
+import ProtectedRoute from "../generic/ProtectedRoute/ProtectedRoute"
 
 class App extends Component {
   render() {
@@ -22,17 +23,18 @@ class App extends Component {
                         <Route
                             exact
                             path="/"
-                            component={Apps}
+                            render={() => <ProtectedRoute component={Apps} />}
                             />
                         <Route
-                            exact
-                            path="/RepartitionManagement"
-                            component={RepartitionManagement}
+                          exact
+                          path="/RepartitionManagement"
+                          render={() => <ProtectedRoute component={RepartitionManagement} />}
                         />
+
                         <Route
-                            exact
-                            path="/Grouping"
-                            component={Grouping}
+                          exact
+                          path="/Grouping"
+                          render={() => <ProtectedRoute component={Grouping} />}
                         />
                         <Route
                             exact

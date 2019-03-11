@@ -9,7 +9,7 @@ export const CHECK_USER_STATUS = (isLogIn) => ({
 export const checkUserStatus = () => async (dispatch) => {
 
     //TODO : brancher la variable list à l'API
-    let isLogIn = true
+    let isLogIn = true;
 
     dispatch(CHECK_USER_STATUS(isLogIn))
 }
