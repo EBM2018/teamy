@@ -1,53 +1,28 @@
 [
   {
-    "type": "get",
-    "url": "/",
-    "title": "Hello World",
-    "name": "GetHome",
-    "group": "Static_Pages",
-    "description": "<p>Cette URL affiche un simple message Hello World</p> <p>Il est possible d'écrire des messages sur plusieurs lignes dans la description.</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\nHello, World!",
-          "type": "html"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "src/api/index.js",
-    "groupTitle": "Static_Pages",
-    "sampleRequest": [
-      {
-        "url": "http://localhost:4000/api/"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/:name",
-    "title": "Say hello to a specific name",
-    "name": "GetName",
-    "group": "Static_Pages",
-    "description": "<p>Cette URL affiche un message Hello personnalisé</p>",
+    "type": "post",
+    "url": "/users/newUser",
+    "title": "Create a new user",
+    "name": "CreateUser",
+    "group": "User",
+    "description": "<p>Returns a JSON containing all the existing users who have &quot;isProf&quot;:true</p>",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "json",
             "optional": false,
-            "field": "name",
-            "description": "<p>Nom de la personne à saluer</p>"
+            "field": "user",
+            "description": "<p>An object containing all the info on the new user</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "name: Nymous",
-          "type": "String"
+          "content": " {\n \"name\": \"Bourdeaud'Hui\",\n \"last_name\" :\"Thomas\",\n \"isProf\": true\n}",
+          "type": "json"
         }
       ]
     },
@@ -55,17 +30,201 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\nHello, Nymous!",
-          "type": "html"
+          "content": "{\n \"listGroup\": [],\n \"_id\": \"5c7fbfb980a64f0017fb605e\",\n \"name\": \"Bourdeaud'Hui\",\n \"last_name\": \"Thomas\",\n \"isProf\": true,\n \"__v\": 0\n}",
+          "type": "json"
         }
       ]
     },
     "version": "0.0.0",
-    "filename": "src/api/index.js",
-    "groupTitle": "Static_Pages",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
     "sampleRequest": [
       {
-        "url": "http://localhost:4000/api/:name"
+        "url": "http://localhost:4000/api/users/newUser"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/user/:UserId",
+    "title": "Delete a User",
+    "name": "DeleteUser",
+    "group": "User",
+    "description": "<p>Return the JSON containing the confirmation of deletion</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"n\": 1,\n   \"ok\": 1,\n   \"deletedCount\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/user/:UserId"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/users/student",
+    "title": "Get all students",
+    "name": "GetAllStudents",
+    "group": "User",
+    "description": "<p>Returns a JSON containing all the existing users who have &quot;isProf&quot;:false</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n  {\n      \"listGroup\": [],\n      \"_id\": \"5c7fbf9c80a64f0017fb605c\",\n      \"name\": \"Chion\",\n      \"last_name\": \"Valentin\",\n      \"isProf\": false,\n      \"__v\": 0\n  },\n  {\n      \"listGroup\": [],\n      \"_id\": \"5c7fbfa780a64f0017fb605d\",\n      \"name\": \"Mottez\",\n      \"last_name\": \"Hugo\",\n      \"isProf\": false,\n      \"__v\": 0\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/users/student"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/users/teachers",
+    "title": "Get all Teachers",
+    "name": "GetAllTeachers",
+    "group": "User",
+    "description": "<p>Returns a JSON containing all the existing users who have &quot;isProf&quot;:true</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n{\n      \"listGroup\": [],\n      \"_id\": \"5c7fbd5980a64f0017fb605b\",\n      \"name\": \"Dumortier\",\n      \"last_name\": \"Nans\",\n      \"isProf\": true,\n      \"__v\": 0\n  },\n{\n      \"listGroup\": [],\n      \"_id\": \"5c7fbfb980a64f0017fb605e\",\n      \"name\": \"Bourdeaud'Hui\",\n      \"last_name\": \"Thomas\",\n      \"isProf\": true,\n      \"__v\": 0\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/users/teachers"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/users/",
+    "title": "Get all users",
+    "name": "GetAllUsers",
+    "group": "User",
+    "description": "<p>Returns a JSON containing all the existing users</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n{\n      \"listGroup\": [],\n      \"_id\": \"5c7fbd5980a64f0017fb605b\",\n      \"name\": \"Dumortier\",\n      \"last_name\": \"Nans\",\n      \"isProf\": true,\n      \"__v\": 0\n  },\n{\n      \"listGroup\": [],\n      \"_id\": \"5c7fbf9c80a64f0017fb605c\",\n      \"name\": \"Chion\",\n      \"last_name\": \"Valentin\",\n      \"isProf\": false,\n      \"__v\": 0\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/users/"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/users/:UserId",
+    "title": "Get one user by its Id",
+    "name": "GetUserById",
+    "group": "User",
+    "description": "<p>Returns a JSON containing the info of the user.</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n{\n       \"listGroup\": [],\n       \"_id\": \"5c7fbd5980a64f0017fb605b\",\n       \"name\": \"Dumortier\",\n       \"last_name\": \"Nans\",\n       \"isProf\": true,\n       \"__v\": 0\n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/users/:UserId"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/user/:UserId",
+    "title": "Change a User",
+    "name": "PutUser",
+    "group": "User",
+    "description": "<p>Return the JSON containing the updated info of the user</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": " {\n   \"name\": \"Nans\",\n   \"last_name\": \"Dumortier\",\n   \"isProf\": false\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"listGroup\": [],\n    \"_id\": \"5c7fbd5980a64f0017fb605b\",\n    \"name\": \"Nans\",\n    \"last_name\": \"Dumortier\",\n    \"isProf\": false,\n    \"__v\": 0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/user/:UserId"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/users/isTeacher/:UserId",
+    "title": "Check if a user is a teacher by id",
+    "name": "isProfById",
+    "group": "User",
+    "description": "<p>Returns a boolean</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "true",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/user/index.js",
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/users/isTeacher/:UserId"
       }
     ]
   }
