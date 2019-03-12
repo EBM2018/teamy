@@ -1,7 +1,7 @@
 var UserService = require('../services/user.services.js');
 
 // permet de faire la création d'un nouvel utilisateur (pas encore ajouté dans la bdd)
-exports.createUser = async function (req, res){ 
+exports.createUser = async function (req, res, next){ 
     
     // A quoi sert le next ?
     // req.body contient les valeurs soumises au formulaire
@@ -29,7 +29,7 @@ exports.createUser = async function (req, res){
 };
 
 // permet de gérer le login d'un utilisateur :
-exports.login = async function (req, res){
+exports.loginUser = async function (req, res, next){
     var User = {
         email: req.body.email,
         pwd: req.body.pwd,

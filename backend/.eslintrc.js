@@ -21,6 +21,7 @@ module.exports = {
         "padded-blocks": 0,
         "brace-style": 0,
         "import/newline-after-import":0,
-        "experimentalDecorators":0
+        "experimentalDecorators":0,
+        "no-unused-vars":0
     },
 };
