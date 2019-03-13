@@ -25,6 +25,9 @@ var user2 = {
 
 UserService.createUser(user1);
 UserService.createUser(user2);
-console.log(User.find({}, {projection: {name: 'Lara'}}));
-
+var user3 = {
+    mail: "laraclette@centrale.centralelille.fr",
+    pwd: "Raclette",
+};
+UserService.loginUser(user3);
 module.exports = router;
