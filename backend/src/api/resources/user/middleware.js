@@ -1,17 +1,11 @@
 const UserData = require('../../../services/user/data');
 
-// eslint-disable-next-line func-names
-const deletePrivateField = function (jsonresult) {
-  try {
-    // eslint-disable-next-line no-param-reassign
-    delete jsonresult.mailAddress;
-    // eslint-disable-next-line no-param-reassign
-    delete jsonresult.hashPassword;
-    // eslint-disable-next-line no-param-reassign
-    delete jsonresult.salt;
-  } catch (e) {
-    console.log(e);
-  }
+const deletePrivateField = (jsonToModify) => {
+  const jsonResult = jsonToModify;
+  delete jsonResult.mailAddress;
+  delete jsonResult.hashPassword;
+  delete jsonResult.salt;
+  return jsonResult;
 };
 
 module.exports = {
@@ -22,8 +16,7 @@ module.exports = {
       if (!result) {
         return res.status(404).send('User Not Found');
       }
-      deletePrivateField(result);
-      res.locals.user = result;
+      res.locals.user = deletePrivateField(result);
       return next();
     }
     return res.status(404).send('Bad Request');
