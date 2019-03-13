@@ -11,6 +11,21 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 150,
   },
+  mailAddress: {
+    type: String,
+    required: true,
+    max: 150,
+  },
+  hashPassword: {
+    type: String,
+    required: true,
+    max: 500,
+  },
+  salt: {
+    type: String,
+    required: true,
+    max: 500,
+  },
   isProf: {
     type: Boolean,
     required: true,
@@ -20,6 +35,7 @@ const UserSchema = new mongoose.Schema({
     required: false,
     max: 150,
   },
+
 });
 
 
