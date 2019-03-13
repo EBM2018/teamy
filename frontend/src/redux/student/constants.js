@@ -1,0 +1,3 @@
+export const ACTIONS = {
+  GET_USERS_FROM_GROUP : 'GET_USERS_FROM_GROUP',
+}

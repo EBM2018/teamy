@@ -1,0 +1,17 @@
+body{
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+.globalsearchwrapper{
+    display: grid;
+    grid-template-rows: 1fr wrap-content;
+    grid-row-gap: 10px;
+    padding: 2%;
+    margin: 30px;
+}

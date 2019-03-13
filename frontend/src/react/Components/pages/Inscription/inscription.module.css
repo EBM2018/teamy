@@ -8,8 +8,29 @@ body{
 }
 .corps{
     display: grid;
-    grid-row-gap: 10px;
-    padding: auto;
-    margin: 5%;
+    border-radius: 5px;
+    grid-column-gap: 10px;
 
+    border: lightgrey solid 1px;
+    padding: auto;
+    margin: auto;
+    margin-top: 20px;
+    width: 66%;
+
+}
+
+.inputItem{
+
+    margin: auto;
+    margin-top: 5px;
+    width: 90%;
+}
+
+.validationButton{
+    display: grid;
+    border-radius: 10px;
+    margin: auto;
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
