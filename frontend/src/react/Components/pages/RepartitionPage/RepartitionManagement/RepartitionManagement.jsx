@@ -5,15 +5,11 @@ import classNames from './repartitionmanagement.module.css';
 
 import SelectQuantity from '../../../generic/SelectQuantity/SelectQuantity'
 import RepartitionArea from '../RepartitionArea/RepartitionArea'
-import StudentManagementArea from '../StudentManagementArea/StudentManagementArea'
+import StudentAreaRepartition from '../StudentManagement/StudentAreaRepartition/StudentAreaRepartition'
 import SelectTypeRepartition from "../../../generic/SelectTypeRepartition/SelectTypeRepartition";
 //import {getUsersFromGroup} from "../../../../../redux/student/actions";
 //import connect from "react-redux/es/connect/connect";
 //import StudentGroup from "../../GroupManagement/StudentGroup/StudentGroup"
-
-
-
-
 
 export default class RepartitionManagement extends React.PureComponent {
 
