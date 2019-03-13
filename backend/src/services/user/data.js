@@ -25,8 +25,12 @@ module.exports = {
     return result;
   },
   isProf: async (_id) => {
-    const result = await User.findOne(ObjectId(_id));
-    return result.isProf;
+    try {
+      const result = await User.findOne(ObjectId(_id));
+      return result.isProf;
+    } catch (e) {
+      return -1;
+    }
   },
   update: async (_id, user) => User.findOneAndUpdate({ _id }, user, { new: true }),
   deleteOnId: async id => User.deleteOne({ _id: id }),
