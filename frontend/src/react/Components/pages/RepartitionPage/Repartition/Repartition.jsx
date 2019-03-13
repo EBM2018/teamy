@@ -1,8 +1,7 @@
 import React from 'react';
-//import classNames from './repartition.module.css';
 import {Card, Col} from 'antd'
 import ListStudents from "../ListStudents/ListStudents";
-import classNames from "../Repartition/repartition.module.css";
+import classNames from "./repartition.module.css";
 
 
 
