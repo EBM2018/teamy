@@ -22,6 +22,8 @@ module.exports = {
         "brace-style": 0,
         "import/newline-after-import":0,
         "experimentalDecorators":0,
-        "no-unused-vars":0
+        "no-unused-vars":0,
+        "strict":0,
+        
     },
 };

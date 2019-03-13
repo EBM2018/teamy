@@ -1,7 +1,7 @@
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var User = require('../../src/services/user/model.js');
-var config = require('../../src/config/index.js');
+var User = require('../../src/services/user/model');
+var config = require('../../src/config/index');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
 // bcryot.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd

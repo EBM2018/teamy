@@ -2,9 +2,7 @@ var express = require('express');
 
 var router = express.Router();
 
-router.use('/user', '../src/api/resources/user');
-router.use('/profGroup', '../src/api/resources/profGroup');
-router.use('/repartition', '../src/api/resources/repartition');
+// router.use('/user', '../src/api/resources/user'); (on ne peut pas ajouter)
 
 var UserController = require('../Authentification/controllers/users.controller.js');
 
@@ -15,6 +13,8 @@ var user1 = {
     isprof: false,
     pwd: "Raclette",
 };
+
+console.log(user1);
 
 UserController.createUser(user1);
 

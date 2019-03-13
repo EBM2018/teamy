@@ -1,4 +1,4 @@
-var UserService = require('../services/user.services.js');
+var UserService = require('../services/user.services');
 
 // permet de faire la création d'un nouvel utilisateur (pas encore ajouté dans la bdd)
 exports.createUser = async function (req, res, next){ 
