@@ -7,7 +7,7 @@ import classNames from '../StudentManagementArea/studentManagementArea.module.cs
 import { connect  } from 'react-redux'
 import { getGroups} from '../../../../../redux/group/actions'
 import ListGroupStudentRepartition from "../ListGroupStudentRepartition/ListGroupStudentRepartition"
-import {getUsersFromGroup} from "../../../../../redux/student/actions";
+import {getStudents} from "../../../../../redux/student/actions";
 
 const Option = AutoComplete.Option;
 
@@ -43,7 +43,7 @@ class StudentManagementArea extends React.PureComponent {
                         />
                     </AutoComplete>
                 </div>
-                <ListGroupStudentRepartition users={this.props.users}/>
+                <ListGroupStudentRepartition students={this.props.students}/>
             </div>
 
         )
@@ -57,7 +57,7 @@ class StudentManagementArea extends React.PureComponent {
     };
     selectGroup= (idGroup) => {
         console.log("selected Group", idGroup)
-        this.props.getUsersFromGroup()
+        this.props.getStudents()
 
     }
 
@@ -67,13 +67,13 @@ class StudentManagementArea extends React.PureComponent {
 
 const mapStateToProps = state  => ({
         groups : state.groups.map,
-        users : state.users.map,
+        students : state.students.map,
     }
 );
 
 const mapDispatchToProps = {
     getGroups,
-    getUsersFromGroup,
+    getStudents,
 
 };
 
