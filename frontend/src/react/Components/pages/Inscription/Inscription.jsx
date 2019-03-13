@@ -154,7 +154,7 @@ class Inscription extends React.Component {
                         <Input />
                     )}
                 </Form.Item>
-                <Form.Item {...tailFormItemLayout} className={classNames.validationButton}>
+                <Form.Item  {...tailFormItemLayout} className={classNames.validationButton}>
                     <Button type="primary" htmlType="submit">S'inscrire</Button>
                     {"    Ou    "}
                     <Button type="ghost" htmlType="submit" className="login-form-button">
