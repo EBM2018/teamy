@@ -13,6 +13,11 @@ const Option = AutoComplete.Option;
 
 class StudentManagementArea extends React.PureComponent {
 
+
+    state={
+      studentsfromgroup: [],
+    }
+
     componentWillMount() {
         this.props.getGroups()
     }
@@ -43,7 +48,7 @@ class StudentManagementArea extends React.PureComponent {
                         />
                     </AutoComplete>
                 </div>
-                <ListGroupStudentRepartition students={this.props.students}/>
+                <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
             </div>
 
         )
@@ -56,10 +61,28 @@ class StudentManagementArea extends React.PureComponent {
         );
     };
     selectGroup= (idGroup) => {
-        console.log("selected Group", idGroup)
-        this.props.getStudents()
-
+      this.props.getStudents().then(
+        () =>{this.setStudentsFromGroup(idGroup.key)
+        })
     }
+  setStudentsFromGroup = (idGroup) =>{
+    let students = [...this.props.students]
+    let studentsfromgroup = []
+    students.map(student => {
+      student.list_group.map(list => {
+        if(list.id_repar === Number(idGroup)) {
+          studentsfromgroup.push(student);
+        }
+        return null;
+      })
+      console.log(student)
+      return null;
+    })
+    this.setState({
+      studentsfromgroup: studentsfromgroup,
+    })
+
+  }
 
 
 }
