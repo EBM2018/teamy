@@ -1,9 +1,13 @@
 const UserData = require('../../../services/user/data');
 
+// eslint-disable-next-line func-names
 const deletePrivateField = function (jsonresult) {
   try {
+    // eslint-disable-next-line no-param-reassign
     delete jsonresult.mailAddress;
+    // eslint-disable-next-line no-param-reassign
     delete jsonresult.hashPassword;
+    // eslint-disable-next-line no-param-reassign
     delete jsonresult.salt;
   } catch (e) {
     console.log(e);
@@ -26,7 +30,7 @@ module.exports = {
   },
   filterGetAll: async (req, res, next) => {
     const result = await UserData.getAll();
-    result.forEach(function (part, index) {
+    result.forEach((part, index) => {
       const jsonDoc = this[index].toJSON();
       deletePrivateField(jsonDoc);
       this[index] = jsonDoc;
