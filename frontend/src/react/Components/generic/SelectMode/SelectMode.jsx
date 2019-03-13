@@ -12,7 +12,11 @@ export default class SelectMode extends React.PureComponent {
     state={
         current : "apps",
     };
+  componentDidMount () {
+    console.log("path", window.location.pathname);
+  }
     handleClick = (e) => {
+        console.log("path", this.path);
         console.log('click ', e);
         this.setState({
             current: e.key,
@@ -23,26 +27,21 @@ export default class SelectMode extends React.PureComponent {
                 <div >
                     <Menu
                         onClick={this.handleClick}
-                        selectedKeys={[this.state.current]}
-                        defaultSelectedKeys={['apps']}
+                        selectedKeys={[window.location.pathname]}
+                        defaultSelectedKeys={[window.location.pathname]}
                         mode="horizontal"
                         theme="dark">
-                        <Menu.Item key="apps">
-                            <Link to="/"><Icon type="robot"/>Chose your App</Link>
+                        <Menu.Item key="/">
+                            <Link to="/"><Icon type="robot"/>Choisissez votre application</Link>
                         </Menu.Item>
-                        <Menu.Item key="groupmanagement">
-                             <Link to="/GroupManagement" ><Icon type="rocket"/>
-                            Gestion des groupes</Link>
+                        <Menu.Item key="/RepartitionManagement">
+                             <Link to="/RepartitionManagement" ><Icon type="rocket"/>
+                            Gestion des repartitions</Link>
                         </Menu.Item>
-                        <Menu.Item key="listing">
-                            <Link to="/Listing">  <Icon type="database"/>Gestion des listes</Link>
+                        <Menu.Item key="/Grouping">
+                            <Link to="/Grouping">  <Icon type="database"/>Gestion des groupes</Link>
                         </Menu.Item>
-                        <Menu.Item key="connexion">
-                            <Link to="/Connexion">  <Icon type="database"/>Connexion</Link>
-                        </Menu.Item>
-                        <Menu.Item key="inscription">
-                            <Link to="/inscription">  <Icon type="database"/>Inscription</Link>
-                        </Menu.Item>
+
                     </Menu>
                 </div>
 

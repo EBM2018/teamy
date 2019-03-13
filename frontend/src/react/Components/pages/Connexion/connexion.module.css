@@ -8,10 +8,32 @@ body{
 }
 .corps{
     display: grid;
-    grid-row-gap: 10px;
-    padding: auto;
-    margin: 10%;
+    border-radius: 5px;
+    grid-column-gap: 10px;
 
+    border: lightgrey solid 1px;
+    padding: auto;
+    margin: auto;
+    margin-top: 20px;
+    width: 40%;
+
+}
+
+.inputItem{
+    display: grid;
+    border-radius: 10px;
+    margin: auto;
+    width: 70%;
+    margin-top: 10px;
+
+}
+.buttonsItem{
+    display: grid;
+    border-radius: 10px;
+    margin: auto;
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .inputIconUser{

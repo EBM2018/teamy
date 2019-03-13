@@ -1,6 +1,6 @@
 # Teamy
 
-TenuGUI est une application de gestion de groupes en milieu scolaire.
+Teamy est une application de gestion de groupes en milieu scolaire.
 Cette application propose :
 * L'authentification d'élèves à l'aide d'un QR Code
   * L'API d'authentification est utilisée par [TenuGUI](https://github.com/EBM2018/TenuGUI) et [iRate](https://github.com/EBM2018/iRate) !

@@ -5,12 +5,13 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 
 import './App.css';
 import Layout from '../generic/Layout/Layout'
-import GroupManagement from "../pages/GroupPage/GroupManagement/GroupManagement";
-import Listing from "../pages/ListManagement/Listing/Listing";
+import RepartitionManagement from "../pages/RepartitionPage/RepartitionManagement/RepartitionManagement";
+import Grouping from "../pages/GroupManagement/Grouping/Grouping";
 import Connexion from "../pages/Connexion/Connexion"
 import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
 import Inscritpion from "../pages/Inscription/Inscription";
+import ProtectedRoute from "../generic/ProtectedRoute/ProtectedRoute"
 
 class App extends Component {
   render() {
@@ -22,17 +23,18 @@ class App extends Component {
                         <Route
                             exact
                             path="/"
-                            component={Apps}
+                            render={() => <ProtectedRoute component={Apps} />}
                             />
                         <Route
-                            exact
-                            path="/GroupManagement"
-                            component={GroupManagement}
+                          exact
+                          path="/RepartitionManagement"
+                          render={() => <ProtectedRoute component={RepartitionManagement} />}
                         />
+
                         <Route
-                            exact
-                            path="/Listing"
-                            component={Listing}
+                          exact
+                          path="/Grouping"
+                          render={() => <ProtectedRoute component={Grouping} />}
                         />
                         <Route
                             exact

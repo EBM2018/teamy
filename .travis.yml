@@ -23,7 +23,6 @@ script:
 
   # Frontend
   - cd frontend
-  - npm test -- --coverage
   - npm run build
   - cd ..
 

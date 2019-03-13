@@ -2,5 +2,8 @@ const mongoose = require('mongoose');
 
 const config = require('./index');
 
-console.log(config.mongodb.options.user);
-mongoose.connect(config.mongodb.uri, config.mongodb.options);
+mongoose.connect(config.mongodb.uri, { useNewUrlParser: true }, (error) => {
+  if (error) {
+    console.log(error);
+  }
+});

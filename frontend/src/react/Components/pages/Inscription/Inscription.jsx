@@ -3,7 +3,9 @@ import 'antd/dist/antd.css';
 import {
     Form, Input, Button
 } from 'antd';
-import classNames from "../Connexion/connexion.module.css";
+import classNames from "../Inscription/inscription.module.css";
+import {Link} from "react-router-dom";
+
 
 
 class Inscription extends React.Component {
@@ -79,6 +81,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="E-mail"
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('email', {
                         rules: [{
@@ -93,6 +96,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="Mot de passe"
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('password', {
                         rules: [{
@@ -107,6 +111,7 @@ class Inscription extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="Confirmer le mot de passe"
+                    className={classNames.inputItem}
                 >
                     {getFieldDecorator('confirm', {
                         rules: [{
@@ -119,6 +124,7 @@ class Inscription extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item
+                    className={classNames.inputItem}
                     {...formItemLayout}
                     label={(
                         <span>
@@ -134,6 +140,7 @@ class Inscription extends React.Component {
                 </Form.Item>
 
                 <Form.Item
+                    className={classNames.inputItem}
                     {...formItemLayout}
                     label={(
                         <span>
@@ -147,8 +154,12 @@ class Inscription extends React.Component {
                         <Input />
                     )}
                 </Form.Item>
-                <Form.Item {...tailFormItemLayout}>
+                <Form.Item {...tailFormItemLayout} className={classNames.validationButton}>
                     <Button type="primary" htmlType="submit">S'inscrire</Button>
+                    {"    Ou    "}
+                    <Button type="ghost" htmlType="submit" className="login-form-button">
+                        <Link to='/Connexion'>Connexion</Link>
+                    </Button>
                 </Form.Item>
             </Form>
         );
