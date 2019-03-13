@@ -21,23 +21,23 @@ exports.createUser = async function (user){
         isprof: user.isprof,
         pwd: hashedPwd,
     });
-
+    var savedUser = await newUser.save;
     // sauvegarde de l'utilisateur  dans la bdd
 
-    try {
-        var savedUser = await newUser.save; 
-        // await permet d'attendre la résolution de la tâche
-        // dans le cas présent, on attend que l'utilisateur ait été sauvé 
+    // try {
+    //     var savedUser = await newUser.save; 
+    //     // await permet d'attendre la résolution de la tâche
+    //     // dans le cas présent, on attend que l'utilisateur ait été sauvé 
         
-        // clé de hashage utilisée par défaut : HS256, mais clé symétrique 
-        // utiliser RS256 à la place
-        var token = jwt.sign({id: savedUser._id}, {algorithm: 'RS256'}, 
-        config.secret,
-        {expiresIn: 3600}); // 3600 secondes, correspond à 1h   
-        return token;
-    } catch (e){
-        throw Error("Echec de l'ajout d'un nouvel utilisateur");
-    }
+    //     // clé de hashage utilisée par défaut : HS256, mais clé symétrique 
+    //     // utiliser RS256 à la place
+    //     var token = jwt.sign({id: savedUser._id}, {algorithm: 'RS256'}, 
+    //     config.secret,
+    //     {expiresIn: 3600}); // 3600 secondes, correspond à 1h   
+    //     return token;
+    // } catch (e){
+    //     throw Error("Echec de l'ajout d'un nouvel utilisateur");
+    // }
 };
 
 // demande d'authentification de l'utilisateur
