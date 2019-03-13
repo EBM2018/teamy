@@ -8,6 +8,7 @@ export default class StudentGroup extends React.PureComponent {
 
 
     render() {
+      console.log("coucou", this.props.users);
         return (
             <div className={classNames.listcontainer}>
                 <List
