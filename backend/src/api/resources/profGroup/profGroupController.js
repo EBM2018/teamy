@@ -19,13 +19,13 @@ const controller = {
     }
 
     const isProf = await userData.isProf(req.body.idProf);
-    // TODO  :can be null : handle that
-    if (!isProf) {
-      return res.status(400).send('id given does not refer to a professor');
+    if (isProf === -1) {
+      return res.status(400).send('id does not exist in the user database');
     }
-
+    if (!isProf) {
+      return res.status(400).send('User is not a teacher');
+    }
     try {
-      // TODO : check if the prof and the group exists
       const newEntry = await ProfGroupData.create(req.body);
       return res.status(200).json(newEntry);
     } catch (err) {
