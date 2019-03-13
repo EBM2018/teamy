@@ -22,8 +22,8 @@ exports.createUser = async function (user){
         pwd: hashedPwd,
     });
     var savedUser = await newUser.save;
+    console.log(newUser);
     // sauvegarde de l'utilisateur  dans la bdd
-
     // try {
     //     var savedUser = await newUser.save; 
     //     // await permet d'attendre la résolution de la tâche
