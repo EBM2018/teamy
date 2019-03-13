@@ -1,34 +1,28 @@
 const UserData = require('../../../services/user/data');
-
-const deletePrivateField = (jsonToModify) => {
-  const jsonResult = jsonToModify;
-  delete jsonResult.mailAddress;
-  delete jsonResult.hashPassword;
-  delete jsonResult.salt;
-  return jsonResult;
-};
+const jsonUtilities = require('../../../utilities/jsonUtilities');
 
 module.exports = {
   filterGet: async (req, res, next) => {
     if (req.params.UserId) {
       const result = await UserData.findById(req.params.UserId);
-      console.log(result);
       if (!result) {
         return res.status(404).send('User Not Found');
       }
-      res.locals.user = deletePrivateField(result);
+      const toDelete = ['mailAddress', 'hashPassword', 'salt'];
+      res.locals.user = jsonUtilities.deletePrivateField(result.toJSON(), toDelete);
       return next();
     }
     return res.status(404).send('Bad Request');
   },
   filterGetAll: async (req, res, next) => {
     const result = await UserData.getAll();
-    result.forEach((part, index) => {
-      const jsonDoc = this[index].toJSON();
-      deletePrivateField(jsonDoc);
-      this[index] = jsonDoc;
-    }, result);
-    res.locals.allUsers = result;
+    const toReturn = result;
+    const toDelete = ['mailAddress', 'hashPassword', 'salt'];
+    for (let i = 0; i < result.length; i += 1) {
+      const jsonDoc = result[i].toJSON();
+      toReturn[i] = jsonUtilities.deletePrivateField(jsonDoc, toDelete);
+    }
+    res.locals.allUsers = toReturn;
     return next();
   },
 };
