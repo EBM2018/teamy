@@ -3,36 +3,82 @@ import React from 'react';
 import StudentGroup from '../StudentGroup/StudentGroup'
 import classNames from './grouping.module.css';
 import GroupManagementArea from '../GroupManagementArea/GroupManagementArea'
-import {getUsersFromGroup} from '../../../../../redux/student/actions'
+import {getStudents } from '../../../../../redux/student/actions'
 import { connect  } from 'react-redux'
 
 
 class Grouping extends React.PureComponent {
 
 
+  state={
+    studentsfromgroup: [],
+    studentsoutgroup: [],
+  }
+
     render() {
         return (
             <div className={classNames.globalsearchwrapper} >
                 <GroupManagementArea selectGroup={this.selectGroup}/>
-                <StudentGroup users={this.props.users}/>
+                <StudentGroup studentsfromgroup={this.state.studentsfromgroup} studentsoutgroup={this.state.studentsoutgroup}/>
             </div>
         )
     }
 
-    selectGroup= () =>{
-      this.props.getUsersFromGroup()
+    selectGroup= (idGroup) =>{
+      this.props.getStudents().then(
+        () =>{this.setStudentsFromGroup(idGroup.key)
+              this.setStudentsOutGroup(idGroup.key)
+        })
+      
+    }
+
+    setStudentsFromGroup = (idGroup) =>{
+      let students = [...this.props.students]
+      let studentsfromgroup = []
+        students.map(student => {
+          student.list_group.map(list => {
+            if(list.id_repar === Number(idGroup)) {
+              studentsfromgroup.push(student);
+            }
+            return null;
+          })
+          console.log(student)
+          return null;
+        })
+        this.setState({
+          studentsfromgroup: studentsfromgroup,
+        })
+
+    }
+    setStudentsOutGroup = (idGroup) => {
+      let students = [...this.props.students]
+      let studentsoutgroup = []
+      students.map(student => {
+        student.list_group.map(list => {
+          if(list.id_repar !== Number(idGroup)) {
+            studentsoutgroup.push(student);
+          }
+          return null;
+        })
+        console.log(student)
+        return null;
+      })
+      this.setState({
+        studentsoutgroup: studentsoutgroup,
+      })
+
     }
 
 }
 
 
 const mapStateToProps = state  => ({
-    users : state.users.map,
+    students : state.students.map,
   }
 )
 
 const mapDispatchToProps = {
-  getUsersFromGroup,
+  getStudents,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grouping)

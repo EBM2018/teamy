@@ -12,7 +12,7 @@ export default class ListGroupStudentRepartition extends React.PureComponent {
             <div className={classNames.listcontainer}>
                 <List
                     bordered
-                    dataSource={this.props.users}
+                    dataSource={this.props.students}
                     renderItem={item => (
                         <List.Item key={item.id}>{item.name + " "+ item.last_name}</List.Item>
                     )}
