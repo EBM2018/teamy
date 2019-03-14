@@ -8,7 +8,7 @@ module.exports = {
     return savedUser;
   },
   getAll: async () => {
-    const result = await User.find({});
+    const result = await User.find();
     return result;
   },
   getStudent: async () => {
@@ -20,13 +20,17 @@ module.exports = {
     return result;
   },
   findById: async (_id) => {
-    const result = await User.find(ObjectId(_id));
+    const result = await User.findOne(ObjectId(_id));
     console.log('find by id', result);
     return result;
   },
   isProf: async (_id) => {
-    const result = await User.findOne(ObjectId(_id));
-    return result.isProf;
+    try {
+      const result = await User.findOne(ObjectId(_id));
+      return result.isProf;
+    } catch (e) {
+      return -1;
+    }
   },
   update: async (_id, user) => User.findOneAndUpdate({ _id }, user, { new: true }),
   deleteOnId: async id => User.deleteOne({ _id: id }),
