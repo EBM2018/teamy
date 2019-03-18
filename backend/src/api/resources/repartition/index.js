@@ -85,4 +85,27 @@ router.get('/group/:RepartitionId', repartitionController.getGroupById);
  */
 router.delete('/:RepartitionId', repartitionController.delete);
 
+/**
+ * @api {put} /:RepartitionId modifies a Repartition
+ * @apiName PutOnId
+ * @apiGroup Repartition
+ * @apiDescription Modifies the Repartition, then returns the modified json
+ *
+ * @apiParamExample {json} Request-example:
+ * {
+ *     "group": ["modified group"],
+ *     "label": "test group modified"
+ * }
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *     "group": [
+ *         "modified group"
+ *     ],
+ *     "_id": "5c8f52721de2c1001eb892e8",
+ *     "label": "test group modified",
+ *     "__v": 0
+ * }
+ */
+router.put('/:RepartitionId', repartitionController.update);
 module.exports = router;

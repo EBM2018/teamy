@@ -40,8 +40,18 @@ const controller = {
     }
     return res.status(404).send('Bad Request');
   },
+  async update(req, res) {
+    if (!req.body) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await RepartitionData.update(req.params.RepartitionId, req.body);
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).json(e);
+    }
+  },
 };
 // TODO: Add new Repartition & repartition
-// TODO: Modify Repartition & repartition
 
 module.exports = controller;
