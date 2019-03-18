@@ -55,5 +55,18 @@ const controller = {
       return res.status(500).json(err);
     }
   },
+  async update(req, res) {
+    if (!req.body) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await ProfGroupData.update(req.params.id, req.body);
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).json(e);
+    }
+  },
 };
+// TODO : update !
+
 module.exports = controller;
