@@ -37,7 +37,12 @@ exports.loginUser = async function (req, res, next){
     };
     try {
         var loginUser = await UserService.loginUser(User);
-        return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
+        if (loginUser){
+            return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
+        // eslint-disable-next-line no-else-return
+        } else {
+            return res.status(400).json({data: loginUser, message: "Invalid password"});
+        }
     } catch (e) {
         return res.status(400).json({status: 400, message: "Invalid username"});
     }

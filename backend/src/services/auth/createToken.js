@@ -45,6 +45,7 @@ exports.createUser = async function (user){
 exports.loginUser = async function (user) {
     
         // on cherche l'utilisateur dans la bdd avec findOne
+        try {
         var userData = await User.findOne({ email: user.email});
         console.log('userData' + userData);
         // var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
@@ -52,10 +53,18 @@ exports.loginUser = async function (user) {
         if (userData.pwd === user.pwd){
             console.log(userData.pwd);
             console.log('la connexion a bien été effectué');
+            // var token = jwt.sign({id: userData._id}, {algorithm: 'RS256'}, 
+            // config.secret,
+            // {expiresIn: 3600});
+            // console.log(token);
         }
         else {
             console.log('Faux mdp');
+            return null;
         }
+    } catch (e){
+            throw Error("Problème lors de l'authentification de l'utilisateur");
+    }
 };
 
 // try {
