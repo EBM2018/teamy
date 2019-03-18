@@ -6,6 +6,7 @@ const app = express();
 const server = require('http').Server(app);
 
 const config = require('./config');
+const router = new express.Router();
 
 // setup database connexion
 require('./config/mongoose');
@@ -27,6 +28,8 @@ app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   res.status(statusCode).send(err.message);
 });
+
+app.use('/auth', require('./api/resources/auth'));
 
 server.listen(config.app.port, (err) => {
   if (err) console.error(err);
