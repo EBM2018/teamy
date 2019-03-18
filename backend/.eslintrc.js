@@ -24,6 +24,6 @@ module.exports = {
         "experimentalDecorators":0,
         "no-unused-vars":0,
         "strict":0,
-        
+        "prefer-template":0
     },
 };

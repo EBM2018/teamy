@@ -43,17 +43,30 @@ exports.createUser = async function (user){
 
 // demande d'authentification de l'utilisateur
 exports.loginUser = async function (user) {
-    try {
+    
         // on cherche l'utilisateur dans la bdd avec findOne
         var userData = await User.findOne({ email: user.email});
+        console.log('userData' + userData);
         // var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
-        var pwdIsValid = true;
-        if (!pwdIsValid) throw Error("Mauvais mot de passe");
-        var token = jwt.sign({id: userData._id}, {algorithm: 'RS256'}, 
-        config.secret,
-        {expiresIn: 3600}); // 3600 secondes, correspond à 1h   
-        return token;
-        } catch (e) {
-        throw Error("Problème lors de l'authentification de l'utilisateur");
-    }
+        console.log('utilisateur trouvé');
+        if (userData.pwd === user.pwd){
+            console.log(userData.pwd);
+            console.log('la connexion a bien été effectué');
+        }
+        else {
+            console.log('Faux mdp');
+        }
 };
+
+// try {
+//         var pwdIsValid = true;
+//         if (!pwdIsValid) throw Error("Mauvais mot de passe");
+//         var token = jwt.sign({id: userData._id}, {algorithm: 'RS256'}, 
+//         config.secret,
+//         {expiresIn: 3600}); // 3600 secondes, correspond à 1h   
+//         console.log('token' + token);
+//         return token;
+//         } catch (e) {
+//         throw Error("Problème lors de l'authentification de l'utilisateur");
+//     }
+// };
