@@ -30,6 +30,7 @@ exports.createUser = async function (req, res, next){
 
 // permet de gérer le login d'un utilisateur :
 exports.loginUser = async function (req, res, next){
+    console.log(req.body);
     var User = {
         email: req.body.email,
         pwd: req.body.pwd,
@@ -45,13 +46,13 @@ exports.loginUser = async function (req, res, next){
 // pour se connecter au formulaire
 
 exports.loginForm = async function (req, res, next){
-    return res.status(201).send(`
+    return res.status(200).send(`
     <h1> Test login form </h1>
-    <form methode ="pose" action = "/auth/login">
+    <form method ="post" action = "/auth/login/">
     <table>
-    <tr> <td> Email </td> <td> <input type = "text" name = "email">
+    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
     </input> </td> </tr>
-    <tr> <td> Password </td><td> <input type="text" name="pwd">
+    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
     </input> </td> </tr>
     </table>
 
