@@ -7,10 +7,16 @@ import classNames from '../StudentManagementArea/studentManagementArea.module.cs
 import { connect  } from 'react-redux'
 import { getGroups} from '../../../../../redux/group/actions'
 import ListGroupStudentRepartition from "../ListGroupStudentRepartition/ListGroupStudentRepartition"
+import {getStudents} from "../../../../../redux/student/actions";
 
 const Option = AutoComplete.Option;
 
 class StudentManagementArea extends React.PureComponent {
+
+
+    state={
+      studentsfromgroup: [],
+    }
 
     componentWillMount() {
         this.props.getGroups()
@@ -42,22 +48,41 @@ class StudentManagementArea extends React.PureComponent {
                         />
                     </AutoComplete>
                 </div>
-                <ListGroupStudentRepartition/>
+                <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
             </div>
 
         )
     }
     renderOption = (item) => {
         return (
-            <Option key={Number(item.id_repartition)} text={item.label_repartition} >
+            <Option key={Number(item.id_repartition)} text={item.label_repartition} onClick={this.selectGroup}>
                 {item.label_repartition}
             </Option>
         );
     };
     selectGroup= (idGroup) => {
-        console.log("selected Group", idGroup)
-        this.props.selectGroup(idGroup)
+      this.props.getStudents().then(
+        () =>{this.setStudentsFromGroup(idGroup.key)
+        })
     }
+  setStudentsFromGroup = (idGroup) =>{
+    let students = [...this.props.students]
+    let studentsfromgroup = []
+    students.map(student => {
+      student.list_group.map(list => {
+        if(list.id_repar === Number(idGroup)) {
+          studentsfromgroup.push(student);
+        }
+        return null;
+      })
+      console.log(student)
+      return null;
+    })
+    this.setState({
+      studentsfromgroup: studentsfromgroup,
+    })
+
+  }
 
 
 }
@@ -65,11 +90,13 @@ class StudentManagementArea extends React.PureComponent {
 
 const mapStateToProps = state  => ({
         groups : state.groups.map,
+        students : state.students.map,
     }
 );
 
 const mapDispatchToProps = {
     getGroups,
+    getStudents,
 
 };
 
