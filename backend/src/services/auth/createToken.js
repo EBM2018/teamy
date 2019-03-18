@@ -1,7 +1,7 @@
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var User = require('../../src/services/user/model');
-var config = require('../../src/config/index');
+var User = require('../user/model');
+var config = require('../../../src/config/index');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
 // bcryot.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd
@@ -21,8 +21,9 @@ exports.createUser = async function (user){
         isprof: user.isprof,
         pwd: hashedPwd,
     });
-    var savedUser = await newUser.save;
+    var savedUser = await newUser.save();
     console.log(newUser);
+    console.log(User.UserSchema);
     // sauvegarde de l'utilisateur  dans la bdd
     // try {
     //     var savedUser = await newUser.save; 

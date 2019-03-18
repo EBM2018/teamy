@@ -2,7 +2,7 @@
 var express = require('express');
 
 var router = express.Router();
-var UserController = require('../../controllers/users.controller');
+var UserController = require('./userController');
 
 // Authorize each API with middleware and map to the Controller Functions
 router.post('/registration', UserController.createUser);
