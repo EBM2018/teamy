@@ -37,7 +37,7 @@ exports.loginUser = async function (req, res, next){
     };
     try {
         var loginUser = await UserService.loginUser(User);
-        if (loginUser){
+        if (!loginUser == null){
             return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
         // eslint-disable-next-line no-else-return
         } else {

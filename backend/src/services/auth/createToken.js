@@ -48,21 +48,22 @@ exports.loginUser = async function (user) {
         // on cherche l'utilisateur dans la bdd avec findOne
         try {
         var userData = await User.findOne({ email: user.email});
-        console.log('userData' + userData);
-        //
         // var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
         console.log('utilisateur trouvé');
         if (userData.pwd === user.pwd){
-            console.log('Data -' + userData);
-            console.log('la connexion a bien été effectué');
+            console.log('bon mdp');
             var payload = {
-                id: userData._id,
                 name: userData.name,
+                last_name: userData.last_name,
+                email: userData.email,
             };
-            var privateKEY = fs.readFileSync('./private.key', 'utf8');
+            var privateKEY = fs.readFileSync('./private.key', 'utf8', function (err, data){
+                if (err) throw err;
+                console.log(data);
+            });
             var signOptions = {expiresIn: 3600, algorithm: 'RS256'}; 
             var token = jwt.sign(payload, privateKEY, signOptions);
-            console.log("Token - " + token);
+            console.log('Token - ' + token);
             return token;
         }
         // eslint-disable-next-line no-else-return
