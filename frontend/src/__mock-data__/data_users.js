@@ -9,7 +9,6 @@ export const data_users = {
           {"id_repar": 1, "id_group": 0 }
         ]
       },
-      ,
       {
         "id":3,
         "name":"gabin",
