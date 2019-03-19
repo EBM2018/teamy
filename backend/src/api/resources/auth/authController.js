@@ -9,8 +9,9 @@ exports.createUser = async function (req, res, next){
     var User = {
         name: req.body.name,
         last_name: req.body.last_name,
-        mail: req.body.mail,
-        isprof: req.body.isprof,
+        email: req.body.email,
+        // isProf: req.body.isProf,
+        isProf: false,
         // l'adresse mail servira d'identifiant
         pwd: req.body.pwd,
     };
@@ -38,10 +39,10 @@ exports.loginUser = async function (req, res, next){
     try {
         var loginUser = await UserService.loginUser(User);
         if (!loginUser == null){
-            return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
+            return res.status(400).json({data: loginUser, message: "Invalid password"});
         // eslint-disable-next-line no-else-return
         } else {
-            return res.status(400).json({data: loginUser, message: "Invalid password"});
+            return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
         }
     } catch (e) {
         return res.status(400).json({status: 400, message: "Invalid username"});
@@ -62,6 +63,28 @@ exports.loginForm = async function (req, res, next){
     </table>
 
     <input type="submit" value="login" />
+    <input type="hidden" name="next" value="next"/>
+    </form>
+    </form>
+    `);
+};
+
+exports.createForm = async function (req, res, next){
+    return res.status(200).send(`
+    <h1> Test création form </h1>
+    <form method ="post" action = "/auth/registration">
+    <table>
+    <tr> <td> Name </td> <td> <input type="text" name="name" id="name">
+    </input> </td> </tr>
+    <tr> <td> Last Name </td><td> <input type="text" name="last_name" id="last_name">
+    </input> </td> </tr>
+    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
+    </input> </td> </tr>
+    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
+    </input> </td> </tr>
+    </table>
+
+    <input type="submit" value="Création" />
     <input type="hidden" name="next" value="next"/>
     </form>
     </form>

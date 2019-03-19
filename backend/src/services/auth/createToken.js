@@ -11,7 +11,7 @@ var config = require('../../../src/config/index');
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function (user){
     var hashedPwd = bcrypt.hashSync(user.pwd, 8);
-    
+    console.log('Mdp haché ' + hashedPwd);
     // On va ajouter directement dans la bdd
     // Il ne faudra pas oublier de rajouter dans 
     // un autre temps la liste des groupes auxquels l'utilisateur appartient
@@ -19,12 +19,18 @@ exports.createUser = async function (user){
         name: user.name,
         last_name: user.last_name, 
         email: user.email,
-        isprof: user.isprof,
+        isProf: user.isProf,
         pwd: hashedPwd,
     });
+    console.log('Name ' + newUser.name);
+    console.log('Last_name ' + newUser.last_name);
+    console.log('email ' + newUser.email);
+    console.log('isProf ' + newUser.isProf);
+    console.log('pwd ' + newUser.hashedPwd);
+
+
     var savedUser = await newUser.save();
-    console.log(newUser);
-    console.log(User.UserSchema);
+    console.log(savedUser);
     // sauvegarde de l'utilisateur  dans la bdd
     // try {
     //     var savedUser = await newUser.save; 
