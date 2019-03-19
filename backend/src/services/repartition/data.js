@@ -14,6 +14,10 @@ module.exports = {
     const result = await Repartition.find({ _id: id });
     return result;
   },
+  getGroupById: async (id) => {
+    const result = await Repartition.find({ _id: id }, { group: 1 });
+    return result;
+  },
   update: async (_id, repartition) => Repartition.findOneAndUpdate({ _id },
     repartition,
     { new: true }),
