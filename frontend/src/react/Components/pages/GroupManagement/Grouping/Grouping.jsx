@@ -3,13 +3,16 @@ import React from 'react';
 import StudentGroup from '../StudentGroup/StudentGroup'
 import classNames from './grouping.module.css';
 import GroupManagementArea from '../GroupManagementArea/GroupManagementArea'
-import {getStudents } from '../../../../../redux/student/actions'
+import { getStudents } from '../../../../../redux/student/actions'
 import { connect  } from 'react-redux'
 
 
 class Grouping extends React.PureComponent {
 
 
+  componentWillMount(){
+    this.props.getStudents()
+  }
   state={
     studentsfromgroup: [],
     studentsoutgroup: [],
@@ -25,18 +28,19 @@ class Grouping extends React.PureComponent {
     }
 
     selectGroup= (idGroup) =>{
-      this.props.getStudents().then(
-        () =>{this.setStudentsFromGroup(idGroup.key)
-              this.setStudentsOutGroup(idGroup.key)
-        })
-      
+
+        this.setStudentsFromGroup(idGroup.key);
+        this.setStudentsOutGroup(idGroup.key);
+
     }
 
     setStudentsFromGroup = (idGroup) =>{
+
       let students = [...this.props.students]
+      console.log("studentsofgroup", this.props.students)
       let studentsfromgroup = []
         students.map(student => {
-          student.list_group.map(list => {
+          student.listGroup.map(list => {
             if(list.id_repar === Number(idGroup)) {
               studentsfromgroup.push(student);
             }
@@ -54,7 +58,7 @@ class Grouping extends React.PureComponent {
       let students = [...this.props.students]
       let studentsoutgroup = []
       students.map(student => {
-        student.list_group.map(list => {
+        student.listGroup.map(list => {
           if(list.id_repar !== Number(idGroup)) {
             studentsoutgroup.push(student);
           }
