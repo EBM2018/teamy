@@ -87,4 +87,26 @@ router.get('/:idProf', controller.getRepartition);
  */
 router.delete('/:id', controller.deleteOnLineId);
 
+/**
+ * @api {update} /:id Modifies a a prof-group by its Line id
+ * @apiName PutOnID
+ * @apiGroup ProfGroup
+ * @apiDescription Returns a JSON containing the modified Prof-group entry
+ *
+ * @apiParamExample {json} Request-Example:
+ * {
+ *     "idProf": "modified_info",
+ *     "idRepartition": "modified_info"
+ * }
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *     "_id": "5c88b5489dfc2c001e69a6a3",
+ *     "idProf": "modified_info",
+ *     "idRepartition": "modified_info",
+ *     "__v": 0
+ * }
+ */
+router.put('/:id', controller.update);
+
 module.exports = router;
