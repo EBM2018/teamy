@@ -10,15 +10,6 @@ export const data_users = {
         ]
       },
       {
-        "id":2,
-        "name":"hugo",
-        "last_name":"mottezs",
-        "is_prof": false,
-        "list_group" : [
-          {"id_repar": 1, "id_group": 0 }
-        ]
-      },
-      {
         "id":3,
         "name":"gabin",
         "last_name":"vallet",
