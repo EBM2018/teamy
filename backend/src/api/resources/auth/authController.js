@@ -4,7 +4,7 @@ var bcrypt = require('bcryptjs');
 var UserService = require('../../../services/auth/createToken');
 const UserServiceVerif = require('../../../services/auth/verify');
 
-// permet de faire la création d'un nouvel utilisateur (pas encore ajouté dans la bdd)
+// permet de faire la creation d'un nouvel utilisateur (pas encore ajoute dans la bdd)
 exports.createUser = async function (req, res, next){ 
     
     // A quoi sert le next ?
@@ -22,7 +22,7 @@ exports.createUser = async function (req, res, next){
     try {
         var createdUser = await UserService.createUser(User); 
         // res.redirect('/login-form');
-        // il faudrait idéalement permettre la redirection de l'une des pages sur l'autre
+        // il faudrait idealement permettre la redirection de l'une des pages sur l'autre
         return res.status(200).json({token: createdUser, message: "Utilisateur bien ajouté à la base de données" });
     }   
         catch (e) {
@@ -30,7 +30,7 @@ exports.createUser = async function (req, res, next){
     }
 };
 
-// permet de gérer le login d'un utilisateur :
+// permet de gerer le login d'un utilisateur :
 exports.loginUser = async function (req, res, next){
     var User = {
         email: req.body.email,
@@ -48,7 +48,7 @@ exports.loginUser = async function (req, res, next){
             }
         // eslint-disable-next-line no-else-return
             // else {
-            //     return res.status(400).json({token: loginUser, message: "Problème de token"});
+            //     return res.status(400).json({token: loginUser, message: "Probleme de token"});
             // }
         }
     catch (e) {

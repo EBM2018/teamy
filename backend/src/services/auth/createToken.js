@@ -4,9 +4,9 @@ var bcrypt = require('bcryptjs');
 var User = require('../user/model');
 var config = require('../../../src/config/index');
 
-// bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
-// bcrypt.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd
-// data est la donnée à encrypter, salt la clé de hashage
+// bcrypt.compare va permettre de comparer un password avec la valeur hachee stockee en bdd
+// bcrypt.hash(data,salt) va permettre de stocker la valeur hachee du mdp dans la bdd
+// data est la donnée à encrypter, salt la cle de hashage
 
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function (user){
@@ -26,8 +26,8 @@ exports.createUser = async function (user){
     catch (e){
         throw Error("Echec de l'ajout d'un nouvel utilisateur");
     }    
-    //     // clé de hashage utilisée par défaut : HS256, mais clé symétrique 
-    //     // utiliser RS256 à la place
+    //     // cle de hashage utilisee par defaut : HS256, mais cle symetrique 
+    //     // utiliser RS256 a la place
     //     var token = jwt.sign({id: savedUser._id}, {algorithm: 'RS256'}, 
     //     config.secret,
     //     {expiresIn: 3600}); // 3600 secondes, correspond à 1h   
@@ -42,7 +42,7 @@ exports.loginUser = async function (user) {
         var userData = await User.findOne({ email: user.email});
         var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
         if (pwdIsValid){
-            // génération du token
+            // generation du token
             var payload = {
                 name: userData.name,
                 last_name: userData.last_name,
