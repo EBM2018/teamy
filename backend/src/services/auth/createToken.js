@@ -56,8 +56,8 @@ exports.loginUser = async function (user) {
             console.log('Data -' + userData);
             console.log('la connexion a bien été effectué');
             var payload = {
-                id: "userData._id",
-                name: "userData.name",
+                id: userData._id,
+                name: userData.name,
             };
             var privateKEY = fs.readFileSync('./private.key', 'utf8');
             var signOptions = {expiresIn: 3600, algorithm: 'RS256'}; 
