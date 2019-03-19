@@ -66,3 +66,5 @@ typings/
 .dynamodb/
 # End of https://www.gitignore.io/api/node
 /.idea
+# Private key safety issues
+/backend/private.key

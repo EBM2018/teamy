@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 const fs = require('fs');
 var bcrypt = require('bcryptjs');
 var User = require('../user/model');
-var config = require('../../../src/config/index');
+// var config = require('../../../src/config/index');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachee stockee en bdd
 // bcrypt.hash(data,salt) va permettre de stocker la valeur hachee du mdp dans la bdd
@@ -22,6 +22,7 @@ exports.createUser = async function (user){
     });
     try {
         var savedUser = await newUser.save();
+        console.log(savedUser);
     }
     catch (e){
         throw Error("Echec de l'ajout d'un nouvel utilisateur");
