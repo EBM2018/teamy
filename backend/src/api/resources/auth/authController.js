@@ -43,9 +43,8 @@ exports.loginUser = async function (req, res, next){
         // eslint-disable-next-line no-else-return
         } else {
             var verification = UserServiceVerif.verifyToken(loginUser);
-            // if (verification === true){
-                console.log('verification :' + verification);
-                return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
+            console.log('verification :' + verification.iat);
+            return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
             }
         // eslint-disable-next-line no-else-return
             // else {
