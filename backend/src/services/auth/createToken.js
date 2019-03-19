@@ -1,5 +1,6 @@
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
+const fs = require('fs');
 var User = require('../user/model');
 var config = require('../../../src/config/index');
 
@@ -48,16 +49,23 @@ exports.loginUser = async function (user) {
         try {
         var userData = await User.findOne({ email: user.email});
         console.log('userData' + userData);
+        //
         // var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
         console.log('utilisateur trouvé');
         if (userData.pwd === user.pwd){
-            console.log(userData.pwd);
+            console.log('Data -' + userData);
             console.log('la connexion a bien été effectué');
-            // var token = jwt.sign({id: userData._id}, {algorithm: 'RS256'}, 
-            // config.secret,
-            // {expiresIn: 3600});
-            // console.log(token);
+            var payload = {
+                id: "userData._id",
+                name: "userData.name",
+            };
+            var privateKEY = fs.readFileSync('./private.key', 'utf8');
+            var signOptions = {expiresIn: 3600, algorithm: 'RS256'}; 
+            var token = jwt.sign(payload, privateKEY, signOptions);
+            console.log("Token - " + token);
+            return token;
         }
+        // eslint-disable-next-line no-else-return
         else {
             console.log('Faux mdp');
             return null;
