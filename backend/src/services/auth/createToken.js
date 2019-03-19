@@ -5,7 +5,7 @@ var User = require('../user/model');
 var config = require('../../../src/config/index');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachée stockée en bdd
-// bcryot.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd
+// bcrypt.hash(data,salt) va permettre de stocker la valeur hachée du mdp dans la bdd
 // data est la donnée à encrypter, salt la clé de hashage
 
 // exports va permettre d'utiliser createUser sur d'autres pages
@@ -20,7 +20,6 @@ exports.createUser = async function (user){
         isProf: user.isProf,
         pwd: user.pwd,
     });
-    console.log(newUser.pwd);
     try {
         var savedUser = await newUser.save();
     }
@@ -42,10 +41,7 @@ exports.loginUser = async function (user) {
         try {
         var userData = await User.findOne({ email: user.email});
         var pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
-        console.log(user.pwd);
-        console.log(userData.pwd);
         if (pwdIsValid){
-            console.log('bon mdp');
             // génération du token
             var payload = {
                 name: userData.name,
@@ -54,7 +50,6 @@ exports.loginUser = async function (user) {
             };
             var privateKEY = fs.readFileSync('./private.key', 'utf8', function (err, data){
                 if (err) throw err;
-                console.log(data);
             });
             var signOptions = {expiresIn: 3600, algorithm: 'RS256'}; 
             var token = jwt.sign(payload, privateKEY, signOptions);
@@ -62,7 +57,6 @@ exports.loginUser = async function (user) {
         }
         // eslint-disable-next-line no-else-return
         else {
-            console.log('Faux mdp');
             return null;
         }
     } catch (e){

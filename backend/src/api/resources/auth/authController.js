@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 var bcrypt = require('bcryptjs');
 var UserService = require('../../../services/auth/createToken');
+const UserServiceVerif = require('../../../services/auth/verify');
 
-console.log('Test de l\'ajout d\'un utilisateur');
 // permet de faire la création d'un nouvel utilisateur (pas encore ajouté dans la bdd)
 exports.createUser = async function (req, res, next){ 
     
@@ -32,21 +32,22 @@ exports.createUser = async function (req, res, next){
 
 // permet de gérer le login d'un utilisateur :
 exports.loginUser = async function (req, res, next){
-    console.log(req.body);
     var User = {
         email: req.body.email,
         pwd: req.body.pwd,
     };
     try {
         var loginUser = await UserService.loginUser(User);
-        console.log('loginUser ' + loginUser);
         if (loginUser === null){
             return res.status(400).json({token: loginUser, message: "Invalid password"});
         // eslint-disable-next-line no-else-return
         } else {
+            var verification = UserServiceVerif.verifyToken(loginUser);
+            console.log('verification: ' + verification);
             return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
         }
-    } catch (e) {
+    }
+    catch (e) {
         return res.status(400).json({status: 400, message: "Invalid username"});
     }
 };
