@@ -43,10 +43,15 @@ exports.loginUser = async function (req, res, next){
         // eslint-disable-next-line no-else-return
         } else {
             var verification = UserServiceVerif.verifyToken(loginUser);
-            console.log('verification: ' + verification);
-            return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
+            // if (verification === true){
+                console.log('verification :' + verification);
+                return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
+            }
+        // eslint-disable-next-line no-else-return
+            // else {
+            //     return res.status(400).json({token: loginUser, message: "Problème de token"});
+            // }
         }
-    }
     catch (e) {
         return res.status(400).json({status: 400, message: "Invalid username"});
     }
