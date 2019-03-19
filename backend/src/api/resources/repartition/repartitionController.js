@@ -26,8 +26,32 @@ const controller = {
       return res.status(500).json(err);
     }
   },
-  // TODO: Add new Repartition & group
-  // TODO: Modify Repartition & group
-  // TODO: delete Repartition & group
+  async getGroupById(req, res) {
+    if (req.params.RepartitionId) {
+      const result = await RepartitionData.getGroupById(req.params.RepartitionId);
+      return res.status(200).json(result);
+    }
+    return res.status(404).send('Bad Request');
+  },
+  async delete(req, res) {
+    if (req.params.RepartitionId) {
+      const result = await RepartitionData.deleteOnId(req.params.RepartitionId);
+      return res.status(200).json(result);
+    }
+    return res.status(404).send('Bad Request');
+  },
+  async update(req, res) {
+    if (!req.body) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await RepartitionData.update(req.params.RepartitionId, req.body);
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).json(e);
+    }
+  },
 };
+// TODO: Add new Repartition & repartition
+
 module.exports = controller;

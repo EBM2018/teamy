@@ -35,7 +35,7 @@ const controller = {
   async getUserById(req, res) {
     return res.status(200).json(res.locals.user);
   },
-  async editUserById(req, res, next) {
+  async editUserById(req, res) {
     if (req.body) {
       try {
         const result = await UserData.update(req.params.UserId, req.body);
@@ -44,7 +44,7 @@ const controller = {
         }
         return res.status(200).json(result);
       } catch (error) {
-        return next(error);
+        return res.status(500).json(error);
       }
     }
     return res.status(400).send('Bad Request...');
