@@ -1,3 +1,6 @@
+const express = require('express');
+const app = express();
+var bcrypt = require('bcryptjs');
 var UserService = require('../../../services/auth/createToken');
 
 console.log('Test de l\'ajout d\'un utilisateur');
@@ -6,6 +9,7 @@ exports.createUser = async function (req, res, next){
     
     // A quoi sert le next ?
     // req.body contient les valeurs soumises au formulaire
+    var hashedPwd = bcrypt.hashSync(req.body.pwd, 8);
     var User = {
         name: req.body.name,
         last_name: req.body.last_name,
@@ -13,20 +17,17 @@ exports.createUser = async function (req, res, next){
         // isProf: req.body.isProf,
         isProf: false,
         // l'adresse mail servira d'identifiant
-        pwd: req.body.pwd,
+        pwd: hashedPwd,
     };
     try {
         var createdUser = await UserService.createUser(User); 
-        
-        // await permet d'interrompre 
-        // l'exécution d'une fonction asynchrone 
-        // et attend la résolution d'une promesse
-        
-        return res.status(200).json({data: createdUser, message: "Utilisateur bien ajouté à la base de données" });
+        // res.redirect('/login-form');
+        // il faudrait idéalement permettre la redirection de l'une des pages sur l'autre
+        return res.status(200).json({token: createdUser, message: "Utilisateur bien ajouté à la base de données" });
     }   
         catch (e) {
         return res.status(400).json({status: 400, message: "Echec de l'inscription" });
-    }  
+    }
 };
 
 // permet de gérer le login d'un utilisateur :
@@ -38,11 +39,12 @@ exports.loginUser = async function (req, res, next){
     };
     try {
         var loginUser = await UserService.loginUser(User);
-        if (!loginUser == null){
-            return res.status(400).json({data: loginUser, message: "Invalid password"});
+        console.log('loginUser ' + loginUser);
+        if (loginUser === null){
+            return res.status(400).json({token: loginUser, message: "Invalid password"});
         // eslint-disable-next-line no-else-return
         } else {
-            return res.status(200).json({data: loginUser, message: "Vous êtes connectés"});
+            return res.status(200).json({token: loginUser, message: "Vous êtes connectés"});
         }
     } catch (e) {
         return res.status(400).json({status: 400, message: "Invalid username"});
