@@ -6,20 +6,10 @@ const controller = {
     return res.status(200).json(res.locals.allUsers);
   },
   async eleve(req, res) {
-    try {
-      const result = await UserData.getStudent();
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
+    return res.status(200).json(res.locals.students);
   },
   async prof(req, res) {
-    try {
-      const result = await UserData.getProf();
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
+    return res.status(200).json(res.locals.teachers);
   },
   async newUser(req, res) {
     if (req.body) {

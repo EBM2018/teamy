@@ -4,10 +4,10 @@ const router = new Router();
 const controller = require('./profGroupController');
 
 /**
- * @api {get} /prof-group/ Get all the prof and their groups
+ * @api {get} /prof-groups/ Get all the prof and their groups
  * @apiName GetAllProfGroup
  * @apiGroup ProfGroup
- * @apiDescription Returns a JSON containing all the existing Prof-group
+ * @apiDescription Returns a JSON containing all the existing Prof-groups
  *
  * @apiSuccessExample {json} Success-Response:
  *[
@@ -32,10 +32,10 @@ const controller = require('./profGroupController');
 router.get('/', controller.getAll);
 
 /**
- * @api {post} /prof-group/new Create new prof-group entry
+ * @api {post} /prof-groups/new Create new prof-groups entry
  * @apiName CreateNewProfGroup
  * @apiGroup ProfGroup
- * @apiDescription Returns a JSON containing the created Prof-group
+ * @apiDescription Returns a JSON containing the created Prof-groups
  *
  * @apiParamExample {json} Request-Example:
  * {
@@ -54,10 +54,10 @@ router.get('/', controller.getAll);
  */
 router.post('/new', controller.newProfGroup);
 /**
- * @api {get} /prof-group/:idProf Get a prof info by ProfId -- NOT LINE ID
+ * @api {get} /prof-groups/:idProf Get a prof info by ProfId -- NOT LINE ID
  * @apiName GetByProfId
  * @apiGroup ProfGroup
- * @apiDescription Returns a JSON containing the Prof-group entry
+ * @apiDescription Returns a JSON containing the Prof-groups entry
  * @apiSuccessExample {json} Success-Response:
  * [
  * {
@@ -71,19 +71,17 @@ router.post('/new', controller.newProfGroup);
 router.get('/:idProf', controller.getRepartition);
 
 /**
- * @api {delete} /prof-group/:idProf delete a prof groups ids by its Line ID -- NOT PROF ID
+ * @api {delete} /prof-groups/:idProf delete a prof groups ids by its Line ID -- NOT PROF ID
  * @apiName deleteOnId
  * @apiGroup ProfGroup
- * @apiDescription Returns a JSON containing the Prof-group entry
+ * @apiDescription Returns a JSON containing the Prof-groups entry
  * @apiSuccessExample {json} Success-Response:
- * [
  * {
  *        "_id": "5c863ba15cb955001e71aff6",
  *        "idProf": "5c7fbd47efcb020017b52dec",
  *        "idRepartition": "5c75051a292b402968fsdfg78",
  *        "__v": 0
- *    }
- * ]
+ * }
  */
 router.delete('/:id', controller.deleteOnLineId);
 

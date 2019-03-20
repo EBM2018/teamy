@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = new Router();
 
 router.use('/users', require('./resources/user'));
-router.use('/prof-group', require('./resources/profGroup'));
-router.use('/repartition', require('./resources/repartition'));
+router.use('/prof-groups', require('./resources/profGroup'));
+router.use('/groups', require('./resources/groups'));
 
 module.exports = router;

@@ -11,7 +11,7 @@ module.exports = {
     return result;
   },
   getRepartition: async (idProf_) => {
-    const result = await ProfGroup.find({ idProf: idProf_ });
+    const result = await ProfGroup.findOne({ idProf: idProf_ });
     return result;
   },
   update: async (_id, profGroup) => ProfGroup.findOneAndUpdate({ _id }, profGroup, { new: true }),
