@@ -21,11 +21,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 500,
   },
-  salt: {
-    type: String,
-    required: false,
-    max: 500,
-  },
   isProf: {
     type: Boolean,
     required: true,

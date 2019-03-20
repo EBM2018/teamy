@@ -11,7 +11,6 @@ exports.createUser = async function crea(req, res) {
     mailAddress: req.body.email,
     // isProf: req.body.isProf,
     isProf: false,
-    // l'adresse mail servira d'identifiant
     hashPassword: hashedPwd,
   };
   try {
