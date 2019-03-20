@@ -6,7 +6,6 @@ const app = express();
 const server = require('http').Server(app);
 
 const config = require('./config');
-const router = new express.Router();
 
 // setup database connexion
 require('./config/mongoose');

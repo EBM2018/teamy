@@ -1,17 +1,18 @@
 const express = require('express');
+
 const app = express();
-var bcrypt = require('bcryptjs');
-var UserService = require('../../../services/auth/createToken');
+
+const bcrypt = require('bcryptjs');
+const UserService = require('../../../services/auth/createToken');
 const UserServiceVerif = require('../../../services/auth/verify');
 
 // permet de faire la creation d'un nouvel utilisateur (pas encore ajoute dans la bdd)
 exports.createUser = async function (req, res, next){ 
-    
     // A quoi sert le next ?
     // req.body contient les valeurs soumises au formulaire
-    var hashedPwd = bcrypt.hashSync(req.body.pwd, 8);
-    var User = {
-        name: req.body.name,
+  var hashedPwd = bcrypt.hashSync(req.body.pwd, 8);
+  var User = {
+    name: req.body.name,
         last_name: req.body.last_name,
         email: req.body.email,
         // isProf: req.body.isProf,
