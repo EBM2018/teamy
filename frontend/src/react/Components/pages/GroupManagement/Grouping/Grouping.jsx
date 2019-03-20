@@ -16,63 +16,58 @@ class Grouping extends React.PureComponent {
   state={
     studentsfromgroup: [],
     studentsoutgroup: [],
+    selectedGroup: null,
   }
 
     render() {
         return (
             <div className={classNames.globalsearchwrapper} >
                 <GroupManagementArea selectGroup={this.selectGroup}/>
-                <StudentGroup studentsfromgroup={this.state.studentsfromgroup} studentsoutgroup={this.state.studentsoutgroup}/>
+                <StudentGroup getStudents ={this.refreshStudents} studentsfromgroup={this.state.studentsfromgroup} studentsoutgroup={this.state.studentsoutgroup} selectedGroup={this.state.selectedGroup}/>
             </div>
         )
+    }
+
+    refreshStudents = () => {
+        this.props.getStudents();
+        this.selectGroup(this.state.selectedGroup);
     }
 
     selectGroup= (idGroup) =>{
 
         this.setStudentsFromGroup(idGroup.key);
-        this.setStudentsOutGroup(idGroup.key);
+        this.setState({
+          selectedGroup : idGroup,
+        })
 
     }
 
     setStudentsFromGroup = (idGroup) =>{
 
       let students = [...this.props.students]
-      console.log("studentsofgroup", this.props.students)
       let studentsfromgroup = []
         students.map(student => {
           student.listGroup.map(list => {
-            if(list.id_repar === Number(idGroup)) {
-              studentsfromgroup.push(student);
+            for(var i = 0; i<= list.id_group.length; i++){
+                if(list.id_group[i] === Number(idGroup)){
+                  studentsfromgroup.push(student);
+                  return null;
+                }
             }
             return null;
           })
-          console.log(student)
+          return null;
+        })
+        let studentoutgroup = students;
+        studentsfromgroup.map((student) => {
+          studentoutgroup = studentoutgroup.filter(t => t !== student);
           return null;
         })
         this.setState({
           studentsfromgroup: studentsfromgroup,
+          studentsoutgroup: studentoutgroup,
         })
-
     }
-    setStudentsOutGroup = (idGroup) => {
-      let students = [...this.props.students]
-      let studentsoutgroup = []
-      students.map(student => {
-        student.listGroup.map(list => {
-          if(list.id_repar !== Number(idGroup)) {
-            studentsoutgroup.push(student);
-          }
-          return null;
-        })
-        console.log(student)
-        return null;
-      })
-      this.setState({
-        studentsoutgroup: studentsoutgroup,
-      })
-
-    }
-
 }
 
 

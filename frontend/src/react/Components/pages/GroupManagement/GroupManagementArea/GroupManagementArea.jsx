@@ -64,7 +64,6 @@ class GroupManagementArea extends React.PureComponent {
     );
   }
     selectGroup= (idGroup) => {
-        console.log("selected Group", idGroup)
         this.props.selectGroup(idGroup)
     }
 
