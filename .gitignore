@@ -25,8 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 /.idea
 
-# Make Gabin Cry
-/backend/.eslintrc.js
-
 # To avoid giving the private key to every crook on the Internet
 /backend/private.key
