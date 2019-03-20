@@ -38,8 +38,6 @@ class GroupManagementArea extends React.PureComponent {
                         optionLabelProp="text"
                         dataSource={this.props.groups.map(this.renderOption)}
                         filterOption={(inputValue, option) => {
-                            console.log("Groupedata", this.props.groups)
-                            console.log("option", option.props.children)
                             return option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                         }}
                     >
@@ -58,8 +56,8 @@ class GroupManagementArea extends React.PureComponent {
 
   renderOption = (item) => {
     return (
-      <Option key={Number(item.id_repartition)} text={item.label_repartition} onClick={this.selectGroup}>
-        {item.label_repartition}
+      <Option key={item._id} text={item.label} onClick={this.selectGroup}>
+        {item.label}
       </Option>
     );
   }
@@ -85,6 +83,7 @@ class GroupManagementArea extends React.PureComponent {
     }
     addGroup = (e) => {
         if (e.key === 'Enter') {
+          console.log("OK")
             if (this.state.newGroup !== "") {
                 this.props.postGroup(this.state.newGroup)
                 this.selectGroup(this.state.newGroup)

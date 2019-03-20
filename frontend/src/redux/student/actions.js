@@ -3,9 +3,6 @@ const request = require('superagent');
 
 export const getStudents = () => async (dispatch) => {
 
-  //TODO : brancher la variable list à l'API
-
-
   request
     .get('/api/users/students')
     .set('Accept', 'application/json')
@@ -20,6 +17,7 @@ export const getStudents = () => async (dispatch) => {
 }
 
 export const modifyUser = (newUser) => async (dispatch) => {
+
   request
     .put('/api/users/'+newUser._id)
     .set('Accept', 'application/json')

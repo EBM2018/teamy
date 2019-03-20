@@ -60,9 +60,11 @@ class StudentGroup extends React.PureComponent {
       userToAdd = userToAdd.filter(t => t._id === student.key);
       userToAdd.map( (user) => {
         user.listGroup.map( (group) => {
-          group.id_group = group.id_group.concat(Number(this.props.selectedGroup.key))
+          console.log("selectedgroup",this.props.selectedGroup.key )
+          group.id_group = group.id_group.concat(this.props.selectedGroup.key)
           return null;
         })
+        //console.log("user", user)
         this.props.modifyUser(user);
 
         return this.refreshUsers();
