@@ -6,7 +6,7 @@ const RepartitionSchema = new mongoose.Schema({
     required: true,
     max: 150,
   },
-  group: {
+  repartitions: {
     type: Array,
     required: true,
     max: 150,
