@@ -8,14 +8,16 @@ exports.createUser = async function crea(req, res) {
   const User = {
     name: req.body.name,
     last_name: req.body.last_name,
-    email: req.body.email,
+    mailAddress: req.body.email,
     // isProf: req.body.isProf,
     isProf: false,
     // l'adresse mail servira d'identifiant
-    pwd: hashedPwd,
+    hashPassword: hashedPwd,
   };
   try {
     const createdUser = await UserService.createUser(User);
+    console.log(createdUser.mailAddress);
+    // console.log(createdUser.hashPassword);
     // res.redirect('/login-form');
     // il faudrait idealement permettre la redirection de l'une des pages sur l'autre
     return res.status(200).json({ token: createdUser, message: 'Utilisateur bien ajouté à la base de données' });
@@ -27,11 +29,12 @@ exports.createUser = async function crea(req, res) {
 // permet de gerer le login d'un utilisateur :
 exports.loginUser = async function log(req, res) {
   const User = {
-    email: req.body.email,
-    pwd: req.body.pwd,
+    mailAddress: req.body.email,
+    hashPassword: req.body.pwd,
   };
   try {
     const loginUser = await UserService.loginUser(User);
+    console.log(loginUser);
     if (loginUser === null) {
       return res.status(400).json({ token: loginUser, message: 'Invalid password' });
     // eslint-disable-next-line no-else-return

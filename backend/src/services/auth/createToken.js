@@ -13,9 +13,9 @@ exports.createUser = async function crea(user) {
   const newUser = new User({
     name: user.name,
     last_name: user.last_name,
-    email: user.email,
+    mailAddress: user.mailAddress,
     isProf: user.isProf,
-    pwd: user.pwd,
+    hashPassword: user.hashPassword,
   });
   try {
     const savedUser = await newUser.save();
@@ -35,14 +35,15 @@ exports.createUser = async function crea(user) {
 exports.loginUser = async function log(user) {
   // on cherche l'utilisateur dans la bdd avec findOne
   try {
-    const userData = await User.findOne({ email: user.email });
-    const pwdIsValid = bcrypt.compareSync(user.pwd, userData.pwd);
+    const userData = await User.findOne({ mailAddress: user.mailAddress });
+    const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
+    console.log(pwdIsValid);
     if (pwdIsValid) {
       // generation du token
       const payload = {
         name: userData.name,
         last_name: userData.last_name,
-        email: userData.email,
+        mailAddress: userData.mailAddress,
       };
       const privateKEY = fs.readFileSync('./private.key', 'utf8', (error) => {
         if (error) throw error;

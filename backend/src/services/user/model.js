@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
   },
   salt: {
     type: String,
-    required: true,
+    required: false,
     max: 500,
   },
   isProf: {
