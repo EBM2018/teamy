@@ -10,21 +10,12 @@ export const data_users = {
         ]
       },
       {
-        "id":2,
-        "name":"hugo",
-        "last_name":"mottezs",
-        "is_prof": false,
-        "list_group" : [
-          {"id_repar": 1, "id_group": 0 }
-        ]
-      },
-      {
         "id":3,
         "name":"gabin",
         "last_name":"vallet",
         "is_prof": false,
         "list_group" : [
-          {"id_repar": 1, "id_group": 0 }
+          {"id_repar": 2, "id_group": 0 }
         ]
       },
       {
@@ -33,7 +24,7 @@ export const data_users = {
         "last_name":"malnory",
         "is_prof": false,
         "list_group" : [
-          {"id_repar": 1, "id_group": 1 }
+          {"id_repar": 2, "id_group": 1 }
         ]
       },
       {

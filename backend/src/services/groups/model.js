@@ -6,11 +6,21 @@ const RepartitionSchema = new mongoose.Schema({
     required: true,
     max: 150,
   },
-  group: {
+  repartitions: {
     type: Array,
     required: true,
     max: 150,
   },
+  cours: {
+    type: String,
+    required: false,
+    max: 50,
+  },
+  date: {
+    type: Date,
+    required: false,
+  },
+
 });
 
 // Export the model

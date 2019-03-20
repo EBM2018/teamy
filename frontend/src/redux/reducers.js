@@ -5,7 +5,7 @@ import loginReducer from './login/reducer'
 
 export default combineReducers({
     groups : groupReducer,
-    users : studentReducer,
+    students : studentReducer,
     isLogIn : loginReducer,
 
 })

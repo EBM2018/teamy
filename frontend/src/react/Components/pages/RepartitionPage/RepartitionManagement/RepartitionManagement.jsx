@@ -7,6 +7,9 @@ import SelectQuantity from '../../../generic/SelectQuantity/SelectQuantity'
 import RepartitionArea from '../RepartitionArea/RepartitionArea'
 import StudentManagementArea from '../StudentManagementArea/StudentManagementArea'
 import SelectTypeRepartition from "../../../generic/SelectTypeRepartition/SelectTypeRepartition";
+//import {getUsersFromGroup} from "../../../../../redux/student/actions";
+//import connect from "react-redux/es/connect/connect";
+//import StudentGroup from "../../GroupManagement/StudentGroup/StudentGroup"
 
 
 
@@ -30,10 +33,14 @@ render(){
         </div>
     )
 }
+
+
     onColCountChange = (colCountKey) =>{
         this.setState({nbRepartition :colCountKey })
     }
     onStudColCountChange = (studcolCountKey) =>{
         this.setState({nbEleve :studcolCountKey })
     }
+
 }
+

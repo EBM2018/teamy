@@ -3,28 +3,13 @@ const UserData = require('../../../services/user/data');
 const controller = {
 
   async all(req, res) {
-    try {
-      const result = await UserData.getAll();
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).send(error);
-    }
+    return res.status(200).json(res.locals.allUsers);
   },
   async eleve(req, res) {
-    try {
-      const result = await UserData.getStudent();
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
+    return res.status(200).json(res.locals.students);
   },
   async prof(req, res) {
-    try {
-      const result = await UserData.getProf();
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
+    return res.status(200).json(res.locals.teachers);
   },
   async newUser(req, res) {
     if (req.body) {
@@ -38,16 +23,9 @@ const controller = {
     return res.status(400).send('Bad Request');
   },
   async getUserById(req, res) {
-    console.log(req.params.UserId);
-    try {
-      const result = await UserData.findById(req.params.UserId);
-      console.log('getUserById', result);
-      return res.status(200).json(result);
-    } catch (e) {
-      return res.status(500).json(e);
-    }
+    return res.status(200).json(res.locals.user);
   },
-  async editUserById(req, res, next) {
+  async editUserById(req, res) {
     if (req.body) {
       try {
         const result = await UserData.update(req.params.UserId, req.body);
@@ -56,7 +34,7 @@ const controller = {
         }
         return res.status(200).json(result);
       } catch (error) {
-        return next(error);
+        return res.status(500).json(error);
       }
     }
     return res.status(400).send('Bad Request...');

@@ -19,12 +19,13 @@ const controller = {
     }
 
     const isProf = await userData.isProf(req.body.idProf);
-    if (!isProf) {
-      return res.status(400).send('id given does not refer to a professor');
+    if (isProf === -1) {
+      return res.status(400).send('id does not exist in the user database');
     }
-
+    if (!isProf) {
+      return res.status(400).send('User is not a teacher');
+    }
     try {
-      // TODO : check if the prof and the group exists
       const newEntry = await ProfGroupData.create(req.body);
       return res.status(200).json(newEntry);
     } catch (err) {
@@ -54,5 +55,18 @@ const controller = {
       return res.status(500).json(err);
     }
   },
+  async update(req, res) {
+    if (!req.body) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await ProfGroupData.update(req.params.id, req.body);
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).json(e);
+    }
+  },
 };
+// TODO : update !
+
 module.exports = controller;
