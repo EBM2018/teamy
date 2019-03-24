@@ -3,7 +3,10 @@
 ## Purposes :
 
 API de Gestion des groupes d'étudiants de Centrale Lille. 
-L'API distribue les informations sur les élèves, les professeurs, et leur cours. 
+L'API distribue les informations sur les élèves, les professeurs, et leur cours.
+
+## API :
+API is documented [here](https://ebm2018.github.io/teamy/).
 
 ## Run Locally : 
 
