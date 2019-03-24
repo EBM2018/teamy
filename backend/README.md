@@ -37,4 +37,4 @@ API is documented [here](https://ebm2018.github.io/teamy/).
 * [Install docker-compose](https://docs.docker.com/compose/install/)
 * Complete the env variable in the docker-compose.local : currently the are no such variables.
 * Run `sudo docker-compose -f ../docker-compose.local.yml up --build` in the `backend` folder
-    * For a modification to be taken into account, docker-compose must be killed and restarted.
+    * For a change to be taken into account, docker-compose must be killed and restarted.
