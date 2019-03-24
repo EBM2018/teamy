@@ -2,8 +2,7 @@
 
 ## Purposes
 
-API de Gestion des groupes d'étudiants de Centrale Lille. 
-L'API distribue les informations sur les élèves, les professeurs, et leur cours.
+This API gives access to data regarding students and their groups, teachers and courses from Centrale Lille.
 
 ## API
 API is documented [here](https://ebm2018.github.io/teamy/).
@@ -37,5 +36,5 @@ API is documented [here](https://ebm2018.github.io/teamy/).
 * [Install Docker CE](https://docs.docker.com/install/)
 * [Install docker-compose](https://docs.docker.com/compose/install/)
 * Complete the env variable in the docker-compose.local : currently the are no such variables.
-* Run `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
+* Run `sudo docker-compose -f ../docker-compose.local.yml up --build` in the `backend` folder
     * For a modification to be taken into account, docker-compose must be killed and restarted.
