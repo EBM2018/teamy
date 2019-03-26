@@ -1,21 +1,23 @@
-# Backend :
+# Backend
 
-## Purposes :
+## Purposes
 
-API de Gestion des groupes d'étudiants de Centrale Lille. 
-L'API distribue les informations sur les élèves, les professeurs, et leur cours. 
+This API gives access to data regarding students and their groups, teachers and courses from Centrale Lille.
 
-## Run Locally : 
+## API
+API is documented [here](https://ebm2018.github.io/teamy/).
 
-### Without a docker-compose :
+## Run Locally
 
-1. [install mongodb](https://docs.mongodb.com/manual/installation/)
+### Without a docker-compose
+
+1. [Install mongodb](https://docs.mongodb.com/manual/installation/)
 2. In one CLI, run mongod : 
-    
+
     ```(bash)
     $ sudo mongod
     ```
-3. Create the local env. variables : 
+3. Create the local .env variables : 
     
     ```(bash)
     # assuming the mongodb port is 27017, as set by default
@@ -27,13 +29,12 @@ L'API distribue les informations sur les élèves, les professeurs, et leur cour
     $ npm start
     ```
     
- ### With a local docker-compose : 
+### With a local docker-compose
  
- *shout out to [@Lenophie](https://github.com/Lenophie) for its tutorial :*
+*shout out to [@Lenophie](https://github.com/Lenophie) for its tutorial :*
  
 * [Install Docker CE](https://docs.docker.com/install/)
 * [Install docker-compose](https://docs.docker.com/compose/install/)
 * Complete the env variable in the docker-compose.local : currently the are no such variables.
-* Run `sudo docker-compose -f ../docker-compose.local.yml up --build` dans le dossier `backend`
-    * For a modification to be taken into account, docker-compose must be killed and restarted.
-   
+* Run `sudo docker-compose -f ../docker-compose.local.yml up --build` in the `backend` folder
+    * For a change to be taken into account, docker-compose must be killed and restarted.
