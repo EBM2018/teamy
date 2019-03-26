@@ -21,6 +21,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 500,
   },
+  hash: {
+    type: String,
+    required: true,
+    max: 500,
+  },
   isProf: {
     type: Boolean,
     required: true,
