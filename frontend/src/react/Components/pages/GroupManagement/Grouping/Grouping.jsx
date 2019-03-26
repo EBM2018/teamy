@@ -46,18 +46,20 @@ class Grouping extends React.PureComponent {
 
       let students = [...this.props.students]
       let studentsfromgroup = []
+      if(idGroup) {
         students.map(student => {
           student.listGroup.map(list => {
-            for(var i = 0; i<= list.id_group.length; i++){
-                if(list.id_group[i] === idGroup){
-                  studentsfromgroup.push(student);
-                  return null;
-                }
+            for (var i = 0; i <= list.id_group.length; i++) {
+              if (list.id_group[i] === idGroup) {
+                studentsfromgroup.push(student);
+                return null;
+              }
             }
             return null;
           })
           return null;
         })
+      }
         let studentoutgroup = students;
         studentsfromgroup.map((student) => {
           studentoutgroup = studentoutgroup.filter(t => t !== student);
