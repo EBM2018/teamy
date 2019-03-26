@@ -90,7 +90,7 @@ const controller = {
       return res.status(404).send('Bad Request');
     }
     try {
-      const result = await GroupData.updateRepartition(
+      const result = await GroupData.updateSeance(
         req.params.GroupId,
         req.params.SeanceId,
         req.body,
@@ -102,12 +102,12 @@ const controller = {
   },
   async deleteGroup(req, res) {
     if (req.params.GroupId) {
-      const result = await GroupData.deleteOnId(req.params.GroupId);
+      const result = await GroupData.deleteGroup(req.params.GroupId);
       return res.status(200).json(result);
     }
     return res.status(404).send('Bad Request');
   },
-  async deleteRepartition(req, res) {
+  async deleteSeance(req, res) {
     if (!req.params.GroupId || !req.params.SeanceId) {
       return res.status(404).send('Bad Request');
     }

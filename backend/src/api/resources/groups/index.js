@@ -437,7 +437,9 @@ router.put('/:GroupId', groupsController.updateGroup);
  */
 router.put('/:GroupId/seances/:SeanceId', groupsController.updateSeance);
 
-//  router.put('/:GroupId/seances/:SeanceId/repartitions/:RepartitionIs', groupsController.updateRepartition);
+//  router.put('/:GroupId/seances/:SeanceId/
+// repartitions/:RepartitionIs',
+// groupsController.updateRepartition);
 
 /**
  * @api {delete} /groups/:GroupId Delete Repartition On ID
@@ -456,10 +458,10 @@ router.put('/:GroupId/seances/:SeanceId', groupsController.updateSeance);
 router.delete('/:GroupId', groupsController.deleteGroup);
 
 /**
- * @api {delete} /groups/:GroupId/seances/:SeanceId Delete Repartition On ID
+ * @api {delete} /groups/:GroupId/seances/:SeanceId Delete Seance On ID
  * @apiName DeleteOnID
  * @apiGroup DeleteRepartition
- * @apiDescription Delete the Repartition, send a json to confirm the deletion
+ * @apiDescription Delete the Seance, send a json to confirm the deletion
  *
  * @apiSuccessExample {json} Success-Response:
  *
@@ -469,7 +471,7 @@ router.delete('/:GroupId', groupsController.deleteGroup);
  *     "deletedCount": 1
  * }
  */
-router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteRepartition);
+router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance());
 // TODO CRUD FOR GROUPS/SEANCE
 // TODO CRUD FOR GROUPS/SEANCE/REPARTITION
 

@@ -64,8 +64,8 @@ module.exports = {
   updateGroup: async (GroupId, group) => Group.findOneAndUpdate({ GroupId },
     group,
     { new: true }),
-  deleteOnId: async id => Group.deleteOne({ _id: id }),
-  updateRepartition: async (GroupId, SeanceId, Seance) => {
+  deleteGroup: async id => Group.deleteOne({ _id: id }),
+  updateSeance: async (GroupId, SeanceId, Seance) => {
     Group.findOneAndUpdate(
       {
         _id: GroupId,
@@ -79,7 +79,7 @@ module.exports = {
       err => err,
     );
   },
-  deleteRepartition: async (GroupId, SeanceId) => {
+  deleteSeance: async (GroupId, SeanceId) => {
     const group = await module.exports.getGroupsById(GroupId);
     group.seances.id(SeanceId).remove();
     group.save((err) => {
