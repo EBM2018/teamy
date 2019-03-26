@@ -15,7 +15,9 @@ exports.createUser = async function crea(user) {
     mailAddress: user.mailAddress,
     isProf: user.isProf,
     hashPassword: user.hashPassword,
+    Salt: user.Salt,
   });
+  console.log(newUser);
   try {
     const savedUser = await newUser.save();
     console.log(savedUser);

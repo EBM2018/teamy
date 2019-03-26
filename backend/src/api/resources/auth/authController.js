@@ -3,12 +3,14 @@ const UserService = require('../../../services/auth/createToken');
 
 // permet de faire la creation d'un nouvel utilisateur (pas encore ajoute dans la bdd)
 exports.createUser = async function crea(req, res) {
-  const hashedPwd = bcrypt.hashSync(req.body.pwd, 8);
+  const keySalt = bcrypt.genSaltSync();
+  const hashedPwd = bcrypt.hashSync(req.body.pwd, keySalt);
   const User = {
     name: req.body.name,
     last_name: req.body.last_name,
     mailAddress: req.body.email,
     // isProf: req.body.isProf,
+    salt: keySalt,
     isProf: false,
     hashPassword: hashedPwd,
   };
