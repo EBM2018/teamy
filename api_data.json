@@ -1,16 +1,41 @@
 [
   {
+    "type": "delete",
+    "url": "/groups/:GroupId/seances/:SeanceId",
+    "title": "Delete Seance On ID",
+    "name": "DeleteOnID",
+    "group": "DeleteRepartition",
+    "description": "<p>Delete the Seance, send a json to confirm the deletion</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n    \"n\": 1,\n    \"ok\": 1,\n    \"deletedCount\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "DeleteRepartition",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/groups/new/",
     "title": "Create new groups",
     "name": "CreateGroup",
     "group": "Groups",
-    "description": "<p>Create a new repartiton, return the json of the Repartition created</p>",
+    "description": "<p>Create a new group. you can just create it by passing a groupName. return the json of the Group created</p>",
     "parameter": {
       "examples": [
         {
           "title": "Request-example:",
-          "content": "{\n   \"label\": \"Nouveau Groupe\",\n   \"repartitions\": [],\n   \"cours\":\"EBM\" # optionnal\n}",
+          "content": "{\n   \"groupName\": \"Alternants\",\n   \"seances\": [\n     {\n       \"label\":\"Analyse du Vecu\",\n       \"startingDate\": \"03/10/2019 08:30\",\n       \"finishingDate\": \"03/10/2019 11:30\",\n       \"repartition\": [\n         {\n           \"groupName\":\"groupe N 1\",\n           \"arrayStudentId\": [\"id1\", \"id2\"]\n         },\n         {\n         \"groupName\":\"groupe N 2\",\n         \"arrayStudentId\": [\"id3\", \"id4\", \"id5\"]\n         },\n         {\n         \"groupName\":\"le mec qui est tout seul\",\n         \"arrayStudentId\": [\"id6\"]\n         }\n       ]\n    },\n   {\n   \"label\":\"Anglais\",\n   \"repartition\":[]\n   }\n   ]\n}",
           "type": "json"
         }
       ]
@@ -19,7 +44,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"repartitions\": [],\n    \"_id\": \"5c90ae4860a2d8001eff209f\",\n    \"label\": \"Nouveau Groupe\",\n    \"cours\": \"EBM\",\n    \"__v\": 0\n}",
+          "content": "{\n   \"_id\": \"5c99dc8038ea0b001ee923e5\",\n   \"groupName\": \"Alternants\",\n   \"seances\": [\n       {\n           \"_id\": \"5c99dc8038ea0b001ee923e7\",\n           \"label\": \"Analyse du Vecu\",\n           \"startingDate\": \"2019-03-10T08:30:00.000Z\",\n           \"finishingDate\": \"2019-03-10T11:30:00.000Z\",\n           \"repartition\": [\n               {\n                   \"arrayStudentId\": [\n                       \"id1\",\n                       \"id2\"\n                   ],\n                   \"_id\": \"5c99dc8038ea0b001ee923ea\",\n                   \"groupName\": \"groupe N 1\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id3\",\n                       \"id4\",\n                       \"id5\"\n                   ],\n                   \"_id\": \"5c99dc8038ea0b001ee923e9\",\n                   \"groupName\": \"groupe N 2\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id6\"\n                   ],\n                   \"_id\": \"5c99dc8038ea0b001ee923e8\",\n                   \"groupName\": \"le mec qui est tout seul\"\n               }\n           ]\n       },\n       {\n           \"_id\": \"5c99dc8038ea0b001ee923e6\",\n           \"label\": \"Anglais\",\n           \"repartition\": []\n       }\n   ],\n   \"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -37,9 +62,9 @@
     "type": "delete",
     "url": "/groups/:GroupId",
     "title": "Delete Repartition On ID",
-    "name": "DeleteOnID",
+    "name": "DeleteGroup",
     "group": "Groups",
-    "description": "<p>Delete the line, send a json to confirm the deletion</p>",
+    "description": "<p>Delete the Group, send a json to confirm the deletion</p>",
     "success": {
       "examples": [
         {
@@ -62,14 +87,14 @@
     "type": "get",
     "url": "/groups/",
     "title": "Returns all the groups created",
-    "name": "GetAllGroup",
+    "name": "GetAllGroups",
     "group": "Groups",
     "description": "<p>Returns a JSON containing all the existing Groups</p>",
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "[\n{\n       \"repartitions\": [\n           \"modified group\"\n       ],\n       \"_id\": \"5c90ae4860a2d8001eff209f\",\n       \"label\": \"new group\",\n       \"cours\": \"EBM\",\n       \"__v\": 0\n   },\n{\n       \"repartitions\": [],\n       \"_id\": \"5c90b0e4c793cb001e66c9fb\",\n       \"label\": \"Nouveau Groupe pour le supprimer\",\n       \"cours\": \"WhoopsieLand\",\n       \"__v\": 0\n   }\n]",
+          "content": "[\n{\n       \"_id\": \"5c99dc8038ea0b001ee923e5\",\n       \"groupName\": \"Alternants\",\n       \"seances\": [\n           {\n               \"repartition\": [\n                   {\n                       \"arrayStudentId\": [\n                           \"id1\",\n                           \"id2\"\n                       ],\n                       \"_id\": \"5c99dc8038ea0b001ee923ea\",\n                       \"groupName\": \"groupe N 1\"\n                   },\n                   {\n                       \"arrayStudentId\": [\n                           \"id3\",\n                           \"id4\",\n                           \"id5\"\n                       ],\n                       \"_id\": \"5c99dc8038ea0b001ee923e9\",\n                       \"groupName\": \"groupe N 2\"\n                   },\n                   {\n                       \"arrayStudentId\": [\n                           \"id6\"\n                       ],\n                       \"_id\": \"5c99dc8038ea0b001ee923e8\",\n                       \"groupName\": \"le mec qui est tout seul\"\n                   }\n               ],\n               \"_id\": \"5c99dc8038ea0b001ee923e7\",\n               \"label\": \"Analyse du Vecu\",\n               \"startingDate\": \"2019-03-10T08:30:00.000Z\",\n               \"finishingDate\": \"2019-03-10T11:30:00.000Z\"\n           },\n           {\n               \"repartition\": [],\n               \"_id\": \"5c99dc8038ea0b001ee923e6\",\n               \"label\": \"Anglais\"\n           }\n       ],\n       \"__v\": 0\n   },\n{\n       \"_id\": \"5c99e05838ea0b001ee923eb\",\n       \"groupName\": \"EBM\",\n       \"seances\": [\n           {\n               \"repartition\": [\n                   {\n                       \"arrayStudentId\": [\n                           \"id1\",\n                           \"id2\"\n                       ],\n                       \"_id\": \"5c99e05838ea0b001ee923ef\",\n                       \"groupName\": \"teamy\"\n                   },\n                   {\n                       \"arrayStudentId\": [\n                           \"id3\",\n                           \"id4\",\n                           \"id5\"\n                       ],\n                       \"_id\": \"5c99e05838ea0b001ee923ee\",\n                       \"groupName\": \"iRate\"\n                   },\n                   {\n                       \"arrayStudentId\": [\n                           \"id6\"\n                       ],\n                       \"_id\": \"5c99e05838ea0b001ee923ed\",\n                       \"groupName\": \"tenugui\"\n                   }\n               ],\n               \"_id\": \"5c99e05838ea0b001ee923ec\",\n               \"label\": \"Fil Rouge\",\n               \"startingDate\": \"2019-03-10T13:30:00.000Z\",\n               \"finishingDate\": \"2019-03-10T17:30:00.000Z\"\n           }\n       ],\n       \"__v\": 0\n   }\n]",
           "type": "json"
         }
       ]
@@ -85,16 +110,66 @@
   },
   {
     "type": "get",
-    "url": "/groups/:GroupId",
-    "title": "Return the info of one goup by ID",
-    "name": "GetGroupById",
+    "url": "/groups/:GroupId/seances/:SeanceId/repartition/ Returns all",
+    "title": "the repartitions made in a seance",
+    "name": "GetAllRepartitionsInSeance",
     "group": "Groups",
-    "description": "<p>Returns a JSON containing the info</p>",
+    "description": "<p>Returns an array of repartitions, empty array otherwise</p>",
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"repartitions\": [\n        \"info about group 1\"\n    ],\n    \"_id\": \"5c90ae4860a2d8001eff209f\",\n    \"label\": \"new group\",\n    \"cours\": \"EBM\",\n    \"__v\": 0\n}",
+          "content": "[\n{\n       \"arrayStudentId\": [\n           \"id1\",\n           \"id2\"\n       ],\n       \"_id\": \"5c99e05838ea0b001ee923ef\",\n       \"groupName\": \"teamy\"\n   },\n{\n       \"arrayStudentId\": [\n           \"id3\",\n           \"id4\",\n           \"id5\"\n       ],\n       \"_id\": \"5c99e05838ea0b001ee923ee\",\n       \"groupName\": \"iRate\"\n   },\n{\n       \"arrayStudentId\": [\n           \"id6\"\n       ],\n       \"_id\": \"5c99e05838ea0b001ee923ed\",\n       \"groupName\": \"tenugui\"\n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId/repartition/ Returns all"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/groups/:GroupId/seances/",
+    "title": "Returns all the seances made in a group",
+    "name": "GetAllSeancesInGroupById",
+    "group": "Groups",
+    "description": "<p>Returns an array of seances, empty array otherwise</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n{\n       \"repartition\": [\n           {\n               \"arrayStudentId\": [\n                   \"id1\",\n                   \"id2\"\n               ],\n               \"_id\": \"5c99e05838ea0b001ee923ef\",\n               \"groupName\": \"teamy\"\n           },\n           {\n               \"arrayStudentId\": [\n                   \"id3\",\n                   \"id4\",\n                   \"id5\"\n               ],\n               \"_id\": \"5c99e05838ea0b001ee923ee\",\n               \"groupName\": \"iRate\"\n           },\n           {\n               \"arrayStudentId\": [\n                   \"id6\"\n               ],\n               \"_id\": \"5c99e05838ea0b001ee923ed\",\n               \"groupName\": \"tenugui\"\n           }\n       ],\n       \"_id\": \"5c99e05838ea0b001ee923ec\",\n       \"label\": \"Fil Rouge\",\n       \"startingDate\": \"2019-03-10T13:30:00.000Z\",\n       \"finishingDate\": \"2019-03-10T17:30:00.000Z\"\n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/groups/:GroupId",
+    "title": "Return the info of one goup by ID",
+    "name": "GetOneGroupById",
+    "group": "Groups",
+    "description": "<p>Returns a JSON containing all the infos</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"_id\": \"5c99e05838ea0b001ee923eb\",\n   \"groupName\": \"EBM\",\n   \"seances\": [\n       {\n           \"repartition\": [\n               {\n                   \"arrayStudentId\": [\n                       \"id1\",\n                       \"id2\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ef\",\n                   \"groupName\": \"teamy\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id3\",\n                       \"id4\",\n                       \"id5\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ee\",\n                   \"groupName\": \"iRate\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id6\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ed\",\n                   \"groupName\": \"tenugui\"\n               }\n           ],\n           \"_id\": \"5c99e05838ea0b001ee923ec\",\n           \"label\": \"Fil Rouge\",\n           \"startingDate\": \"2019-03-10T13:30:00.000Z\",\n           \"finishingDate\": \"2019-03-10T17:30:00.000Z\"\n       }\n   ],\n   \"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -110,16 +185,16 @@
   },
   {
     "type": "get",
-    "url": "/groups/repartitions/:GroupId",
-    "title": "Returns all the repartitions within a groups",
-    "name": "GetRepartitionsByGroupId",
+    "url": "/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about",
+    "title": "1 sub-group within a repartition",
+    "name": "GetOneRepartitionInSeance",
     "group": "Groups",
-    "description": "<p>Returns a JSON with the groups in the given groups</p>",
+    "description": "<p>Returns an object containing the info of the sub-group  by Id</p>",
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "[\n{\n       \"repartitions\": [\n           \"modified group\"\n       ],\n       \"_id\": \"5c90ae4860a2d8001eff209f\"\n   }\n]",
+          "content": "{\n   \"arrayStudentId\": [\n       \"id1\",\n       \"id2\"\n   ],\n   \"_id\": \"5c99e05838ea0b001ee923ef\",\n   \"groupName\": \"teamy\"\n}",
           "type": "json"
         }
       ]
@@ -129,7 +204,32 @@
     "groupTitle": "Groups",
     "sampleRequest": [
       {
-        "url": "http://localhost:4000/api/groups/repartitions/:GroupId"
+        "url": "http://localhost:4000/api/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/groups/:GroupId/seances/:SeanceId",
+    "title": "Returns all the seances made in a groups",
+    "name": "GetOneSeanceInGroupById",
+    "group": "Groups",
+    "description": "<p>Returns an object containing the info about a seance within a group</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"repartition\": [\n       {\n           \"arrayStudentId\": [\n               \"id1\",\n               \"id2\"\n           ],\n           \"_id\": \"5c99e05838ea0b001ee923ef\",\n           \"groupName\": \"teamy\"\n       },\n       {\n           \"arrayStudentId\": [\n               \"id3\",\n               \"id4\",\n               \"id5\"\n           ],\n           \"_id\": \"5c99e05838ea0b001ee923ee\",\n           \"groupName\": \"iRate\"\n       },\n       {\n           \"arrayStudentId\": [\n               \"id6\"\n           ],\n           \"_id\": \"5c99e05838ea0b001ee923ed\",\n           \"groupName\": \"tenugui\"\n       }\n   ],\n   \"_id\": \"5c99e05838ea0b001ee923ec\",\n   \"label\": \"Fil Rouge\",\n   \"startingDate\": \"2019-03-10T13:30:00.000Z\",\n   \"finishingDate\": \"2019-03-10T17:30:00.000Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId"
       }
     ]
   },
@@ -137,14 +237,14 @@
     "type": "put",
     "url": "groups/:GroupId",
     "title": "modifies a group",
-    "name": "PutOnId",
+    "name": "ModifyGroup",
     "group": "Groups",
-    "description": "<p>Modifies the group, then returns the modified json</p>",
+    "description": "<p>Modifies the group, then returns the modified object. You just have to pass the fields to be modified.</p>",
     "parameter": {
       "examples": [
         {
           "title": "Request-example:",
-          "content": "{\n   \"repartitions\": [\"modified group\"],\n   \"label\": \"new group\"\n   # absent fields won't be changed\n}",
+          "content": "{\n  \"groupName\":\"EBM 2018-2019\"\n}",
           "type": "json"
         }
       ]
@@ -153,7 +253,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"repartitions\": [\n        \"modified group\"\n    ],\n    \"_id\": \"5c90ae4860a2d8001eff209f\",\n    \"label\": \"new group\",\n    \"cours\": \"EBM\", # unchanged\n    \"__v\": 0\n}",
+          "content": "{\n   \"_id\": \"5c99e05838ea0b001ee923eb\",\n   \"groupName\": \"EBM 2018-2019\",\n   \"seances\": [\n       {\n           \"repartition\": [\n               {\n                   \"arrayStudentId\": [\n                       \"id1\",\n                       \"id2\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ef\",\n                   \"groupName\": \"teamy\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id3\",\n                       \"id4\",\n                       \"id5\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ee\",\n                   \"groupName\": \"iRate\"\n               },\n               {\n                   \"arrayStudentId\": [\n                       \"id6\"\n                   ],\n                   \"_id\": \"5c99e05838ea0b001ee923ed\",\n                   \"groupName\": \"tenugui\"\n               }\n           ],\n           \"_id\": \"5c99e05838ea0b001ee923ec\",\n           \"label\": \"Fil Rouge\",\n           \"startingDate\": \"2019-03-10T13:30:00.000Z\",\n           \"finishingDate\": \"2019-03-10T17:30:00.000Z\"\n       }\n   ],\n   \"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -164,6 +264,31 @@
     "sampleRequest": [
       {
         "url": "http://localhost:4000/apigroups/:GroupId"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "groups/:GroupId/seances/:SeanceId",
+    "title": "modifies a group",
+    "name": "ModifySeance",
+    "group": "Groups",
+    "description": "<p>Modifies the Seance, then returns the modified object. You just have to pass the fields to be modified. Does not return anything.</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-example:",
+          "content": "{\n  \"groupName\":\"EBM 2018-2019\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/apigroups/:GroupId/seances/:SeanceId"
       }
     ]
   },
@@ -507,7 +632,7 @@
   },
   {
     "type": "get",
-    "url": "/users/isTeacher/:UserId",
+    "url": "/users/:UserId/isTeacher",
     "title": "Check if a user is a teacher by id",
     "name": "isProfById",
     "group": "User",
@@ -526,7 +651,7 @@
     "groupTitle": "User",
     "sampleRequest": [
       {
-        "url": "http://localhost:4000/api/users/isTeacher/:UserId"
+        "url": "http://localhost:4000/api/users/:UserId/isTeacher"
       }
     ]
   }

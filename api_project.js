@@ -1,15 +1,15 @@
 define({
-  "title": "ApiDoc pour le projet Boilerplate",
+  "title": "ApiDoc pour le projet Teamy",
   "url": "/api",
   "sampleUrl": "http://localhost:4000/api",
-  "name": "filrouge-boilerplate-backend",
+  "name": "Teamy-Backend",
   "version": "1.0.0",
-  "description": "Un squelette de projet backend pour le fil rouge de l'option EBM 2018-2019",
+  "description": "Backend du Gestion des groupes, EBM 18-19",
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-03-26T15:11:40.488Z",
+    "time": "2019-03-26T15:32:07.948Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }
