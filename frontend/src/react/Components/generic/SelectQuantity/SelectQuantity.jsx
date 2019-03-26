@@ -8,6 +8,7 @@ import classNames from './selectquantity.module.css';
 export default class SelectQuantity extends React.PureComponent {
     colCounts = {};
     studcolCounts = {};
+
     state = {
         colCountKey: 2,
         studcolCountKey: 2,
@@ -22,6 +23,7 @@ export default class SelectQuantity extends React.PureComponent {
         onStudColCountChange = (studcolCountKey) => {
             this.props.onStudColCountChange(studcolCountKey);
             this.setState({ studcolCountKey: studcolCountKey });
+
         }
         onColCountChange = (colCountKey) => {
             this.props.onColCountChange(colCountKey);
