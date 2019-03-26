@@ -67,6 +67,7 @@ class StudentManagementArea extends React.PureComponent {
   setStudentsFromGroup = (idGroup) =>{
 
     let students = [...this.props.students]
+
     let studentsfromgroup = []
     students.map(student => {
       student.listGroup.map(list => {
@@ -80,10 +81,19 @@ class StudentManagementArea extends React.PureComponent {
       })
       return null;
     })
+    console.log("bla", studentsfromgroup)
+
+    this.sendStudents(studentsfromgroup)
     this.setState({
       studentsfromgroup: studentsfromgroup,
     })
+
   }
+  sendStudents = (studentsfromgroup) =>{
+
+      this.props.getStudentsFromGroup(studentsfromgroup)
+  }
+
 }
 
 
