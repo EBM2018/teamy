@@ -372,6 +372,72 @@ router.get('/:GroupId/seances/:SeanceId/repartition/', groupsController.getRepar
 router.get('/:GroupId/seances/:SeanceId/repartition/:RepartitionId', groupsController.getOneRepartition);
 
 /**
+ * @api {put} groups/:GroupId modifies a group
+ * @apiName ModifyGroup
+ * @apiGroup Groups
+ * @apiDescription Modifies the group, then returns the modified object.
+ * You just have to pass the fields to be modified.
+ * @apiParamExample {json} Request-example:
+ *{
+ *   "groupName":"EBM 2018-2019"
+ *}
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *    "_id": "5c99e05838ea0b001ee923eb",
+ *    "groupName": "EBM 2018-2019",
+ *    "seances": [
+ *        {
+ *            "repartition": [
+ *                {
+ *                    "arrayStudentId": [
+ *                        "id1",
+ *                        "id2"
+ *                    ],
+ *                    "_id": "5c99e05838ea0b001ee923ef",
+ *                    "groupName": "teamy"
+ *                },
+ *                {
+ *                    "arrayStudentId": [
+ *                        "id3",
+ *                        "id4",
+ *                        "id5"
+ *                    ],
+ *                    "_id": "5c99e05838ea0b001ee923ee",
+ *                    "groupName": "iRate"
+ *                },
+ *                {
+ *                    "arrayStudentId": [
+ *                        "id6"
+ *                    ],
+ *                    "_id": "5c99e05838ea0b001ee923ed",
+ *                    "groupName": "tenugui"
+ *                }
+ *            ],
+ *            "_id": "5c99e05838ea0b001ee923ec",
+ *            "label": "Fil Rouge",
+ *            "startingDate": "2019-03-10T13:30:00.000Z",
+ *            "finishingDate": "2019-03-10T17:30:00.000Z"
+ *        }
+ *    ],
+ *    "__v": 0
+ *}
+ */
+router.put('/:GroupId', groupsController.updateGroup);
+
+/**
+ * @api {put} groups/:GroupId/seances/:SeanceId modifies a group
+ * @apiName ModifySeance
+ * @apiGroup Groups
+ * @apiDescription Modifies the Seance, then returns the modified object.
+ * You just have to pass the fields to be modified. Does not return anything.
+ * @apiParamExample {json} Request-example:
+ *{
+ *   "groupName":"EBM 2018-2019"
+ *}
+ */
+router.put('/:GroupId/seances/:SeanceId', groupsController.updateSeance);
+
+/**
  * @api {delete} /groups/:GroupId Delete Repartition On ID
  * @apiName DeleteOnID
  * @apiGroup Groups
@@ -386,31 +452,6 @@ router.get('/:GroupId/seances/:SeanceId/repartition/:RepartitionId', groupsContr
  * }
  */
 router.delete('/:GroupId', groupsController.delete);
-
-/**
- * @api {put} groups/:GroupId modifies a group
- * @apiName PutOnId
- * @apiGroup Groups
- * @apiDescription Modifies the group, then returns the modified json
- *
- * @apiParamExample {json} Request-example:
- *{
- *    "repartitions": ["modified group"],
- *    "label": "new group"
- *    # absent fields won't be changed
- *}
- * @apiSuccessExample {json} Success-Response:
- * {
- *     "repartitions": [
- *         "modified group"
- *     ],
- *     "_id": "5c90ae4860a2d8001eff209f",
- *     "label": "new group",
- *     "cours": "EBM", # unchanged
- *     "__v": 0
- * }
- */
-router.put('/:GroupId', groupsController.update);
 
 // TODO CRUD FOR GROUPS/SEANCE
 // TODO CRUD FOR GROUPS/SEANCE/REPARTITION

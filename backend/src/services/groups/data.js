@@ -1,5 +1,6 @@
-/* eslint-disable no-underscore-dangle */
-const Group = require('./model');
+const Group = require('./modelGroup');
+
+// const Repartition = require('./modelRepartition');
 
 module.exports = {
   create: async (repartition) => {
@@ -11,7 +12,7 @@ module.exports = {
     const result = await Group.find({});
     return result;
   },
-  getById: async (GroupId) => {
+  getGroupsById: async (GroupId) => {
     const result = await Group.findOne({ _id: GroupId });
     return result;
   },
@@ -31,6 +32,7 @@ module.exports = {
     }
     for (let i = 0; i < seances.length; i += 1) {
       const seance = seances[i];
+      // eslint-disable-next-line no-underscore-dangle
       if (SeanceId === `${seance._id}`) {
         console.log('success on getoneseance');
         return seance;
@@ -52,14 +54,26 @@ module.exports = {
     }
     for (let i = 0; i < repartition.length; i += 1) {
       const rep = repartition[i];
+      // eslint-disable-next-line no-underscore-dangle
       if (`${rep._id}` === RepartitionId) {
         return rep;
       }
     }
     return {};
   },
-  update: async (_id, repartition) => Group.findOneAndUpdate({ _id },
-    repartition,
+  updateGroup: async (GroupId, group) => Group.findOneAndUpdate({ GroupId },
+    group,
     { new: true }),
   deleteOnId: async id => Group.deleteOne({ _id: id }),
+  updateRepartition: async (GroupId, SeanceId, Seance) => {
+    Group.findOneAndUpdate(
+      { _id: GroupId, 'seances._id': SeanceId },
+      {
+        $set: {
+          'seances.$': Seance,
+        },
+      },
+      err => err,
+    );
+  },
 };

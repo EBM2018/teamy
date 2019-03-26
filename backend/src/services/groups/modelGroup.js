@@ -32,15 +32,11 @@ const SeanceSchema = new mongoose.Schema({
 const GroupSchema = new mongoose.Schema({
 
   seances: [SeanceSchema],
-
   groupName: {
     type: String,
     required: true,
     max: 50,
   },
-
-
 });
 
-// Exports the model
 module.exports = mongoose.model('Group', GroupSchema);

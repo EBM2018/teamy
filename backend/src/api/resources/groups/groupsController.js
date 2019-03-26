@@ -15,7 +15,7 @@ const controller = {
       return res.status(404).send('Bad Request');
     }
     try {
-      const result = await GroupData.getById(req.params.GroupId);
+      const result = await GroupData.getGroupsById(req.params.GroupId);
       return res.status(200).send(result);
     } catch (error) {
       return res.status(500).json(error);
@@ -81,15 +81,30 @@ const controller = {
     }
     return res.status(404).send('Bad Request');
   },
-  async update(req, res) {
+  async updateGroup(req, res) {
     if (!req.body) {
       return res.status(404).send('Bad Request');
     }
     try {
-      const result = await GroupData.update(req.params.GroupId, req.body);
+      const result = await GroupData.updateGroup(req.params.GroupId, req.body);
       return res.status(200).json(result);
     } catch (e) {
       return res.status(500).json(e);
+    }
+  },
+  async updateSeance(req, res) {
+    if (!req.body || !req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await GroupData.updateRepartition(
+        req.params.GroupId,
+        req.params.SeanceId,
+        req.body,
+      );
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).send(e);
     }
   },
 };
