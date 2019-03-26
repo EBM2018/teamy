@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const { Router } = require('express');
 
 const router = new Router();
@@ -150,10 +151,7 @@ router.get('/:GroupId', groupsController.getById);
  * @api {post} /groups/new/ Create new groups
  * @apiName CreateGroup
  * @apiGroup Groups
- * @apiDescription Create a new group.
- * you can just create it by passing a groupName.
- * return the json of the Group created
- *
+ * @apiDescription Create a new group. you can just create it by passing a groupName. return the json of the Group created
  * @apiParamExample {json} Request-example:
  * {
  *    "groupName": "Alternants",
@@ -318,8 +316,7 @@ router.get('/:GroupId/seances/', groupsController.getSeances);
 router.get('/:GroupId/seances/:SeanceId', groupsController.getOneSeance);
 
 /**
- * @api {get} /groups/:GroupId/seances/:SeanceId/repartition/ Returns all
- * the repartitions made in a seance
+ * @api {get} /groups/:GroupId/seances/:SeanceId/repartition/ Returns all the repartitions made in a seance
  * @apiName GetAllRepartitionsInSeance
  * @apiGroup Groups
  * @apiDescription Returns an array of repartitions, empty array otherwise
@@ -354,8 +351,7 @@ router.get('/:GroupId/seances/:SeanceId', groupsController.getOneSeance);
 router.get('/:GroupId/seances/:SeanceId/repartition/', groupsController.getRepartition);
 
 /**
- * @api {get} /groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about
- * 1 sub-group within a repartition
+ * @api {get} /groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about 1 sub-group within a repartition
  * @apiName GetOneRepartitionInSeance
  * @apiGroup Groups
  * @apiDescription Returns an object containing the info of the sub-group  by Id
@@ -428,8 +424,7 @@ router.put('/:GroupId', groupsController.updateGroup);
  * @api {put} groups/:GroupId/seances/:SeanceId modifies a group
  * @apiName ModifySeance
  * @apiGroup Groups
- * @apiDescription Modifies the Seance, then returns the modified object.
- * You just have to pass the fields to be modified. Does not return anything.
+ * @apiDescription Modifies the Seance, then returns the modified object. You just have to pass the fields to be modified. Does not return anything.
  * @apiParamExample {json} Request-example:
  *{
  *   "groupName":"EBM 2018-2019"
@@ -442,7 +437,7 @@ router.put('/:GroupId/seances/:SeanceId', groupsController.updateSeance);
 // groupsController.updateRepartition);
 
 /**
- * @api {delete} /groups/:GroupId Delete Repartition On ID
+ * @api {delete} /groups/:GroupId Delete Group On ID
  * @apiName DeleteGroup
  * @apiGroup Groups
  * @apiDescription Delete the Group, send a json to confirm the deletion
@@ -459,20 +454,20 @@ router.delete('/:GroupId', groupsController.deleteGroup);
 
 /**
  * @api {delete} /groups/:GroupId/seances/:SeanceId Delete Seance On ID
- * @apiName DeleteOnID
- * @apiGroup DeleteRepartition
- * @apiDescription Delete the Seance, send a json to confirm the deletion
- *
- * @apiSuccessExample {json} Success-Response:
- *
- * {
- *     "n": 1,
- *     "ok": 1,
- *     "deletedCount": 1
- * }
+ * @apiName DeleteSeance
+ * @apiGroup Groups
+ * @apiDescription Delete the Seance
  */
-router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance());
-// TODO CRUD FOR GROUPS/SEANCE
+router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance);
+
+
+/**
+ * @api {delete} /groups/:GroupId/seances/:SeanceId/repartition/:RepartitionId Delete RepartitionOn ID
+ * @apiName DeleteRepartition
+ * @apiGroup Groups
+ * @apiDescription Delete the Repartition
+ */
+router.delete('/:GroupId/seances/:SeanceId/repartition/:RepartitionId', groupsController.deleteRepartition);
 // TODO CRUD FOR GROUPS/SEANCE/REPARTITION
 
 module.exports = router;
