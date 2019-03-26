@@ -26,14 +26,12 @@ module.exports = {
     // TODO MAKE IT WORK
     const seances = await module.exports.getSeancesById(GroupId);
     if (!seances) {
-      console.log('empty seances');
+      console.log('no seance');
       return [];
     }
     for (let i = 0; i < seances.length; i += 1) {
       const seance = seances[i];
-      console.log(seance);
-      console.log(SeanceId === seance._id);
-      if (seance._id === SeanceId) {
+      if (SeanceId === `${seance._id}`) {
         console.log('success on getoneseance');
         return seance;
       }
@@ -48,13 +46,13 @@ module.exports = {
     return seance.repartition;
   },
   getOneRepartitionById: async (GroupId, SeanceId, RepartitionId) => {
-    const repartition = await module.exports.getRepartitionsById(GroupId, SeanceId);
+    const repartition = await module.exports.getRepartitionById(GroupId, SeanceId);
     if (!repartition) {
       return {};
     }
     for (let i = 0; i < repartition.length; i += 1) {
       const rep = repartition[i];
-      if (rep._id === RepartitionId) {
+      if (`${rep._id}` === RepartitionId) {
         return rep;
       }
     }

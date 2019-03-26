@@ -18,16 +18,12 @@ const SeanceSchema = new mongoose.Schema({
     required: true,
     max: 20,
   },
-  date: {
+  startingDate: {
     type: Date,
     required: false,
   },
-  startingHour: {
-    type: String,
-    required: false,
-  },
-  finishingHour: {
-    type: String,
+  finishingDate: {
+    type: Date,
     required: false,
   },
   repartition: [RepartitionSchema],

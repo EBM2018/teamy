@@ -25,7 +25,7 @@ const controller = {
     if (!req.body) {
       return res.status(400).send('No body');
     }
-    if (!req.body.label || !req.body.repartitions) {
+    if (!req.body.groupName) {
       return res.status(400).send('missing or wrong fields');
     }
     // TODO if -> verfier format des donnees
@@ -36,12 +36,43 @@ const controller = {
       return res.status(500).json(err);
     }
   },
-  async getRepartitionById(req, res) {
+  async getSeances(req, res) {
     if (req.params.GroupId) {
-      const result = await GroupData.getRepartitionById(req.params.GroupId);
+      const result = await GroupData.getSeancesById(req.params.GroupId);
       return res.status(200).json(result);
     }
     return res.status(404).send('Bad Request');
+  },
+  async getOneSeance(req, res) {
+    if (!req.params.SeanceId || !req.params.GroupId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.getOneSeanceById(
+      req.params.GroupId,
+      req.params.SeanceId,
+    );
+    return res.status(200).json(result);
+  },
+  async getRepartition(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.getRepartitionById(
+      req.params.GroupId,
+      req.params.SeanceId,
+    );
+    return res.status(200).json(result);
+  },
+  async getOneRepartition(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId || !req.params.RepartitionId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.getOneRepartitionById(
+      req.params.GroupId,
+      req.params.SeanceId,
+      req.params.RepartitionId,
+    );
+    return res.status(200).json(result);
   },
   async delete(req, res) {
     if (req.params.GroupId) {
