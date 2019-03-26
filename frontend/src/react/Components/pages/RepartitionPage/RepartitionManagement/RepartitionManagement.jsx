@@ -107,9 +107,11 @@ getStudentsFromGroup = (studentslist) => {
 
 
     onColCountChange = (colCountKey) =>{
+        console.log("nbRepartition", colCountKey)
         this.setState({nbRepartition :colCountKey })
     }
     onStudColCountChange = (studcolCountKey) =>{
+        console.log("nbEleve", studcolCountKey)
         this.setState({nbEleve :studcolCountKey })
     }
 

@@ -11,10 +11,10 @@ export default class SelectQuantity extends React.PureComponent {
 
   state = {
     colCountKey: 2,
-    studcolCountKey: 2,
+    studcolCountKey: 0,
   };
 
-    componentDidMount(){
+    componentWillMount(){
         this.defaultRepartitionSize()
     }
 
@@ -23,8 +23,8 @@ export default class SelectQuantity extends React.PureComponent {
         super();
 
 
-        [1, 2, 3, 4, 5, 6, 7, 8].forEach((value, i) => { this.colCounts[i] = value; });
-        [1,2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((value, i) => { this.studcolCounts[i] = value; });
+        [0, 1, 2, 3, 4, 5, 6, 7, 8].forEach((value, i) => { this.colCounts[i] = value; });
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((value, i) => { this.studcolCounts[i] = value; });
         }
         onStudColCountChange = (studcolCountKey) => {
             this.props.onStudColCountChange(studcolCountKey);
@@ -32,6 +32,7 @@ export default class SelectQuantity extends React.PureComponent {
 
         }
         onColCountChange = (colCountKey) => {
+            this.adaptRepartitionSize(colCountKey)
             this.props.onColCountChange(colCountKey);
             this.setState({ colCountKey: colCountKey });
     }
@@ -73,8 +74,31 @@ export default class SelectQuantity extends React.PureComponent {
         )
     }
 
+    adaptRepartitionSize = (nbRepartition) => {
+      let studcolCountKey;
+      if (this.props.students.length%nbRepartition === 0){
+        studcolCountKey = this.props.students.length / nbRepartition
+      } else{
+        studcolCountKey = (this.props.students.length + nbRepartition - this.props.students.length%nbRepartition) / nbRepartition
+      }
+        this.onStudColCountChange(studcolCountKey)
+    }
+
     defaultRepartitionSize = () => {
-       console.log("nb students", this.props.students);
+       console.log("nb students", this.props.students.length);
+      let studcolCountKey;
+      if (this.props.students.length%this.state.colCountKey === 0){
+         studcolCountKey = this.props.students.length / this.state.colCountKey
+      } else{
+         studcolCountKey = (this.props.students.length + this.state.colCountKey - this.props.students.length%this.state.colCountKey) / this.state.colCountKey
+      }
+
+
+      console.log("nb students par groupe", studcolCountKey)
+      this.onStudColCountChange(studcolCountKey)
+      /*this.setState({
+        studcolCountKey: studcolCountKey,
+      })*/
     }
 
 }

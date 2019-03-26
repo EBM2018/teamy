@@ -56,8 +56,8 @@ class GroupManagementArea extends React.PureComponent {
 
   renderOption = (item) => {
     return (
-      <Option key={item._id} text={item.label} onClick={this.selectGroup}>
-        {item.label}
+      <Option key={item._id} text={item.groupName} onClick={this.selectGroup}>
+        {item.groupName}
       </Option>
     );
   }
