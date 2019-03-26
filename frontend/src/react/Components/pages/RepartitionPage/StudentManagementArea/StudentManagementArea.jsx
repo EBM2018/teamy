@@ -6,7 +6,6 @@ import {
 import classNames from '../StudentManagementArea/studentManagementArea.module.css';
 import { connect  } from 'react-redux'
 import { getGroups} from '../../../../../redux/group/actions'
-import ListGroupStudentRepartition from "../ListGroupStudentRepartition/ListGroupStudentRepartition"
 import {getStudents} from "../../../../../redux/student/actions";
 
 const Option = AutoComplete.Option;
@@ -27,10 +26,9 @@ class StudentManagementArea extends React.PureComponent {
     render(){
         return (
             <div>
-                <div>
+                <div className={classNames.searchbar}>
                     <AutoComplete
-                        className={classNames.searchbar}
-                        placeholder="recherchez une Groupe"
+                        placeholder="recherchez un Groupe"
                         optionLabelProp="text"
                         dataSource={this.props.groups.map(this.renderOption)}
                         filterOption={(inputValue, option) => {
@@ -46,7 +44,7 @@ class StudentManagementArea extends React.PureComponent {
                         />
                     </AutoComplete>
                 </div>
-                <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
+
             </div>
 
         )
@@ -63,6 +61,8 @@ class StudentManagementArea extends React.PureComponent {
       this.props.getStudents().then(
         () =>{this.setStudentsFromGroup(idGroup.key)
         })
+
+        this.props.chosenGroup(idGroup.key)
     }
   setStudentsFromGroup = (idGroup) =>{
 
