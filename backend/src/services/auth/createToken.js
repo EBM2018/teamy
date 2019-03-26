@@ -40,8 +40,6 @@ exports.loginUser = async function log(user) {
       };
       const signOptions = { expiresIn: 3600, algorithm: 'HS256' };
       const token = jwt.sign(payload, config.secret, signOptions);
-      console.log('token : ');
-      console.log(token);
       return token;
     }
     return null;

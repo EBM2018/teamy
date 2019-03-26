@@ -32,7 +32,6 @@ exports.loginUser = async function log(req, res) {
   };
   try {
     const loginUser = await UserService.loginUser(User);
-    console.log(loginUser);
     if (loginUser === null) {
       return res.status(400).json({ token: loginUser, message: 'Invalid password' });
     // eslint-disable-next-line no-else-return
