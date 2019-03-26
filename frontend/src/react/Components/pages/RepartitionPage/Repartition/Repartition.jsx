@@ -18,7 +18,7 @@ export default class Repartition extends React.PureComponent {
                 <div >
                     <Col span={12}  >
                         <Card  className={classNames.cardstyle}
-                            title="default size card"
+                            title="Name"
                             bordered={true}
                             >
                             <li>{row}</li>
