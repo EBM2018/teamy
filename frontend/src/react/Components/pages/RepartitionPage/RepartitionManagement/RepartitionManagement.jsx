@@ -38,7 +38,7 @@ export default class RepartitionManagement extends React.PureComponent {
             return <Input placeholder="Nom de la répartition" onPressEnter={this.onPressEnter}/>
         }
     }
-
+    //TODO : Refactor ListGroupStudentRepartition non liée aux données studentsfromgroup
     displayRepartition =()=>{
         console.log("Repartition", this.state.nomGroup)
         if (this.state.nomGroup){
