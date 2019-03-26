@@ -67,7 +67,10 @@ module.exports = {
   deleteOnId: async id => Group.deleteOne({ _id: id }),
   updateRepartition: async (GroupId, SeanceId, Seance) => {
     Group.findOneAndUpdate(
-      { _id: GroupId, 'seances._id': SeanceId },
+      {
+        _id: GroupId,
+        'seances._id': SeanceId,
+      },
       {
         $set: {
           'seances.$': Seance,
@@ -75,5 +78,13 @@ module.exports = {
       },
       err => err,
     );
+  },
+  deleteRepartition: async (GroupId, SeanceId) => {
+    const group = await module.exports.getGroupsById(GroupId);
+    group.seances.id(SeanceId).remove();
+    group.save((err) => {
+      if (err) return err;
+      return 'ok';
+    });
   },
 };

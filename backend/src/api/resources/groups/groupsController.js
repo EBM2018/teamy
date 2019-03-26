@@ -74,13 +74,6 @@ const controller = {
     );
     return res.status(200).json(result);
   },
-  async delete(req, res) {
-    if (req.params.GroupId) {
-      const result = await GroupData.deleteOnId(req.params.GroupId);
-      return res.status(200).json(result);
-    }
-    return res.status(404).send('Bad Request');
-  },
   async updateGroup(req, res) {
     if (!req.body) {
       return res.status(404).send('Bad Request');
@@ -106,6 +99,20 @@ const controller = {
     } catch (e) {
       return res.status(500).send(e);
     }
+  },
+  async deleteGroup(req, res) {
+    if (req.params.GroupId) {
+      const result = await GroupData.deleteOnId(req.params.GroupId);
+      return res.status(200).json(result);
+    }
+    return res.status(404).send('Bad Request');
+  },
+  async deleteRepartition(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    await GroupData.deleteRepartition(req.params.GroupId, req.params.SeanceId);
+    return res.status(200).send('Ok');
   },
 };
 // TODO: Add new Repartition & groups
