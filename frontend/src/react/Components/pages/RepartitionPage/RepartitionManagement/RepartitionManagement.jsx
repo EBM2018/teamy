@@ -23,6 +23,7 @@ export default class RepartitionManagement extends React.PureComponent {
         startDate: null,
         endDate: null,
         nomGroup: '',
+        studentsfromgroup: [],
     }
     displaySelectDate =()=>{
         console.log("group", this.state.groupSelected)
@@ -38,7 +39,6 @@ export default class RepartitionManagement extends React.PureComponent {
             return <Input placeholder="Nom de la répartition" onPressEnter={this.onPressEnter}/>
         }
     }
-    //TODO : Refactor ListGroupStudentRepartition non liée aux données studentsfromgroup
     displayRepartition =()=>{
         console.log("Repartition", this.state.nomGroup)
         if (this.state.nomGroup){
@@ -80,13 +80,20 @@ render(){
     return (
         <div className={classNames.page}>
             <div className={classNames.studentmanagement}>
-                <StudentManagementArea chosenGroup={this.chosenGroup}/>
+                <StudentManagementArea getStudentsFromGroup={this.getStudentsFromGroup} chosenGroup={this.chosenGroup}/>
                 {this.displaySelectDate()}
                 {this.displayNomRepartition()}
             </div>
             {this.displayRepartition()}
         </div>
     )
+}
+
+getStudentsFromGroup = (studentslist) => {
+      console.log("list students", studentslist)
+      this.setState({
+        studentsfromgroup : studentslist,
+      })
 }
 
 
