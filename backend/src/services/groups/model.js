@@ -1,27 +1,50 @@
 const mongoose = require('mongoose');
 
 const RepartitionSchema = new mongoose.Schema({
+  groupName: {
+    type: String,
+    required: true,
+    max: 20,
+  },
+  arrayStudentId: {
+    type: Array,
+    required: true,
+  },
+});
+
+const SeanceSchema = new mongoose.Schema({
   label: {
     type: String,
     required: true,
-    max: 150,
-  },
-  repartitions: {
-    type: Array,
-    required: true,
-    max: 150,
-  },
-  cours: {
-    type: String,
-    required: false,
-    max: 50,
+    max: 20,
   },
   date: {
     type: Date,
     required: false,
   },
+  startingHour: {
+    type: String,
+    required: false,
+  },
+  finishingHour: {
+    type: String,
+    required: false,
+  },
+  repartition: [RepartitionSchema],
+});
+
+const GroupSchema = new mongoose.Schema({
+
+  seances: [SeanceSchema],
+
+  groupName: {
+    type: String,
+    required: true,
+    max: 50,
+  },
+
 
 });
 
-// Export the model
-module.exports = mongoose.model('Repartition', RepartitionSchema);
+// Exports the model
+module.exports = mongoose.model('Group', GroupSchema);
