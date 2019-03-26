@@ -23,7 +23,7 @@ export const registerUser = () => async  (dispatch) => {
 export const connectUser = () => async (dispatch) => {
 
     //TODO : brancher la connexion à l'API
-    let isLogIn = true;
+    let isLogIn = false;
     dispatch(CONNECT_USER(isLogIn))
 }
 

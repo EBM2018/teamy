@@ -66,10 +66,7 @@ class GroupManagementArea extends React.PureComponent {
     }
 
     updateGroup = (e) => {
-        console.log(this.state.Groups)
-        this.setState({newGroup: (e.target).value}, () => {
-            console.log(this.state.newGroup)
-        })
+        this.setState({newGroup: (e.target).value})
     }
 
     addGroupByButton = () => {
@@ -83,7 +80,6 @@ class GroupManagementArea extends React.PureComponent {
     }
     addGroup = (e) => {
         if (e.key === 'Enter') {
-          console.log("OK")
             if (this.state.newGroup !== "") {
                 this.props.postGroup(this.state.newGroup)
                 this.selectGroup(this.state.newGroup)

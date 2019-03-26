@@ -85,7 +85,7 @@ export default class SelectQuantity extends React.PureComponent {
     }
 
     defaultRepartitionSize = () => {
-       console.log("nb students", this.props.students.length);
+
       let studcolCountKey;
       if (this.props.students.length%this.state.colCountKey === 0){
          studcolCountKey = this.props.students.length / this.state.colCountKey
@@ -94,11 +94,11 @@ export default class SelectQuantity extends React.PureComponent {
       }
 
 
-      console.log("nb students par groupe", studcolCountKey)
+
       this.onStudColCountChange(studcolCountKey)
-      /*this.setState({
+      this.setState({
         studcolCountKey: studcolCountKey,
-      })*/
+      })
     }
 
 }

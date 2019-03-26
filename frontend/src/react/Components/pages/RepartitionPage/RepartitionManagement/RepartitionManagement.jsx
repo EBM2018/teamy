@@ -26,7 +26,6 @@ export default class RepartitionManagement extends React.PureComponent {
         studentsfromgroup: [],
     }
     displaySelectDate =()=>{
-        console.log("group", this.state.groupSelected)
         if (this.state.groupSelected){
             return (
               <div>
@@ -39,7 +38,6 @@ export default class RepartitionManagement extends React.PureComponent {
     }
 
     displayNomRepartition =()=>{
-        console.log("DateDisplay", this.state.startDate, " - ", this.state.endDate)
         if (this.state.startDate && this.state.endDate){
             return (
               <div>
@@ -66,13 +64,11 @@ export default class RepartitionManagement extends React.PureComponent {
 
 
     chosenGroup= (idGroup) => {
-        console.log("idGroup", idGroup);
         this.setState({
             groupSelected: idGroup,
         })
     }
     chosenDate= (dates) => {
-        console.log("Date", dates);
         this.setState({
             startDate: dates[0],
             endDate: dates[1],
@@ -99,7 +95,6 @@ render(){
 }
 
 getStudentsFromGroup = (studentslist) => {
-      console.log("list students", studentslist)
       this.setState({
         studentsfromgroup : studentslist,
       })
@@ -107,11 +102,9 @@ getStudentsFromGroup = (studentslist) => {
 
 
     onColCountChange = (colCountKey) =>{
-        console.log("nbRepartition", colCountKey)
         this.setState({nbRepartition :colCountKey })
     }
     onStudColCountChange = (studcolCountKey) =>{
-        console.log("nbEleve", studcolCountKey)
         this.setState({nbEleve :studcolCountKey })
     }
 
