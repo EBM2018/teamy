@@ -471,7 +471,7 @@ router.delete('/:GroupId', groupsController.deleteGroup);
  *     "deletedCount": 1
  * }
  */
-router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance());
+router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance);
 // TODO CRUD FOR GROUPS/SEANCE
 // TODO CRUD FOR GROUPS/SEANCE/REPARTITION
 
