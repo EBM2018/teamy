@@ -1,30 +1,5 @@
 define({ "api": [
   {
-    "type": "delete",
-    "url": "/groups/:GroupId/seances/:SeanceId",
-    "title": "Delete Seance On ID",
-    "name": "DeleteOnID",
-    "group": "DeleteRepartition",
-    "description": "<p>Delete the Seance, send a json to confirm the deletion</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "\n{\n    \"n\": 1,\n    \"ok\": 1,\n    \"deletedCount\": 1\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "src/api/resources/groups/index.js",
-    "groupTitle": "DeleteRepartition",
-    "sampleRequest": [
-      {
-        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId"
-      }
-    ]
-  },
-  {
     "type": "post",
     "url": "/groups/new/",
     "title": "Create new groups",
@@ -61,7 +36,7 @@ define({ "api": [
   {
     "type": "delete",
     "url": "/groups/:GroupId",
-    "title": "Delete Repartition On ID",
+    "title": "Delete Group On ID",
     "name": "DeleteGroup",
     "group": "Groups",
     "description": "<p>Delete the Group, send a json to confirm the deletion</p>",
@@ -80,6 +55,38 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://localhost:4000/api/groups/:GroupId"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/groups/:GroupId/seances/:SeanceId/repartition/:RepartitionId",
+    "title": "Delete RepartitionOn ID",
+    "name": "DeleteRepartition",
+    "group": "Groups",
+    "description": "<p>Delete the Repartition</p>",
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId/repartition/:RepartitionId"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/groups/:GroupId/seances/:SeanceId",
+    "title": "Delete Seance On ID",
+    "name": "DeleteSeance",
+    "group": "Groups",
+    "description": "<p>Delete the Seance</p>",
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId"
       }
     ]
   },
@@ -110,8 +117,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/groups/:GroupId/seances/:SeanceId/repartition/ Returns all",
-    "title": "the repartitions made in a seance",
+    "url": "/groups/:GroupId/seances/:SeanceId/repartition/",
+    "title": "Returns all the repartitions made in a seance",
     "name": "GetAllRepartitionsInSeance",
     "group": "Groups",
     "description": "<p>Returns an array of repartitions, empty array otherwise</p>",
@@ -129,7 +136,7 @@ define({ "api": [
     "groupTitle": "Groups",
     "sampleRequest": [
       {
-        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId/repartition/ Returns all"
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/:SeanceId/repartition/"
       }
     ]
   },
@@ -185,8 +192,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about",
-    "title": "1 sub-group within a repartition",
+    "url": "/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId",
+    "title": "Returns the info about 1 sub-group within a repartition",
     "name": "GetOneRepartitionInSeance",
     "group": "Groups",
     "description": "<p>Returns an object containing the info of the sub-group  by Id</p>",
@@ -204,7 +211,7 @@ define({ "api": [
     "groupTitle": "Groups",
     "sampleRequest": [
       {
-        "url": "http://localhost:4000/api/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId Returns the info about"
+        "url": "http://localhost:4000/api/groups/GroupId/seances/:SeanceId/repartition/:RepartitionId"
       }
     ]
   },
