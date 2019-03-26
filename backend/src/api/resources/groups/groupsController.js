@@ -111,8 +111,8 @@ const controller = {
     if (!req.params.GroupId || !req.params.SeanceId) {
       return res.status(404).send('Bad Request');
     }
-    await GroupData.deleteRepartition(req.params.GroupId, req.params.SeanceId);
-    return res.status(200).send('Ok');
+    const result = await GroupData.deleteSeance(req.params.GroupId, req.params.SeanceId);
+    return res.status(200).send(result);
   },
 };
 // TODO: Add new Repartition & groups
