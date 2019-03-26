@@ -467,7 +467,7 @@ router.delete('/:GroupId/seances/:SeanceId', groupsController.deleteSeance);
  * @apiGroup Groups
  * @apiDescription Delete the Repartition
  */
-router.delete('/:GroupId/seances/:SeanceId/repartition/:RepartitionId', groupsController.deleteRepartition);
+// router.delete('/:GroupId/seances/:SeanceId/repartition/:RepartitionId', groupsController.deleteRepartition);
 // TODO CRUD FOR GROUPS/SEANCE/REPARTITION
 
 module.exports = router;
