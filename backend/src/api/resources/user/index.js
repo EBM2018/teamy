@@ -186,7 +186,7 @@ router.put('/:UserId', userController.editUserById);
 router.delete('/:UserId', userController.deleteUserById);
 
 /**
- * @api {get} /users/isTeacher/:UserId Check if a user is a teacher by id
+ * @api {get} /users/:UserId/isTeacher Check if a user is a teacher by id
  * @apiName isProfById
  * @apiGroup User
  * @apiDescription Returns a boolean
@@ -194,6 +194,6 @@ router.delete('/:UserId', userController.deleteUserById);
  * @apiSuccessExample {String} Success-Response:
  * true
  */
-router.get('/isTeacher/:UserId', userController.checkIfProf);
+router.get('/:UserId/isTeacher', userController.checkIfProf);
 
 module.exports = router;
