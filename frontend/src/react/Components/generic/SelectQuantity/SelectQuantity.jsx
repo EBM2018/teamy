@@ -9,10 +9,16 @@ export default class SelectQuantity extends React.PureComponent {
     colCounts = {};
     studcolCounts = {};
 
-    state = {
-        colCountKey: 2,
-        studcolCountKey: 2,
-    };
+  state = {
+    colCountKey: 2,
+    studcolCountKey: 2,
+  };
+
+    componentDidMount(){
+        this.defaultRepartitionSize()
+    }
+
+
     constructor() {
         super();
 
@@ -66,4 +72,9 @@ export default class SelectQuantity extends React.PureComponent {
             </div>
         )
     }
+
+    defaultRepartitionSize = () => {
+       console.log("nb students", this.props.students);
+    }
+
 }

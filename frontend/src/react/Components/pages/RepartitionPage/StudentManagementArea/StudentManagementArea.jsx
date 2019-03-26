@@ -19,6 +19,7 @@ class StudentManagementArea extends React.PureComponent {
 
     componentWillMount() {
         this.props.getGroups()
+        this.props.getStudents()
     }
 
 
@@ -26,6 +27,7 @@ class StudentManagementArea extends React.PureComponent {
     render(){
         return (
             <div>
+              <h3>Sélectionnez le groupe d'étudiant avec lequel vous souhaitez travailler</h3>
                 <div className={classNames.searchbar}>
                     <AutoComplete
                         placeholder="recherchez un Groupe"
@@ -57,18 +59,14 @@ class StudentManagementArea extends React.PureComponent {
         );
     };
     selectGroup= (idGroup) => {
-
-      this.props.getStudents().then(
-        () =>{this.setStudentsFromGroup(idGroup.key)
-        })
-
-        this.props.chosenGroup(idGroup.key)
+      this.setStudentsFromGroup(idGroup.key)
+      this.props.chosenGroup(idGroup.key)
     }
   setStudentsFromGroup = (idGroup) =>{
-
+    let studentsfromgroup = []
     let students = [...this.props.students]
 
-    let studentsfromgroup = []
+
     students.map(student => {
       student.listGroup.map(list => {
         for(var i = 0; i<= list.id_group.length; i++){
@@ -81,12 +79,12 @@ class StudentManagementArea extends React.PureComponent {
       })
       return null;
     })
-    console.log("bla", studentsfromgroup)
-
     this.sendStudents(studentsfromgroup)
     this.setState({
       studentsfromgroup: studentsfromgroup,
     })
+
+
 
   }
   sendStudents = (studentsfromgroup) =>{
