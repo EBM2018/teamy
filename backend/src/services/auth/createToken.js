@@ -15,21 +15,14 @@ exports.createUser = async function crea(user) {
     mailAddress: user.mailAddress,
     isProf: user.isProf,
     hashPassword: user.hashPassword,
-    Salt: user.Salt,
+    hash_salt: user.salt,
   });
-  console.log(newUser);
   try {
     const savedUser = await newUser.save();
     console.log(savedUser);
   } catch (e) {
     throw Error("Echec de l'ajout d'un nouvel utilisateur");
   }
-  //     // cle de hashage utilisee par defaut : HS256, mais cle symetrique
-  //     // utiliser RS256 a la place
-  //     var token = jwt.sign({id: savedUser._id}, {algorithm: 'RS256'},
-  //     config.secret,
-  //     {expiresIn: 3600}); // 3600 secondes, correspond à 1h
-  //     return token;
 };
 
 // demande d'authentification de l'utilisateur
@@ -38,7 +31,6 @@ exports.loginUser = async function log(user) {
   try {
     const userData = await User.findOne({ mailAddress: user.mailAddress });
     const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
-    console.log(pwdIsValid);
     if (pwdIsValid) {
       // generation du token
       const payload = {
@@ -46,7 +38,7 @@ exports.loginUser = async function log(user) {
         last_name: userData.last_name,
         mailAddress: userData.mailAddress,
       };
-      const signOptions = { expiresIn: 3600, algorithm: 'RS256' };
+      const signOptions = { expiresIn: 3600, algorithm: 'HS256' };
       const token = jwt.sign(payload, config.secret, signOptions);
       console.log('token : ');
       console.log(token);
@@ -57,16 +49,3 @@ exports.loginUser = async function log(user) {
     throw Error("Problème lors de l'authentification de l'utilisateur");
   }
 };
-
-// try {
-//         var pwdIsValid = true;
-//         if (!pwdIsValid) throw Error("Mauvais mot de passe");
-//         var token = jwt.sign({id: userData._id}, {algorithm: 'RS256'},
-//         config.secret,
-//         {expiresIn: 3600}); // 3600 secondes, correspond à 1h
-//         console.log('token' + token);
-//         return token;
-//         } catch (e) {
-//         throw Error("Problème lors de l'authentification de l'utilisateur");
-//     }
-// };

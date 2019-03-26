@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const UserService = require('../../../services/auth/createToken');
 
-// permet de faire la creation d'un nouvel utilisateur (pas encore ajoute dans la bdd)
+// permet de faire la creation d'un nouvel utilisateur
 exports.createUser = async function crea(req, res) {
   const keySalt = bcrypt.genSaltSync();
   const hashedPwd = bcrypt.hashSync(req.body.pwd, keySalt);
@@ -16,8 +16,6 @@ exports.createUser = async function crea(req, res) {
   };
   try {
     const createdUser = await UserService.createUser(User);
-    console.log(createdUser.mailAddress);
-    // console.log(createdUser.hashPassword);
     // res.redirect('/login-form');
     // il faudrait idealement permettre la redirection de l'une des pages sur l'autre
     return res.status(200).json({ token: createdUser, message: 'Utilisateur bien ajouté à la base de données' });
@@ -43,53 +41,7 @@ exports.loginUser = async function log(req, res) {
       return res.status(200).json({ token: loginUser, message: 'Vous êtes connectés' });
     }
     // eslint-disable-next-line no-else-return
-    // else {
-    //     return res.status(400).json({token: loginUser, message: "Probleme de token"});
-    // }
   } catch (e) {
     return res.status(400).json({ status: 400, message: 'Invalid username' });
   }
-};
-
-
-// pour se connecter au formulaire
-
-exports.loginForm = async function login(req, res) {
-  return res.status(200).send(`
-    <h1> Test login form </h1>
-    <form method ="post" action = "/auth/login/">
-    <table>
-    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
-    </input> </td> </tr>
-    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
-    </input> </td> </tr>
-    </table>
-
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="next"/>
-    </form>
-    </form>
-    `);
-};
-
-exports.createForm = async function cre(req, res) {
-  return res.status(200).send(`
-    <h1> Test création form </h1>
-    <form method ="post" action = "/auth/registration">
-    <table>
-    <tr> <td> Name </td> <td> <input type="text" name="name" id="name">
-    </input> </td> </tr>
-    <tr> <td> Last Name </td><td> <input type="text" name="last_name" id="last_name">
-    </input> </td> </tr>
-    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
-    </input> </td> </tr>
-    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
-    </input> </td> </tr>
-    </table>
-
-    <input type="submit" value="Création" />
-    <input type="hidden" name="next" value="next"/>
-    </form>
-    </form>
-    `);
 };
