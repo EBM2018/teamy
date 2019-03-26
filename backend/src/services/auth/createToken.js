@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const User = require('../user/model');
-// var config = require('../../../src/config/index');
+const config = require('../../../src/config/index');
 
 // bcrypt.compare va permettre de comparer un password avec la valeur hachee stockee en bdd
 // bcrypt.hash(data,salt) va permettre de stocker la valeur hachee du mdp dans la bdd
@@ -45,11 +44,10 @@ exports.loginUser = async function log(user) {
         last_name: userData.last_name,
         mailAddress: userData.mailAddress,
       };
-      const privateKEY = fs.readFileSync('./private.key', 'utf8', (error) => {
-        if (error) throw error;
-      });
       const signOptions = { expiresIn: 3600, algorithm: 'RS256' };
-      const token = jwt.sign(payload, privateKEY, signOptions);
+      const token = jwt.sign(payload, config.secret, signOptions);
+      console.log('token : ');
+      console.log(token);
       return token;
     }
     return null;

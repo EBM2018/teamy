@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs');
 const UserService = require('../../../services/auth/createToken');
-const UserServiceVerif = require('../../../services/auth/verify');
 
 // permet de faire la creation d'un nouvel utilisateur (pas encore ajoute dans la bdd)
 exports.createUser = async function crea(req, res) {
@@ -38,8 +37,8 @@ exports.loginUser = async function log(req, res) {
       return res.status(400).json({ token: loginUser, message: 'Invalid password' });
     // eslint-disable-next-line no-else-return
     } else {
-      const verification = UserServiceVerif.verifyToken(loginUser);
-      return res.status(200).json({ token: loginUser, message: 'Vous êtes connectés', verif: verification });
+      // const verification = UserServiceVerif.verifyToken(loginUser);
+      return res.status(200).json({ token: loginUser, message: 'Vous êtes connectés' });
     }
     // eslint-disable-next-line no-else-return
     // else {
