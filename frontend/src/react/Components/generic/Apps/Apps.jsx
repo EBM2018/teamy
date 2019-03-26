@@ -12,8 +12,8 @@ export default class Apps extends React.PureComponent {
     render() {
         return (
             <div className={classNames.apps}>
-                <a className={classNames.app} href="https://irate.ebm.nymous.io/"><img className={classNames.app} src={require("./images/irate.jpg")} alt="irate"/></a>
-                <a className={classNames.app} href="https://tenugui.ebm.nymous.io/"><img className={classNames.app} src={require("./images/TenuGUI.png")} alt="this is a fish"/></a>
+                <a className={classNames.irate} href="https://irate.ebm.nymous.io/"><img className={classNames.irate} src={require("./images/irate.png")} alt="irate"/></a>
+                <a className={classNames.tenugui} href="https://tenugui.ebm.nymous.io/"><img className={classNames.tenugui} src={require("./images/TenuGUI.png")} alt="this is a fish"/></a>
             </div>
         )
     }

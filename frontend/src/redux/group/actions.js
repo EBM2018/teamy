@@ -1,5 +1,7 @@
 import { ACTIONS } from "./constants";
-import {data_group} from "../../__mock-data__/data_group"
+//import {data_group} from "../../__mock-data__/data_group"
+const request = require('superagent');
+
 
 export const SET_GROUPS = (group) => ({
     type: ACTIONS.SET_GROUPS,
@@ -16,17 +18,32 @@ export const POST_GROUP = (newGroup) => ({
 
 export const getGroups = () => async (dispatch) => {
 
-    //TODO : brancher la variable list à l'API
-
-    const group = data_group.data
-    console.log("groupe", group)
-    dispatch(SET_GROUPS(group))
+  request
+    .get('/api/groups/')
+    .set('Accept', 'application/json')
+    .then(res => {
+      // Do something
+      dispatch(SET_GROUPS(res.body))
+    }).catch(err => {
+    console.log("error : ", err)
+    // err.message, err.response
+  });
 }
 export const postGroup = (newGroup) => async (dispatch) => {
 
-    //TODO : brancher la variable list à l'API
+  request
+    .post('/api/groups/new')
+    .send({
+        "label": newGroup,
+        "repartitions": [],
+        "cours": ""
+    })
+    .set('Accept', 'application/json')
+    .then(res => {
+      dispatch(POST_GROUP(res.body))
+    });
 
-    dispatch(POST_GROUP(newGroup))
+
 }
 
 
