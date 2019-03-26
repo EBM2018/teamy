@@ -29,7 +29,6 @@ class ProtectedRoute extends React.PureComponent {
   //Sera appelé lorsque l'on changera de route
   componentWillReceiveProps(nextProps) {
 
-    console.log('nextprops', nextProps)
     this.setState({
       isLogIn: null,
     });

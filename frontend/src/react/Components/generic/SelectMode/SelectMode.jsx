@@ -12,12 +12,9 @@ export default class SelectMode extends React.PureComponent {
     state={
         current : "apps",
     };
-  componentDidMount () {
-    console.log("path", window.location.pathname);
-  }
+
     handleClick = (e) => {
-        console.log("path", this.path);
-        console.log('click ', e);
+
         this.setState({
             current: e.key,
         });
