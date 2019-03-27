@@ -26,44 +26,49 @@ export default class RepartitionManagement extends React.PureComponent {
         studentsfromgroup: [],
     }
     displaySelectDate =()=>{
-        console.log("group", this.state.groupSelected)
         if (this.state.groupSelected){
-            return <SelectDate chosenDate={this.chosenDate}/>
+            return (
+              <div>
+                <h3>Sélectionnez la date et l'heure de la séance concernée</h3>
+                <SelectDate chosenDate={this.chosenDate}/>
+              </div>
+            )
         }
 
     }
 
     displayNomRepartition =()=>{
-        console.log("DateDisplay", this.state.startDate, " - ", this.state.endDate)
         if (this.state.startDate && this.state.endDate){
-            return <Input placeholder="Nom de la répartition" onPressEnter={this.onPressEnter}/>
+            return (
+              <div>
+                <h3>Comment souhaitez vous nommer votre répartition d'étudiants ?</h3>
+                <Input placeholder="Nom de la répartition" onPressEnter={this.onPressEnter}/>
+              </div>
+            )
         }
     }
     displayRepartition =()=>{
-        console.log("Repartition", this.state.nomGroup)
         if (this.state.nomGroup){
-            return <div>
+            return (<div>
                     <div className={classNames.typerep}><SelectTypeRepartition /></div>
-                <SelectQuantity onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
+                <SelectQuantity students={this.state.studentsfromgroup} onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
                 <div className={classNames.attributionarea}>
                     <RepartitionArea nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve}/>
                     <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
                 </div>
 
-            </div>
+            </div>)
         }
 
     }
 
 
     chosenGroup= (idGroup) => {
-        console.log("idGroup", idGroup);
         this.setState({
             groupSelected: idGroup,
         })
     }
     chosenDate= (dates) => {
-        console.log("Date", dates);
         this.setState({
             startDate: dates[0],
             endDate: dates[1],
@@ -90,7 +95,6 @@ render(){
 }
 
 getStudentsFromGroup = (studentslist) => {
-      console.log("list students", studentslist)
       this.setState({
         studentsfromgroup : studentslist,
       })

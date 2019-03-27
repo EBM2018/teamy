@@ -28,12 +28,9 @@ export const modifyUser = (newUser) => async (dispatch) => {
       "isProf" : newUser.isProf
     })
     .then(res => {
-      // Do something
-      console.log("newUser", res.body)
       dispatch(MODIFY_USER(res.body))
     }).catch(err => {
     console.log("error : ", err)
-    // err.message, err.response
   });
 
 }
