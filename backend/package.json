@@ -1,7 +1,7 @@
 {
-  "name": "filrouge-boilerplate-backend",
+  "name": "Teamy-Backend",
   "version": "1.0.0",
-  "description": "Un squelette de projet backend pour le fil rouge de l'option EBM 2018-2019",
+  "description": "Backend du Gestion des groupes, EBM 18-19",
   "main": "index.js",
   "scripts": {
     "start": "dotenv nodemon src/index.js",
@@ -15,7 +15,7 @@
     "boilerplate"
   ],
   "apidoc": {
-    "title": "ApiDoc pour le projet Boilerplate",
+    "title": "ApiDoc pour le projet Teamy",
     "url": "/api",
     "sampleUrl": "http://localhost:4000/api"
   },

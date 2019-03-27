@@ -15,7 +15,7 @@ const controller = {
       return res.status(404).send('Bad Request');
     }
     try {
-      const result = await GroupData.getById(req.params.GroupId);
+      const result = await GroupData.getGroupsById(req.params.GroupId);
       return res.status(200).send(result);
     } catch (error) {
       return res.status(500).json(error);
@@ -25,7 +25,7 @@ const controller = {
     if (!req.body) {
       return res.status(400).send('No body');
     }
-    if (!req.body.label || !req.body.repartitions) {
+    if (!req.body.groupName) {
       return res.status(400).send('missing or wrong fields');
     }
     // TODO if -> verfier format des donnees
@@ -36,30 +36,83 @@ const controller = {
       return res.status(500).json(err);
     }
   },
-  async getRepartitionById(req, res) {
+  async getSeances(req, res) {
     if (req.params.GroupId) {
-      const result = await GroupData.getRepartitionById(req.params.GroupId);
+      const result = await GroupData.getSeancesById(req.params.GroupId);
       return res.status(200).json(result);
     }
     return res.status(404).send('Bad Request');
   },
-  async delete(req, res) {
-    if (req.params.GroupId) {
-      const result = await GroupData.deleteOnId(req.params.GroupId);
-      return res.status(200).json(result);
+  async getOneSeance(req, res) {
+    if (!req.params.SeanceId || !req.params.GroupId) {
+      return res.status(404).send('Bad Request');
     }
-    return res.status(404).send('Bad Request');
+    const result = await GroupData.getOneSeanceById(
+      req.params.GroupId,
+      req.params.SeanceId,
+    );
+    return res.status(200).json(result);
   },
-  async update(req, res) {
+  async getRepartition(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.getRepartitionById(
+      req.params.GroupId,
+      req.params.SeanceId,
+    );
+    return res.status(200).json(result);
+  },
+  async getOneRepartition(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId || !req.params.RepartitionId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.getOneRepartitionById(
+      req.params.GroupId,
+      req.params.SeanceId,
+      req.params.RepartitionId,
+    );
+    return res.status(200).json(result);
+  },
+  async updateGroup(req, res) {
     if (!req.body) {
       return res.status(404).send('Bad Request');
     }
     try {
-      const result = await GroupData.update(req.params.GroupId, req.body);
+      const result = await GroupData.updateGroup(req.params.GroupId, req.body);
       return res.status(200).json(result);
     } catch (e) {
       return res.status(500).json(e);
     }
+  },
+  async updateSeance(req, res) {
+    if (!req.body || !req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    try {
+      const result = await GroupData.updateSeance(
+        req.params.GroupId,
+        req.params.SeanceId,
+        req.body,
+      );
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.status(500).send(e);
+    }
+  },
+  async deleteGroup(req, res) {
+    if (req.params.GroupId) {
+      const result = await GroupData.deleteGroup(req.params.GroupId);
+      return res.status(200).json(result);
+    }
+    return res.status(404).send('Bad Request');
+  },
+  async deleteSeance(req, res) {
+    if (!req.params.GroupId || !req.params.SeanceId) {
+      return res.status(404).send('Bad Request');
+    }
+    const result = await GroupData.deleteSeance(req.params.GroupId, req.params.SeanceId);
+    return res.status(200).send(result);
   },
 };
 // TODO: Add new Repartition & groups

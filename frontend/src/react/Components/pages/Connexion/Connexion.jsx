@@ -3,6 +3,8 @@ import {Form, Icon, Input, Button
 } from 'antd';
 import classNames from "./connexion.module.css";
 import {Link} from "react-router-dom";
+import connect from "react-redux/es/connect/connect";
+import { checkUserStatus } from "../../../../redux/login/actions";
 
 
 
@@ -13,6 +15,7 @@ class Connexion extends React.PureComponent {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                this.props.checkUserStatus();
             }
         });
     }
@@ -52,4 +55,15 @@ class Connexion extends React.PureComponent {
 
 };
 
-export default Form.create()(Connexion)
+const WrappedLogin = Form.create()(Connexion)
+
+const mapStateToProps = state  => ({
+    students : state.isLogIn.map,
+  }
+)
+
+const mapDispatchToProps = {
+  checkUserStatus,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedLogin)

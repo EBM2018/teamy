@@ -1,14 +1,20 @@
 import React from "react";
 import classNames from './studentgroup.module.css'
 import {AutoComplete, Button, Icon, Input, List} from 'antd';
+import { modifyUser } from '../../../../../redux/student/actions';
+import connect from "react-redux/es/connect/connect";
 
 //import StudentItem from '../../../generic/StudentItem/StudentItem'
 
 const Option = AutoComplete.Option;
 
 
-export default class StudentGroup extends React.PureComponent {
+class StudentGroup extends React.PureComponent {
 
+
+    state = {
+      userToAdd: this.props.studentsoutgroup,
+    };
 
     render() {
         return (
@@ -43,11 +49,41 @@ export default class StudentGroup extends React.PureComponent {
 
   renderOption = (item) => {
     return (
-      <Option key={Number(item.id)} text={item.name} onClick={this.selectGroup}>
+      <Option key={item._id} text={item.name + " " + item.last_name} onClick={this.addStudentToList}>
         {item.name + " " +item.last_name}
       </Option>
     );
   }
 
+  addStudentToList = (student) => {
+      let userToAdd = [...this.props.studentsoutgroup];
+      userToAdd = userToAdd.filter(t => t._id === student.key);
+      userToAdd.map( (user) => {
+        user.listGroup.map( (group) => {
+          group.id_group = group.id_group.concat(this.props.selectedGroup.key)
+          return null;
+        })
+        this.props.modifyUser(user);
+
+        return this.refreshUsers();
+      })
+
+
+  }
+
+  refreshUsers = () => {
+      this.props.getStudents();
+  }
+
 }
 
+const mapStateToProps = state  => ({
+    students : state.students.map,
+  }
+)
+
+const mapDispatchToProps = {
+    modifyUser,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentGroup)

@@ -1,9 +1,15 @@
 .apps{
     display: grid;
     grid-template-columns: 1fr 1fr ;
+    margin-top : 100px;
 }
 
-.app{
+.tenugui{
     margin: auto;
     width: 60%;
+}
+
+.irate {
+    margin: auto;
+    width: 40%;
 }

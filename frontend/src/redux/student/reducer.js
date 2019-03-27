@@ -8,6 +8,8 @@ export default combineReducers({
     switch (action.type) {
       case ACTIONS.GET_STUDENTS :
         return action.students;
+      case ACTIONS.MODIFY_USER :
+        return action.students;
       default:
         return state
     }

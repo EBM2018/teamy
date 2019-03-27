@@ -9,11 +9,15 @@ export default class RepartitionsArea extends React.PureComponent {
 
     render(){
         let row = [];
-        for(let i = 0; i<=this.props.nbRepartition; i++) {
+        for(let i = 1; i<=this.props.nbRepartition; i++) {
             row.push(<Repartition eleve={this.props.nbEleve}/>)
         }
             return (
-                <h1>{row}</h1>
+                <div>
+
+                    <h1>{row}</h1>
+                </div>
+
             )
     }
 }
