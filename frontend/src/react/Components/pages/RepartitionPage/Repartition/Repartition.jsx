@@ -11,14 +11,14 @@ export default class Repartition extends React.PureComponent {
 
     render() {
         let row = [];
-        for (let i = 0; i <= this.props.eleve; i++) {
+        for (let i = 1; i <= this.props.eleve; i++) {
             row.push(<ListStudents eleve={this.props.eleve}/>);
         }
             return (
                 <div >
                     <Col span={12}  >
                         <Card  className={classNames.cardstyle}
-                            title="default size card"
+                            title="Name"
                             bordered={true}
                             >
                             <li>{row}</li>
