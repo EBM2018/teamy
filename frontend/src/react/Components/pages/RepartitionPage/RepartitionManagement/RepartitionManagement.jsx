@@ -53,7 +53,7 @@ export default class RepartitionManagement extends React.PureComponent {
                     <div className={classNames.typerep}><SelectTypeRepartition /></div>
                 <SelectQuantity students={this.state.studentsfromgroup} onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
                 <div className={classNames.attributionarea}>
-                    <RepartitionArea nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve}/>
+                    <RepartitionArea nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve} students={this.state.studentsfromgroup}/>
                     <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
                 </div>
 
