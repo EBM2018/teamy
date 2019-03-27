@@ -145,7 +145,7 @@ router.get('/', groupsController.getAll);
  *    "__v": 0
  *}
  */
-router.get('/:GroupId', groupsController.getById);
+router.get('/:GroupId/', groupsController.getById);
 
 /**
  * @api {post} /groups/new/ Create new groups
@@ -229,7 +229,21 @@ router.get('/:GroupId', groupsController.getById);
  *    "__v": 0
  *}
  */
-router.post('/new', groupsController.createNew);
+router.post('/new/', groupsController.createGroup);
+
+/**
+ * @api {post} /groups/:GroupId/seances/new Create new seance inside a group
+ * @apiName CreateSeance
+ * @apiGroup Groups
+ * @apiDescription Create a new Seance with the body, and saves it to the group by id
+ * @apiParamExample {json} Request-example:
+ * {
+ *    "label": "Cours des alternant",
+ *    "startingDate": "10/09/2019 13:30",
+ *    "finishingDate": "10/09/2019 15:30"
+ * }
+ */
+router.post('/:GroupId/seances/new/', groupsController.createSeance);
 
 /**
  * @api {get} /groups/:GroupId/seances/ Returns all the seances made in a group

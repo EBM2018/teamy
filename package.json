@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "antd": "^3.13.0",
+    "cors": "^2.8.5",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactdom": "^2.0.0",

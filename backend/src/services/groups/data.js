@@ -3,10 +3,19 @@ const Group = require('./modelGroup');
 // const Repartition = require('./modelRepartition');
 
 module.exports = {
-  create: async (repartition) => {
+  createGroup: async (repartition) => {
     const repartitionToSave = new Group(repartition);
     const repartitionSaved = await repartitionToSave.save();
     return repartitionSaved;
+  },
+  createSeance: async (GroupId, seance) => {
+    const group = await module.exports.getGroupsById(GroupId);
+    try {
+      const result = group.seances.create(seance);
+      return result;
+    } catch (err) {
+      return err;
+    }
   },
   getAll: async () => {
     const result = await Group.find({});
