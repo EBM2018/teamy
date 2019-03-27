@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 500,
   },
-  salt: {
+  hash_salt: {
     type: String,
     required: true,
     max: 500,
@@ -35,7 +35,6 @@ const UserSchema = new mongoose.Schema({
     required: false,
     max: 150,
   },
-
 });
 
 
