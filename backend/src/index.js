@@ -31,6 +31,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).send(err.message);
 });
 
+app.use('/auth', require('./api/resources/auth'));
+
 server.listen(config.app.port, (err) => {
   if (err) console.error(err);
   else console.log(`Listening on port ${config.app.port}`);

@@ -22,17 +22,22 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "docker": "^1.0.0",
     "dotenv-cli": "^1.4.0",
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.8",
+    "request": "^2.88.0",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "apidoc": "^0.17.7",
-    "eslint": "^5.12.1",
+    "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.9"

@@ -34,9 +34,8 @@ export const postGroup = (newGroup) => async (dispatch) => {
   request
     .post('/api/groups/new')
     .send({
-        "label": newGroup,
-        "repartitions": [],
-        "cours": ""
+        "groupName": newGroup,
+        "seances": [],
     })
     .set('Accept', 'application/json')
     .then(res => {
