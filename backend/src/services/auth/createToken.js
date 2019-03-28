@@ -35,13 +35,13 @@ exports.loginUser = async function log(user) {
     // const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
     if (hashpwd === userData.hashPassword) {
       // generation du token
-      const token = jwt.sign({
+      const payload = {
         name: userData.name,
         last_name: userData.last_name,
-        mailAddress: userData.mailAddress, // payload
-      },
-      config.secret,
-      { expiresIn: 3600, algorithm: 'HS256' });
+        mailAddress: userData.mailAddress,
+      };
+      const tokparam = { expiresIn: 3600, algorithm: 'HS256' };
+      const token = jwt.sign(payload, config.secret, tokparam);
       return token;
     }
     return null;
