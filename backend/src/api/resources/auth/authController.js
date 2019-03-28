@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const UserService = require('../../../services/auth/createToken');
+// const verif = require('../../../services/auth/verify');
 
 // permet de faire la creation d'un nouvel utilisateur
 exports.createUser = async function crea(req, res) {
@@ -37,10 +38,53 @@ exports.loginUser = async function log(req, res) {
     // eslint-disable-next-line no-else-return
     } else {
       // const verification = UserServiceVerif.verifyToken(loginUser);
+      console.log(loginUser);
       return res.status(200).json({ token: loginUser, message: 'Vous êtes connectés' });
     }
     // eslint-disable-next-line no-else-return
   } catch (e) {
     return res.status(400).json({ status: 400, message: 'Invalid username' });
   }
+};
+
+// pour se connecter au formulaire
+
+exports.loginForm = async function login(req, res) {
+  return res.status(200).send(`
+    <h1> Test login form </h1>
+    <form method ="post" action = "/auth/login/">
+    <table>
+    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
+    </input> </td> </tr>
+    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
+    </input> </td> </tr>
+    </table>
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="next"/>
+    </form>
+    </form>
+    `);
+};
+
+exports.createForm = async function cre(req, res) {
+  return res.status(200).send(`
+    <h1> Test création form </h1>
+    <form method ="post" action = "/auth/registration">
+    <table>
+    <tr> <td> Name </td> <td> <input type="text" name="name" id="name">
+    </input> </td> </tr>
+    <tr> <td> Last Name </td><td> <input type="text" name="last_name" id="last_name">
+    </input> </td> </tr>
+    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
+    </input> </td> </tr>
+    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
+    </input> </td> </tr>
+    </table>
+
+    <input type="submit" value="Création" />
+    <input type="hidden" name="next" value="next"/>
+    </form>
+    </form>
+    `);
 };
