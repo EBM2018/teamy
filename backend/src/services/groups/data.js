@@ -10,12 +10,13 @@ module.exports = {
   },
   createSeance: async (GroupId, seance) => {
     const group = await module.exports.getGroupsById(GroupId);
-    try {
-      const result = group.seances.create(seance);
-      return result;
-    } catch (err) {
-      return err;
+    group.seances.push(seance);
+    const subdoc = group.seances[0];
+    if (!subdoc.isNew) {
+      return 'this seance already exists';
     }
+    group.save();
+    return subdoc;
   },
   getAll: async () => {
     const result = await Group.find({});
