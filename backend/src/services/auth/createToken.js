@@ -10,6 +10,10 @@ const config = require('../../../src/config/index');
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function crea(user) {
   const newUser = new User({
+    listGroup: [{
+      id_repar: [],
+      id_group: [],
+    }],
     name: user.name,
     last_name: user.last_name,
     mailAddress: user.mailAddress,

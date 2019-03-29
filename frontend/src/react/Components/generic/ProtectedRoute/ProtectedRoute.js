@@ -52,15 +52,19 @@ class ProtectedRoute extends React.PureComponent {
           {...rest}
           render={props => {
             console.log("islogin ", this.props.isLogIn)
-            if (this.props.isLogIn === true) {
-              return (
+
+              if (this.props.isLogIn === true) {
+                return (
                   <Component {...props} />
-              )
-            } else if (this.props.isLogIn === false) {
-              return <Redirect to={'/Connexion'} />;
-            } else {
-              return null;
-            }
+                )
+              } else if (this.props.isLogIn === false) {
+                return <Redirect to={'/Connexion'}/>;
+              } else {
+                return null;
+              }
+
+
+
           }}
         />
     );

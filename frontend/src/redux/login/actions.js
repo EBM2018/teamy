@@ -13,10 +13,11 @@ export const CONNECT_USER = (isLogIn) => ({
   isLogIn
 })
 
-export const registerUser = () => async  (dispatch) => {
+export const registerUser = (values) => async  (dispatch) => {
 
     //TODO : brancher l'inscription à l'API
     let isLogIn = true;
+    console.log("bfbfbf", values)
     dispatch(REGISTER_USER(isLogIn))
 }
 

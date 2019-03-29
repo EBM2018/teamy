@@ -10,10 +10,10 @@ exports.createUser = async function crea(req, res) {
     name: req.body.name,
     last_name: req.body.last_name,
     mailAddress: req.body.email,
-    listGroup: {
+    listGroup: [{
       id_repar: [],
       id_group: [],
-    },
+    }],
     // isProf: req.body.isProf,
     salt: keySalt,
     isProf: req.body.isProf,
