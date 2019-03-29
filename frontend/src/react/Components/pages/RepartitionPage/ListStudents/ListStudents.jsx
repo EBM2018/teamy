@@ -2,10 +2,20 @@ import React from 'react';
 
 export default class ListStudents extends React.PureComponent{
 
-    render (){
-        return (
+    setStudent = () => {
+        if(this.props.student){
+            let value = ""
+          this.props.student.map((item) => {
+            value = String(item.name + " " +item.last_name)
+            return value
+          })
+          return value
+        }else{
+          return ("_____")
+        }
+      };
 
-            <li>(ID Name)</li>
-        )
+    render (){
+      return <li>{this.setStudent()}</li>
     }
 }
