@@ -1,0 +1,4 @@
+export const ACTIONS = {
+  UPDATE_GROUP: 'UPDATE_GROUP',
+  GET_GROUP_BY_ID:'GET_GROUP_BY_ID',
+}

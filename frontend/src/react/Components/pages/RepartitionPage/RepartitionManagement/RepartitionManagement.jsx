@@ -10,11 +10,11 @@ import StudentManagementArea from '../StudentManagementArea/StudentManagementAre
 import SelectTypeRepartition from "../../../generic/SelectTypeRepartition/SelectTypeRepartition";
 import {Input} from "antd";
 import ListGroupStudentRepartition from "../ListGroupStudentRepartition/ListGroupStudentRepartition";
-//import {getUsersFromGroup} from "../../../../../redux/student/actions";
-//import connect from "react-redux/es/connect/connect";
-//import StudentGroup from "../../GroupManagement/StudentGroup/StudentGroup"
+import {getGroupById} from "../../../../../redux/repartition/actions";
+import connect from "react-redux/es/connect/connect";
 
-export default class RepartitionManagement extends React.PureComponent {
+
+class RepartitionManagement extends React.PureComponent {
 
     state={
         nbRepartition: 2,
@@ -22,9 +22,12 @@ export default class RepartitionManagement extends React.PureComponent {
         groupSelected: null,
         startDate: null,
         endDate: null,
-        nomGroup: '',
+        nomRepart: '',
         studentsfromgroup: [],
+        unusedStudents: [],
+        repartitionCreated: false,
     }
+
     displaySelectDate =()=>{
         if (this.state.groupSelected){
             return (
@@ -42,28 +45,51 @@ export default class RepartitionManagement extends React.PureComponent {
             return (
               <div>
                 <h3>Comment souhaitez vous nommer votre répartition d'étudiants ?</h3>
-                <Input placeholder="Nom de la répartition" onPressEnter={this.onPressEnter}/>
+                <Input placeholder="Nom de la répartition" onInput={this.updateRepartitionName} onPressEnter={this.onPressEnter}/>
               </div>
             )
         }
     }
+
+  updateRepartitionName = (e) => {
+    this.setState({nomRepart: (e.target).value})
+  }
     displayRepartition =()=>{
-        if (this.state.nomGroup){
+        if (this.state.repartitionCreated){
+          this.createSeance();
             return (<div>
                     <div className={classNames.typerep}><SelectTypeRepartition /></div>
                 <SelectQuantity students={this.state.studentsfromgroup} onColCountChange = {this.onColCountChange} onStudColCountChange = {this.onStudColCountChange}/>
                 <div className={classNames.attributionarea}>
-                    <RepartitionArea nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve}/>
-                    <ListGroupStudentRepartition students={this.state.studentsfromgroup}/>
+                    <RepartitionArea getUnusedStudents={this.getUnusedStudents} nbRepartition={this.state.nbRepartition} nbEleve={this.state.nbEleve} students={this.state.unusedStudents}/>
+                    <ListGroupStudentRepartition students={this.state.unusedStudents}/>
                 </div>
 
             </div>)
+
         }
+
 
     }
 
+    createSeance = () => {
+        console.log("creation de la répartition"+ this.state.nomRepart+" du groupe : ", this.state.groupSelected,
+          "démarrant le ", this.state.startDate._d, " finissant le " + this.state.endDate._d)
+    }
 
+    getUnusedStudents = (unusedStudents) => {
+        this.setState({
+          unusedStudents: unusedStudents
+        })
+    }
     chosenGroup= (idGroup) => {
+
+        // TODO: récupération des données du groupe sélectionné
+
+      /*this.props.getGroupById(idGroup).then(() => {
+        console.log("group selected", this.props.group)
+      })*/
+
         this.setState({
             groupSelected: idGroup,
         })
@@ -75,10 +101,12 @@ export default class RepartitionManagement extends React.PureComponent {
         })
     }
 
-    onPressEnter= (value) =>{
+    onPressEnter= () =>{
+        console.log("value", this.state.nomRepart)
         this.setState({
-            nomGroup : value
-    })}
+          repartitionCreated: true,
+        })
+    }
 
 render(){
 
@@ -94,19 +122,29 @@ render(){
     )
 }
 
-getStudentsFromGroup = (studentslist) => {
-      this.setState({
-        studentsfromgroup : studentslist,
-      })
-}
+    getStudentsFromGroup = (studentslist) => {
+          this.setState({
+            studentsfromgroup : studentslist,
+            unusedStudents : studentslist
+          })
+    };
 
 
     onColCountChange = (colCountKey) =>{
         this.setState({nbRepartition :colCountKey })
-    }
+    };
     onStudColCountChange = (studcolCountKey) =>{
         this.setState({nbEleve :studcolCountKey })
-    }
+    };
 
 }
+const mapStateToProps = state  => ({
+    repartition: state.repartition.map,
+  }
+);
 
+const mapDispatchToProps = {
+  getGroupById,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepartitionManagement)
