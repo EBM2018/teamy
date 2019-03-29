@@ -21,25 +21,31 @@ const controller = {
       return res.status(500).json(error);
     }
   },
-  async createNew(req, res) {
+  async createGroup(req, res) {
     if (!req.body) {
       return res.status(400).send('No body');
     }
     if (!req.body.groupName) {
       return res.status(400).send('missing or wrong fields');
     }
-    // TODO if -> verfier format des donnees
     try {
-      const result = await GroupData.create(req.body);
+      const result = await GroupData.createGroup(req.body);
       return res.status(200).json(result);
     } catch (err) {
       return res.status(500).json(err);
     }
   },
+  async createSeance(req, res) {
+    if (!req.body || !req.params.GroupId) {
+      return res.status(200).send('Bad Request');
+    }
+    const result = await GroupData.createSeance(req.params.GroupId, req.body);
+    return res.status(200).json(result);
+  },
   async getSeances(req, res) {
     if (req.params.GroupId) {
       const result = await GroupData.getSeancesById(req.params.GroupId);
-      return res.status(200).json(result);
+      return res.status(200).send(result);
     }
     return res.status(404).send('Bad Request');
   },
