@@ -8,7 +8,6 @@ const UserController = require('./authController');
 
 router.post('/registration', UserController.createUser);
 router.post('/login/', UserController.loginUser);
-router.get('/login-form', UserController.loginForm);
-router.get('/createForm', UserController.createForm);
+router.post('/verification', UserController.verifToken);
 
 module.exports = router;

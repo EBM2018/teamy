@@ -10,9 +10,13 @@ exports.createUser = async function crea(req, res) {
     name: req.body.name,
     last_name: req.body.last_name,
     mailAddress: req.body.email,
+    listGroup: {
+      id_repar: [],
+      id_group: [],
+    },
     // isProf: req.body.isProf,
     salt: keySalt,
-    isProf: false,
+    isProf: req.body.isProf,
     hashPassword: hashedPwd,
   };
   try {
@@ -37,8 +41,6 @@ exports.loginUser = async function log(req, res) {
       return res.status(400).json({ token: loginUser, message: 'Invalid password' });
     // eslint-disable-next-line no-else-return
     } else {
-      const verification = verif.verifyToken(loginUser);
-      console.log(verification);
       return res.status(200).json({ token: loginUser, message: 'Vous êtes connectés' });
     }
     // eslint-disable-next-line no-else-return
@@ -49,28 +51,14 @@ exports.loginUser = async function log(req, res) {
 
 // pour se connecter au formulaire
 
-exports.loginForm = async function login(req, res) {
-  return res.status(200).send(`
-    <h1> Test login form </h1>
-    <form method ="post" action = "/auth/login/">
-    <table>
-    <tr> <td> Email </td> <td> <input type="text" name="email" id="email">
-    </input> </td> </tr>
-    <tr> <td> Password </td><td> <input type="text" name="pwd" id="pwd">
-    </input> </td> </tr>
-    </table>
-
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="next"/>
-    </form>
-    </form>
-    `);
-};
-
-exports.createForm = async function cre(req, res) {
-  return res.status(200).send('Ajout utilisateur');
-};
-
 exports.verifToken = async function ver(req, res) {
-  return res.status(200).send('Authent');
+  const token = {
+    tok: req.body.token,
+  };
+  try {
+    const result = await verif.verifyToken(token.tok);
+    return res.status(200).send({ token: result });
+  } catch (e) {
+    return res.status(400).send('Invalid token');
+  }
 };
