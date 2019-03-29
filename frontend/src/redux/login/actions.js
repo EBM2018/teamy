@@ -1,4 +1,5 @@
 import { ACTIONS } from "./constants";
+import {POST_GROUP} from "../group/actions";
 
 export const CHECK_USER_STATUS = (isLogIn) => ({
     type: ACTIONS.CHECK_USER_STATUS,
@@ -18,6 +19,17 @@ export const registerUser = (values) => async  (dispatch) => {
     //TODO : brancher l'inscription à l'API
     let isLogIn = true;
     console.log("bfbfbf", values)
+
+  request
+    .post('/auth/registration')
+    .send({
+      "groupName": newGroup,
+      "seances": [],
+    })
+    .set('Accept', 'application/json')
+    .then(res => {
+      dispatch(POST_GROUP(res.body))
+    });
     dispatch(REGISTER_USER(isLogIn))
 }
 

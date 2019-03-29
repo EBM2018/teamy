@@ -19,7 +19,7 @@ exports.createUser = async function crea(user) {
     mailAddress: user.mailAddress,
     isProf: user.isProf,
     hashPassword: user.hashPassword,
-    hash_salt: user.salt,
+    salt: user.salt,
   });
   try {
     const savedUser = await newUser.save();
@@ -34,7 +34,7 @@ exports.loginUser = async function log(user) {
   // on cherche l'utilisateur dans la bdd avec findOne
   try {
     const userData = await User.findOne({ mailAddress: user.mailAddress });
-    const salt = userData.hash_salt;
+    const salt = userData.salt;
     const hashpwd = bcrypt.hashSync(user.hashPassword, salt);
     // const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
     if (hashpwd === userData.hashPassword) {
