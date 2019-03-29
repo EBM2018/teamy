@@ -15,20 +15,12 @@ export default class Repartition extends React.PureComponent {
     children : [],
     selectedItems : [],
     submittedStudents : [],
+    unusedStudents:[],
   }
 
-    componentWillMount(){
-      let children = this.renderOption();
-      this.setState({
-        children: children,
-      })
-    }
 
     handleChange = (value) => {
-      console.log(`selected ${value}`);
       let selectedItems = value;
-      //selectedItems.push(value);
-
       this.setState({
         selectedItems: selectedItems,
       })
@@ -38,7 +30,6 @@ export default class Repartition extends React.PureComponent {
     render() {
         let row = [];
         for (let i = 0; i <= this.props.nbEleve-1; i++) {
-            console.log(this.state.submittedStudents, "student added", this.props.nbEleve, i, this.state.submittedStudents[i])
             row.push(<ListStudents student={this.state.submittedStudents[i]} eleve={this.props.nbEleve}/>);
         }
 
@@ -55,7 +46,7 @@ export default class Repartition extends React.PureComponent {
                             placeholder="Please select"
                             onChange={this.handleChange}
                           >
-                            {this.state.children}
+                            {this.renderOption()}
                           </Select><Button onClick={this.addStudentToRepartition}>Ajouter au groupe</Button>
 
                           <li>{row}</li>
@@ -68,25 +59,36 @@ export default class Repartition extends React.PureComponent {
         }
 
       addStudentToRepartition = () => {
-
         let submittedStudents = [];
-        this.state.selectedItems.map((item) => {
-          submittedStudents.push(this.props.students.filter(t => t._id === String(item)))
-          return null;
-        });
-        if(this.state.selectedItems !== []){
+        let unusedStudents = [...this.props.unusedStudents];
+        console.log("selected", this.state.selectedItems.length, "nbEleve ", this.props.nbEleve)
+        if(this.state.selectedItems.length <= this.props.nbEleve) {
+          this.state.selectedItems.map((item) => {
+            submittedStudents.push(this.props.unusedStudents.filter(t => t._id === String(item)))
+            unusedStudents = unusedStudents.filter(t => t._id !== String(item))
+            return null;
+          });
+
+
+          if (this.state.selectedItems !== []) {
             this.setState({
               submittedStudents: submittedStudents,
+
+            }, () => {
+              this.props.setUnUsedStudents(unusedStudents);
             })
 
+          }
+        }else{
+          console.log("vous dépassez la capacité de ce groupe")
         }
       }
       renderOption = () => {
         let children = [];
-        this.props.students.map((item) => {
-          children.push(<Option key={item._id} text={item.name + " " + item.last_name}>{item.name + " " +item.last_name}</Option>);
-          return children;
-        })
-        return children;
+          this.props.unusedStudents.map((item) => {
+            children.push(<Option key={item._id} text={item.name + " " + item.last_name}>{item.name + " " +item.last_name}</Option>);
+            return children;
+          });
+        return children
       }
 }

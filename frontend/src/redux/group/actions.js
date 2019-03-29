@@ -1,5 +1,4 @@
 import { ACTIONS } from "./constants";
-//import {data_group} from "../../__mock-data__/data_group"
 const request = require('superagent');
 
 
@@ -29,6 +28,8 @@ export const getGroups = () => async (dispatch) => {
     // err.message, err.response
   });
 }
+
+
 export const postGroup = (newGroup) => async (dispatch) => {
 
   request
@@ -44,5 +45,6 @@ export const postGroup = (newGroup) => async (dispatch) => {
 
 
 }
+
 
 

@@ -6,7 +6,6 @@ export default class ListStudents extends React.PureComponent{
         if(this.props.student){
             let value = ""
           this.props.student.map((item) => {
-              console.log("item", item.name)
             value = String(item.name + " " +item.last_name)
             return value
           })

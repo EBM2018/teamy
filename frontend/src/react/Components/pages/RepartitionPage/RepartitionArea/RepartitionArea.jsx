@@ -7,10 +7,11 @@ import Repartition from '../Repartition/Repartition'
 
 export default class RepartitionsArea extends React.PureComponent {
 
+
     render(){
         let row = [];
         for(let i = 1; i<=this.props.nbRepartition; i++) {
-            row.push(<Repartition key={i} students={this.props.students} nbEleve={this.props.nbEleve}/>)
+            row.push(<Repartition key={i} setUnUsedStudents={this.setUnUsedStudents} unusedStudents={this.props.students} nbEleve={this.props.nbEleve}/>)
         }
             return (
                 <div>
@@ -19,5 +20,8 @@ export default class RepartitionsArea extends React.PureComponent {
                 </div>
 
             )
+    }
+    setUnUsedStudents = (students) => {
+        this.props.getUnusedStudents(students)
     }
 }
