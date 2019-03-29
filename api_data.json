@@ -34,6 +34,31 @@
     ]
   },
   {
+    "type": "post",
+    "url": "/groups/:GroupId/seances/new",
+    "title": "Create new seance inside a group",
+    "name": "CreateSeance",
+    "group": "Groups",
+    "description": "<p>Create a new Seance with the body, and saves it to the group by id</p>",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-example:",
+          "content": "{\n   \"label\": \"Cours des alternant\",\n   \"startingDate\": \"10/09/2019 13:30\",\n   \"finishingDate\": \"10/09/2019 15:30\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/api/resources/groups/index.js",
+    "groupTitle": "Groups",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:4000/api/groups/:GroupId/seances/new"
+      }
+    ]
+  },
+  {
     "type": "delete",
     "url": "/groups/:GroupId",
     "title": "Delete Group On ID",
