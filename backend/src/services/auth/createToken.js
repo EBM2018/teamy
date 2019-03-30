@@ -39,27 +39,6 @@ exports.loginUser = async function log(user) {
     // const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
     if (hashpwd === userData.hashPassword) {
       // generation du token
-<<<<<<< HEAD
-      // const payload = {
-      //   name: userData.name,
-      //   last_name: userData.last_name,
-      //   mailAddress: userData.mailAddress,
-      // };
-      // const tokparam = { expiresIn: 3600, algorithm: 'HS256' };
-      // const token = jwt.sign(payload, config.secret, tokparam);
-      const token = jwt.sign(
-        {
-          name: userData.name,
-          last_name: userData.last_name,
-          mailAddress: userData.mailAddress,
-        },
-        config.secret,
-        {
-          expiresIn: 3600,
-          algorithm: 'HS256',
-        },
-      );
-=======
       const playload = {
         name: userData.name,
         last_name: userData.last_name,
@@ -68,7 +47,6 @@ exports.loginUser = async function log(user) {
       const tokparam = { expiresIn: 3600, algorithm: 'HS256' };
       const token = jwt.sign(playload, config.secret, tokparam);
 
->>>>>>> 33a5df938704b96ca59f1ce0ec1bc2b2a50fb61a
       return token;
     }
     return null;
