@@ -1,5 +1,6 @@
 import { ACTIONS } from "./constants";
-import {POST_GROUP} from "../group/actions";
+const request = require('superagent');
+let isLogIn = false;
 
 export const CHECK_USER_STATUS = (isLogIn) => ({
     type: ACTIONS.CHECK_USER_STATUS,
@@ -17,34 +18,45 @@ export const CONNECT_USER = (isLogIn) => ({
 export const registerUser = (values) => async  (dispatch) => {
 
     //TODO : brancher l'inscription à l'API
-    let isLogIn = true;
-    console.log("bfbfbf", values)
+    console.log("bfbfbf", isLogIn)
 
   request
     .post('/auth/registration')
     .send({
-      "groupName": newGroup,
-      "seances": [],
+      "name": values.nickname,
+      "last_name": values.name,
+      "email": values.email,
+      "isProf": values.isProf,
+      "pwd": values.password
     })
     .set('Accept', 'application/json')
     .then(res => {
-      dispatch(POST_GROUP(res.body))
+      isLogIn = true;
+      dispatch(REGISTER_USER(res.body))
     });
-    dispatch(REGISTER_USER(isLogIn))
+    //dispatch(REGISTER_USER(isLogIn))
 }
 
-export const connectUser = () => async (dispatch) => {
+export const connectUser = (values) => async (dispatch) => {
 
     //TODO : brancher la connexion à l'API
-    let isLogIn = false;
-    dispatch(CONNECT_USER(isLogIn))
+  request
+    .post('/auth/login')
+    .send({
+      "email": values.email,
+      "pwd": values.password
+    })
+    .set('Accept', 'application/json')
+    .then(res => {
+      isLogIn = true;
+      dispatch(CONNECT_USER(isLogIn))
+    });
+    //dispatch(CONNECT_USER(isLogIn))
 }
 
 export const checkUserStatus = () => async (dispatch) => {
 
     //TODO : brancher le checkUserStatus à l'API
-    let isLogIn = true;
-
     dispatch(CHECK_USER_STATUS(isLogIn))
 }
 

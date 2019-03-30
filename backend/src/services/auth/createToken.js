@@ -34,18 +34,20 @@ exports.loginUser = async function log(user) {
   // on cherche l'utilisateur dans la bdd avec findOne
   try {
     const userData = await User.findOne({ mailAddress: user.mailAddress });
+    console.log(userData)
     const salt = userData.salt;
     const hashpwd = bcrypt.hashSync(user.hashPassword, salt);
     // const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
     if (hashpwd === userData.hashPassword) {
       // generation du token
-      const payload = {
+      const playload = {
         name: userData.name,
         last_name: userData.last_name,
         mailAddress: userData.mailAddress,
       };
       const tokparam = { expiresIn: 3600, algorithm: 'HS256' };
-      const token = jwt.sign(payload, config.secret, tokparam);
+      const token = jwt.sign(playload, config.secret, tokparam);
+
       return token;
     }
     return null;

@@ -45,7 +45,8 @@ exports.loginUser = async function log(req, res) {
     }
     // eslint-disable-next-line no-else-return
   } catch (e) {
-    return res.status(400).json({ status: 400, message: 'Invalid username' });
+    console.log("err", e);
+    return res.status(400).json({ status: 400, message: 'Invalid username'+ e });
   }
 };
 

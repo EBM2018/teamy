@@ -21,8 +21,11 @@ class Inscription extends React.Component {
         //A retirer
         this.props.form.validateFieldsAndScroll((err, values) =>{
         if (!err) {
-            console.log('Received values of form: ', values);
-            this.props.registerUser(values);
+            //console.log('Received values of form: ', values);
+            this.props.registerUser(values).then(() => {
+              console.log(this.props.isLogIn);
+            });
+
             }
         });
 
