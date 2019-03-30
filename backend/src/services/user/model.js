@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     max: 500,
   },
-  hash_salt: {
+  salt: {
     type: String,
     required: true,
     max: 500,

@@ -1,10 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {
-    Form, Input, Button
+    Form, Input, Button,Checkbox
 } from 'antd';
 import classNames from "../Inscription/inscription.module.css";
 import {Link} from "react-router-dom";
+import {registerUser} from "../../../../redux/login/actions";
+import connect from "react-redux/es/connect/connect";
 
 
 
@@ -17,12 +19,16 @@ class Inscription extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //A retirer
-        //this.props.form.validateFieldsAndScroll((err, values) =>
-        //if (!err) {
-        //       console.log('Received values of form: ', values);
-        //    }
-        //});
-        //
+        this.props.form.validateFieldsAndScroll((err, values) =>{
+        if (!err) {
+            //console.log('Received values of form: ', values);
+            this.props.registerUser(values).then(() => {
+              console.log(this.props.isLogIn);
+            });
+
+            }
+        });
+
     };
 
     handleConfirmBlur = (e) => {
@@ -78,6 +84,37 @@ class Inscription extends React.Component {
 
         return (
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
+              <Form.Item
+                className={classNames.inputItem}
+                {...formItemLayout}
+                label={(
+                  <span>
+              Prénom
+            </span>
+                )}
+              >
+                {getFieldDecorator('nickname', {
+                  rules: [{ required: true, message: 'Veuillez mettre votre prenom', whitespace: true }],
+                })(
+                  <Input />
+                )}
+              </Form.Item>
+
+              <Form.Item
+                className={classNames.inputItem}
+                {...formItemLayout}
+                label={(
+                  <span>
+              Nom
+            </span>
+                )}
+              >
+                {getFieldDecorator('name', {
+                  rules: [{ required: true, message: 'Veuillez mettre votre nom', whitespace: true }],
+                })(
+                  <Input />
+                )}
+              </Form.Item>
                 <Form.Item
                     {...formItemLayout}
                     label="E-mail"
@@ -123,37 +160,18 @@ class Inscription extends React.Component {
                         <Input type="password" onBlur={this.handleConfirmBlur} />
                     )}
                 </Form.Item>
-                <Form.Item
-                    className={classNames.inputItem}
-                    {...formItemLayout}
-                    label={(
-                        <span>
-              Prénom
-            </span>
-                    )}
-                >
-                    {getFieldDecorator('nickname', {
-                        rules: [{ required: true, message: 'Veuillez mettre votre prenom', whitespace: true }],
-                    })(
-                        <Input />
-                    )}
-                </Form.Item>
+              <Form.Item
+                className={classNames.inputItem}
+              >
+                {getFieldDecorator('isProf', {
+                  valuePropName: 'checked',
+                  initialValue: false,
+                })(
+                  <Checkbox>Professeur</Checkbox>
+                )}
 
-                <Form.Item
-                    className={classNames.inputItem}
-                    {...formItemLayout}
-                    label={(
-                        <span>
-              Nom
-            </span>
-                    )}
-                >
-                    {getFieldDecorator('name', {
-                        rules: [{ required: true, message: 'Veuillez mettre votre nom', whitespace: true }],
-                    })(
-                        <Input />
-                    )}
-                </Form.Item>
+              </Form.Item>
+
                 <Form.Item  {...tailFormItemLayout} className={classNames.validationButton}>
                     <Button type="primary" htmlType="submit">S'inscrire</Button>
                     {"    Ou    "}
@@ -165,5 +183,14 @@ class Inscription extends React.Component {
         );
     }
 }
+const mapStateToProps = state  => ({
+    isLogIn: state.isLogIn.map,
+  }
+);
 
-export default Form.create()(Inscription)
+const mapDispatchToProps = {
+  registerUser,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Inscription))

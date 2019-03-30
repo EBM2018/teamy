@@ -1,0 +1,3 @@
+export const ACTIONS = {
+  GET_SEANCE_FROM_GROUP: 'GET_SEANCE_FROM_GROUP',
+}
