@@ -4,7 +4,7 @@ import {Form, Icon, Input, Button
 import classNames from "./connexion.module.css";
 import {Link} from "react-router-dom";
 import connect from "react-redux/es/connect/connect";
-import { checkUserStatus } from "../../../../redux/login/actions";
+import { connectUser } from "../../../../redux/login/actions";
 
 
 
@@ -14,8 +14,8 @@ class Connexion extends React.PureComponent {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                this.props.checkUserStatus();
+                //console.log('Received values of form: ', values);
+                this.props.connectUser(values);
             }
         });
     }
@@ -25,7 +25,7 @@ class Connexion extends React.PureComponent {
         return (
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
                 <Form.Item className={classNames.inputItem}>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('email', {
                         rules: [{ required: true, message: 'Veuillez mettre votre e-mail!' }],
                     })(
                     <Input prefix={<Icon type="user" className={classNames.inputIconUser}/>} placeholder="E-mail"/>
@@ -63,7 +63,7 @@ const mapStateToProps = state  => ({
 )
 
 const mapDispatchToProps = {
-  checkUserStatus,
+  connectUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedLogin)

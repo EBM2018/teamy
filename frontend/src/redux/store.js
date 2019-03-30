@@ -4,8 +4,8 @@ import rootReducer from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-const initialState = {}
 
+const initialState = {}
 const middleware = [thunk]
 
 const store = createStore(

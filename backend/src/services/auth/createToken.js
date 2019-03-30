@@ -10,12 +10,16 @@ const config = require('../../../src/config/index');
 // exports va permettre d'utiliser createUser sur d'autres pages
 exports.createUser = async function crea(user) {
   const newUser = new User({
+    listGroup: [{
+      id_repar: [],
+      id_group: [],
+    }],
     name: user.name,
     last_name: user.last_name,
     mailAddress: user.mailAddress,
     isProf: user.isProf,
     hashPassword: user.hashPassword,
-    hash_salt: user.salt,
+    salt: user.salt,
   });
   try {
     const savedUser = await newUser.save();
@@ -30,11 +34,12 @@ exports.loginUser = async function log(user) {
   // on cherche l'utilisateur dans la bdd avec findOne
   try {
     const userData = await User.findOne({ mailAddress: user.mailAddress });
-    const salt = userData.hash_salt;
+    const { salt } = userData;
     const hashpwd = bcrypt.hashSync(user.hashPassword, salt);
     // const pwdIsValid = bcrypt.compareSync(user.hashPassword, userData.hashPassword);
     if (hashpwd === userData.hashPassword) {
       // generation du token
+<<<<<<< HEAD
       // const payload = {
       //   name: userData.name,
       //   last_name: userData.last_name,
@@ -54,6 +59,16 @@ exports.loginUser = async function log(user) {
           algorithm: 'HS256',
         },
       );
+=======
+      const playload = {
+        name: userData.name,
+        last_name: userData.last_name,
+        mailAddress: userData.mailAddress,
+      };
+      const tokparam = { expiresIn: 3600, algorithm: 'HS256' };
+      const token = jwt.sign(playload, config.secret, tokparam);
+
+>>>>>>> 33a5df938704b96ca59f1ce0ec1bc2b2a50fb61a
       return token;
     }
     return null;

@@ -12,6 +12,7 @@ import Apps from "../generic/Apps/Apps"
 import "antd/dist/antd.css";
 import Inscritpion from "../pages/Inscription/Inscription";
 import ProtectedRoute from "../generic/ProtectedRoute/ProtectedRoute"
+import StudentLanding from "../pages/StudentLanding/StudentLanding";
 
 class App extends Component {
   render() {
@@ -23,18 +24,23 @@ class App extends Component {
                         <Route
                             exact
                             path="/"
-                            render={() => <ProtectedRoute component={Apps} />}
+                            render={() => <ProtectedRoute component={Apps}/>}
                             />
                         <Route
                           exact
                           path="/RepartitionManagement"
-                          render={() => <ProtectedRoute component={RepartitionManagement} />}
+                          render={() => <ProtectedRoute component={RepartitionManagement}/>}
                         />
 
                         <Route
                           exact
                           path="/Grouping"
-                          render={() => <ProtectedRoute component={Grouping} />}
+                          render={() => <ProtectedRoute component={Grouping}/>}
+                        />
+                        <Route
+                          exact
+                          path="/studentpage"
+                          render={() => <ProtectedRoute component={StudentLanding}/>}
                         />
                         <Route
                             exact
