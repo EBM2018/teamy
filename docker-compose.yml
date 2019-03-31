@@ -8,6 +8,7 @@ services:
       - MONGODB_URI=mongodb://mongodb/teamy
       - MONGO_INITDB_ROOT_USERNAME="teamy"
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     networks:
       local:
       ebm-filrouge:
