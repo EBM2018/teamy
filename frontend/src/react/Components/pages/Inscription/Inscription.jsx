@@ -4,7 +4,7 @@ import {
     Form, Input, Button,Checkbox
 } from 'antd';
 import classNames from "../Inscription/inscription.module.css";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {registerUser} from "../../../../redux/login/actions";
 import connect from "react-redux/es/connect/connect";
 
@@ -22,10 +22,7 @@ class Inscription extends React.Component {
         this.props.form.validateFieldsAndScroll((err, values) =>{
         if (!err) {
             //console.log('Received values of form: ', values);
-            this.props.registerUser(values).then(() => {
-              console.log(this.props.isLogIn);
-            });
-
+            this.props.registerUser(values);
             }
         });
 
@@ -81,7 +78,7 @@ class Inscription extends React.Component {
             },
         };
 
-
+      if(!this.props.isLogIn){
         return (
             <Form onSubmit={this.handleSubmit} className={classNames.corps}>
               <Form.Item
@@ -181,6 +178,9 @@ class Inscription extends React.Component {
                 </Form.Item>
             </Form>
         );
+      }else{
+        return <Redirect to={'/'}/>;
+      }
     }
 }
 const mapStateToProps = state  => ({
