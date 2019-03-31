@@ -5,5 +5,5 @@ module.exports = {
   mongodb: {
     uri: process.env.MONGODB_URI,
   },
-  secret: process.env.JWT_SECRET,
+  secret: 'hamzaoutai',
 };
